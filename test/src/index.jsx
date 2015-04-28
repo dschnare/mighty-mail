@@ -6,9 +6,7 @@
 
 var React = require("react");
 var mighty = require("../../index");
-var Frame = mighty.Frame;
-var Row = mighty.Row;
-var Col = mighty.Col;
+var {Frame, Row, Col} = mighty;
 
 
 module.exports.render = function () {

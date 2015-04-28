@@ -51,7 +51,7 @@ gulp.task("script:build:web", ["script:build"], function () {
 
 gulp.task("test:build", ["script:build"], function () {
 	return gulp.src(cfg.testFiles, { base: "./test/src" })
-		.pipe(react())
+		.pipe(react({ harmony: true }))
 		.pipe(gulp.dest(cfg.testDest));
 });
 

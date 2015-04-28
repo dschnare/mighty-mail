@@ -1,6 +1,7 @@
 {
 	"ecmaFeatures": {
-		"jsx": true
+		"jsx": true,
+		"destructuring": true
 	},
 	"env": {
 		"browser": true,
