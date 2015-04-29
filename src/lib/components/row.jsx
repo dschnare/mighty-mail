@@ -8,14 +8,22 @@ var React = require("react");
 var classNames = require("classnames");
 var RawHtml = require("./raw-html");
 var width = require("../util/width");
+var applyChildMask = require("../util/apply-child-mask");
 
+
+function getColCount(cols) {
+	var count = 0;
+	cols.forEach(function (col) {
+		count += col.props.span;
+	});
+	return count;
+}
 
 var Row = React.createClass({
 	// Component API
 	propTypes: {
 		gutter: React.PropTypes.number,
 		width: React.PropTypes.number.isRequired,
-		cols: React.PropTypes.number.isRequired,
 		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string
 	},
@@ -25,27 +33,27 @@ var Row = React.createClass({
 		};
 	},
 	render: function () {
-		var cols = this.props.cols;
+		var cols = applyChildMask({ Col: true }, this.props.children);
+		var colCount = getColCount(cols);
 		var rowWidth = this.props.width;
 		var gutter = this.props.gutter;
-		var colWidth = (rowWidth - (gutter * (cols - 1))) / cols;
+		var colWidth = (rowWidth - (gutter * (colCount - 1))) / colCount;
 
-		var i = 0;
 		var children = [];
 		var space = rowWidth;
-		React.Children.forEach(this.props.children, function (child) {
-			var span = child.props.span;
-			var k = i; i += 1;
-			var padding = k < (cols - 1) ? gutter : 0;
+		cols.forEach(function (col, i) {
+			var span = col.props.span;
+			var isLast = i === colCount - 1;
+			var padding = isLast ? 0 : gutter;
 			var w = Math.ceil(colWidth) * span + padding * Math.max(1, span - 1);
 			var props = {
-				key: k
+				key: i
 			};
 
 			// If the gutter is specified then we calculate
 			// the width of each column otherwise the width
 			// of each column is expected to be set already.
-			if (gutter) {
+			if (gutter && i > 0) {
 				if (w > space) {
 					w = space;
 					space -= w;
@@ -53,13 +61,13 @@ var Row = React.createClass({
 					space -= w;
 				}
 
-				props.paddingRight = padding;
+				props.gutter = padding;
 				props.width = w;
 			}
 
-			children.push(React.cloneElement(child, props));
+			children.push(React.cloneElement(col, props));
 
-			if (k < (cols - 1)) {
+			if (!isLast) {
 				children.push("<!--[if mso]></td><td><![endif]-->");
 			}
 		});
