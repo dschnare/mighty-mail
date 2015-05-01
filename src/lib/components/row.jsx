@@ -22,38 +22,67 @@ function getColCount(cols) {
 var Row = React.createClass({
 	// Component API
 	propTypes: {
-		gutter: React.PropTypes.number,
 		width: React.PropTypes.number.isRequired,
+		gutter: React.PropTypes.number,
 		bgColor: React.PropTypes.string,
-		className: React.PropTypes.string
+		classNames: React.PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.shape({
+				wrapper: React.PropTypes.string,
+				cell: React.PropTypes.string
+			})
+		])
 	},
 	getDefaultProps: function () {
 		return {
-			gutter: 0
+			classNames: {}
 		};
 	},
 	render: function () {
+		var wrapperClassName = classNames("row", this.props.classNames.wrapper || this.props.classNames);
+		var cellClassName = classNames("row-cell", this.props.classNames.cell);
+
 		var cols = applyChildMask({ Col: true }, this.props.children);
 		var colCount = getColCount(cols);
 		var rowWidth = this.props.width;
 		var gutter = this.props.gutter;
 		var colWidth = (rowWidth - (gutter * (colCount - 1))) / colCount;
+		var children = this.transformCols(cols, colCount, colWidth, rowWidth, gutter);
 
-		var children = [];
+		return (
+			<table cellSpacing="0" cellPadding="0" border="0" align="center" bgColor={this.props.bgColor} width={this.props.width} className={wrapperClassName}>
+				<tbody>
+					<tr>
+						<RawHtml wrapper="td" align="center" width={this.props.width} className={cellClassName}>{children}</RawHtml>
+					</tr>
+				</tbody>
+			</table>
+		);
+	},
+	// Private API
+	transformCols: function (cols, colCount, colWidth, rowWidth, gutter) {
+		var newChildren = [];
 		var space = rowWidth;
+
 		cols.forEach(function (col, i) {
 			var span = col.props.span;
 			var isLast = i === colCount - 1;
-			var padding = isLast ? 0 : gutter;
+			var padding = i === 0 ? 0 : gutter;
 			var w = Math.ceil(colWidth) * span + padding * Math.max(1, span - 1);
 			var props = {
 				key: i
 			};
 
+			if (colCount === 0) {
+				padding = 0;
+				w = colWidth;
+			}
+
 			// If the gutter is specified then we calculate
 			// the width of each column otherwise the width
 			// of each column is expected to be set already.
-			if (gutter && i > 0) {
+
+			if (!isNaN(gutter)) {
 				if (w > space) {
 					w = space;
 					space -= w;
@@ -65,24 +94,15 @@ var Row = React.createClass({
 				props.width = w;
 			}
 
-			children.push(React.cloneElement(col, props));
+			newChildren.push(React.cloneElement(col, props));
 
 			if (!isLast) {
-				children.push("<!--[if mso]></td><td><![endif]-->");
+				newChildren.push("<!--[if mso]></td><td><![endif]-->");
 			}
 		});
 
-		return (
-			<table cellSpacing="0" cellPadding="0" border="0" align="center" bgColor={this.props.bgColor} width={width(this.props.width)} className={classNames("row", this.props.className)}>
-				<tbody>
-					<tr>
-						<RawHtml wrapper="td" align="center">{children}</RawHtml>
-					</tr>
-				</tbody>
-			</table>
-		);
+		return newChildren;
 	}
-	// Private API
 	// Public API
 });
 

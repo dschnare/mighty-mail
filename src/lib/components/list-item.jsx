@@ -10,21 +10,18 @@ var ListItem = React.createClass({
 		bullet: React.PropTypes.string,
 		className: React.PropTypes.string
 	},
-	getDefaultProps: function () {
-		return {};
-	},
 	render: function () {
 		if (this.props.bullet) {
 			return (
-				<tr className={classNames(this.props.className)>
-					<td align="left" valign="top" className="list-bullet">{this.props.bullet}</td>
-					<td align="left" valign="top" className="list-item">{this.props.children}</td>
+				<tr className={classNames(this.props.className)}>
+					<td align="left" valign="top" className={classNames("list-bullet", this.props.className)}>{this.props.bullet}</td>
+					<td align="left" valign="top" className={classNames("list-item", this.props.className)}>{this.props.children}</td>
 				</tr>
 			);
 		} else {
 			return (
-				<tr className={classNames(this.props.className)>
-					<td align="left" valign="top" className="list-item">{this.props.children}</td>
+				<tr>
+					<td align="left" valign="top" className={classNames("list-item", this.props.className)}>{this.props.children}</td>
 				</tr>
 			);
 		}

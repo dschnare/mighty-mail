@@ -10,3 +10,4 @@ module.exports.Button = require("./lib/components/button");
 module.exports.List = require("./lib/components/list");
 module.exports.BulletList = require("./lib/components/bullet-list");
 module.exports.ListItem = require("./lib/components/list-item");
+module.exports.Divider = require("./lib/components/divider");

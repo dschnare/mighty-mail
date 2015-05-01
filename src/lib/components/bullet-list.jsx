@@ -16,8 +16,7 @@ var BulletList = React.createClass({
 	},
 	getDefaultProps: function () {
 		return {
-			bullet: "\u2022",
-			padding: 20
+			bullet: "\u2022"
 		};
 	},
 	render: function () {

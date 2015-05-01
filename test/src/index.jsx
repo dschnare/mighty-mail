@@ -6,7 +6,7 @@
 
 var React = require("react");
 var mighty = require("../../index");
-var {Frame, Row, Col, List, ListItem, BulletList} = mighty;
+var {Frame, Row, Col, List, ListItem, BulletList, Divider} = mighty;
 
 
 module.exports.render = function () {
@@ -32,8 +32,7 @@ module.exports.render = function () {
 				</Col>
 			</Row>
 
-			<Divider color="#ff0000" />
-
+			<Divider color="#ff0000" width={500} />
 		</Frame>
 
 	);

@@ -11,20 +11,16 @@ var List = React.createClass({
 	propTypes: {
 		className: React.PropTypes.string
 	},
-	getDefaultProps: function () {
-		return {
-			padding: 20
-		};
-	},
 	render: function () {
 		var listItems = applyChildMask({ ListItem: true }, this.props.children);
 		var count = listItems.length;
 		listItems = listItems.map(function (child, i) {
-			var baselineClassName = i === count - 1 ? "" : "baseline-half";
+			var firstChildClassName = i === 0 ? "first-child" : "";
+			var lastChildClassName = i === count - 1 ? "last-child" : "";
 
 			return React.cloneElement(child, {
-				classNames: classNames(child.props.className, baselineClassName),
-				key: i
+				key: i,
+				classNames: classNames(child.props.className, firstChildClassName, lastChildClassName)
 			});
 		});
 
