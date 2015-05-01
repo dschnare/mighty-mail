@@ -67,10 +67,16 @@ var Button = React.createClass({
 				WebkitTextSizeAdjust: "none"
 		};
 
+		var anchorAttrs = {
+			href: props.href,
+			className: classNames(this.props.className),
+			style: style
+		};
+
 		return (
 			<div>
 				<RawHtml>{vmlRectBegin}</RawHtml>
-				<a href={props.href} className={classNames(this.props.className)} style={style}>{this.props.children}</a>
+				<a {...anchorAttrs}>{this.props.children}</a>
 				<RawHtml>{vmlRectEnd}</RawHtml>
 			</div>
 		);

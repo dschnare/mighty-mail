@@ -1,7 +1,7 @@
 "use strict";
 
 
-/*eslint no-unused-vars: 0*/
+/*eslint no-unused-vars: 0, quotes: 0*/
 
 
 var React = require("react");
@@ -49,11 +49,28 @@ var Row = React.createClass({
 		var colWidth = (rowWidth - (gutter * (colCount - 1))) / colCount;
 		var children = this.transformCols(cols, colCount, colWidth, rowWidth, gutter);
 
+		var wrapperAttrs = {
+			cellSpacing: 0,
+			cellPadding: 0,
+			border: 0,
+			align: "center",
+			bgColor: this.props.bgColor,
+			width: this.props.width,
+			className: wrapperClassName
+		};
+
+		var cellAttrs = {
+			align: "center",
+			valign: "top",
+			width: wrapperAttrs.width,
+			className: cellClassName
+		};
+
 		return (
-			<table cellSpacing="0" cellPadding="0" border="0" align="center" bgColor={this.props.bgColor} width={this.props.width} className={wrapperClassName}>
+			<table {...wrapperAttrs}>
 				<tbody>
 					<tr>
-						<RawHtml wrapper="td" align="center" width={this.props.width} className={cellClassName}>{children}</RawHtml>
+						<RawHtml wrapper="td" {...cellAttrs}>{children}</RawHtml>
 					</tr>
 				</tbody>
 			</table>
@@ -97,7 +114,7 @@ var Row = React.createClass({
 			newChildren.push(React.cloneElement(col, props));
 
 			if (!isLast) {
-				newChildren.push("<!--[if mso]></td><td><![endif]-->");
+				newChildren.push('<!--[if mso]></td><td align="center" valign="top"><![endif]-->');
 			}
 		});
 

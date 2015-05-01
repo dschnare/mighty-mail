@@ -44,18 +44,33 @@ var Divider = React.createClass({
 			msoLineHeightRule: "exactly"
 		};
 
+		var tableAttrs = {
+			cellPadding: 0,
+			cellSpacing: 0,
+			border: 0,
+			width: this.props.width,
+			align: "center",
+			className: "divider-line m-full-width"
+		};
+
+		var lineAttrs = {
+			width: this.props.width,
+			height: thickness,
+			bgColor: this.props.color,
+			style: lineStyle,
+			className: "divider-line-cell"
+		};
+
 		return (
 			<Row width={this.props.width} className={wrapperClassName}>
-				<Col align="center" float="center" classNames={cellClassName}>
-
-					<table cellPadding="0" cellSpacing="0" border="0" width={this.props.width} align="center" className="divider-line m-full-width">
+				<Col align="center" float="center" width={this.props.width} classNames={cellClassName}>
+					<table {...tableAttrs}>
 						<tbody>
 							<tr>
-								<td width={this.props.width} height={thickness} bgColor={this.props.color} style={lineStyle} className="divider-line-cell"></td>
+								<td {...lineAttrs}></td>
 							</tr>
 						</tbody>
 					</table>
-
 				</Col>
 			</Row>
 		);

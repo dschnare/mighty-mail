@@ -46,8 +46,19 @@ var Frame = React.createClass({
 			borderStyle.border = [px(this.props.borderThickness), this.props.borderColor].join(" solid ");
 		}
 
+		var tableAttrs = {
+			cellPadding: 0,
+			cellSpacing: 0,
+			border: 0,
+			align: "center",
+			width: width(this.props.width),
+			bgColor: this.props.bgColor,
+			className: wrapperClassName,
+			style: borderStyle
+		};
+
 		return (
-			<table cellPadding="0" cellSpacing="0" border="0" align="center" width={width(this.props.width)} bgColor={this.props.bgColor} className={wrapperClassName} style={borderStyle}>
+			<table {...tableAttrs}>
 				<tbody>
 					<tr>
 						<td align="center" className={cellClassName}>

@@ -14,6 +14,7 @@ var List = React.createClass({
 	render: function () {
 		var listItems = applyChildMask({ ListItem: true }, this.props.children);
 		var count = listItems.length;
+
 		listItems = listItems.map(function (child, i) {
 			var firstChildClassName = i === 0 ? "first-child" : "";
 			var lastChildClassName = i === count - 1 ? "last-child" : "";
@@ -24,8 +25,15 @@ var List = React.createClass({
 			});
 		});
 
+		var tableAttrs = {
+			cellSpacing: 0,
+			cellPadding: 0,
+			border: 0,
+			className: classNames("list", this.props.className)
+		};
+
 		return (
-			<table cellSpacing="0" cellPadding="0" border="0" className={classNames("list", this.props.className)}>
+			<table {...tableAttrs}>
 				<tbody>
 					{listItems}
 				</tbody>
