@@ -3,6 +3,7 @@
 
 require("./lib/email-attributes");
 
+module.exports.Table = require("./lib/components/layout/Table");
 module.exports.RawHtml = require("./lib/components/RawHtml");
 module.exports.Container = require("./lib/components/layout/Container");
 module.exports.Frame = require("./lib/components/layout/Frame");

@@ -1,8 +1,12 @@
 "use strict";
 
 
+/*eslint no-unused-vars: 0*/
+
+
 var React = require("react");
 var classNames = require("classnames");
+var Table = require("./layout/Table");
 var applyChildMask = require("../util/apply-child-mask");
 
 
@@ -16,20 +20,16 @@ var List = React.createClass({
 		var listItems = this.getListItems();
 
 		return (
-			<table {...tableProps}>
+			<Table {...tableProps}>
 				<tbody>
 					{listItems}
 				</tbody>
-			</table>
+			</Table>
 		);
 	},
 	// Private API
 	getTableProps: function () {
 		return {
-			cellSpacing: 0,
-			cellPadding: 0,
-			border: 0,
-			align: "left",
 			className: classNames("list", this.props.className)
 		};
 	},
