@@ -5,6 +5,7 @@
 
 
 var React = require("react");
+var classNames = require("classnames");
 var Container = require("./layout/Container");
 
 
@@ -17,13 +18,17 @@ var Divider = React.createClass({
 		]),
 		thickness: React.PropTypes.number,
 		color: React.PropTypes.string,
-		className: React.PropTypes.string
+		className: React.PropTypes.string,
+		wrapper: React.PropTypes.shape({
+			className: React.PropTypes.string
+		})
 	},
 	getDefaultProps: function () {
 		return {
 			thickness: 1,
 			color: "#eaeaea",
-			width: "100%"
+			width: "100%",
+			wrapper: {}
 		};
 	},
 	render: function () {
@@ -45,6 +50,7 @@ var Divider = React.createClass({
 				width: this.props.width,
 				height: this.props.thickness,
 				bgColor: this.props.color,
+				className: classNames(this.props.wrapper.className),
 				style: {
 					fontSize: "1px",
 					lineHeight: "1px",
