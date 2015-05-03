@@ -16,8 +16,8 @@ var numberOrStringType = React.PropTypes.oneOfType([
 var Table = React.createClass({
 	// Component API
 	propTypes: {
-		collSpacing: numberOrStringType,
-		collPadding: numberOrStringType,
+		cellSpacing: numberOrStringType,
+		cellPadding: numberOrStringType,
 		border: numberOrStringType,
 		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string,
@@ -27,8 +27,8 @@ var Table = React.createClass({
 	},
 	getDefaultProps: function () {
 		return {
-			collSpacing: 0,
-			collPadding: 0,
+			cellSpacing: 0,
+			cellPadding: 0,
 			border: 0,
 			align: "left"
 		};
@@ -45,8 +45,8 @@ var Table = React.createClass({
 	// Private API
 	getTableProps: function () {
 		return {
-			collSpacing: this.props.collSpacing,
-			collPadding: this.props.collPadding,
+			cellSpacing: this.props.cellSpacing,
+			cellPadding: this.props.cellPadding,
 			border: this.props.border,
 			width: this.props.width,
 			align: this.props.align,

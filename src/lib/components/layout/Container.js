@@ -10,8 +10,8 @@ The Container component will render a <table> with a single
 <table> and <td> properties. The following properties are supported.
 
 	cssPrefix: React.PropTypes.string,
-	collSpacing: numberOrStringType,
-	collPadding: numberOrStringType,
+	cellSpacing: numberOrStringType,
+	cellPadding: numberOrStringType,
 	border: numberOrStringType,
 	bgColor: React.PropTypes.string,
 	className: React.PropTypes.string,
@@ -33,8 +33,8 @@ The following are the property defaults.
 
 	{
 		cssPrefix: "container",
-		collSpacing: 0,
-		collPadding: 0,
+		cellSpacing: 0,
+		cellPadding: 0,
 		border: 0,
 		align: "left",
 		wrapper: {
@@ -60,8 +60,8 @@ var Container = React.createClass({
 	// Component API
 	propTypes: {
 		cssPrefix: React.PropTypes.string,
-		collSpacing: numberOrStringType,
-		collPadding: numberOrStringType,
+		cellSpacing: numberOrStringType,
+		cellPadding: numberOrStringType,
 		border: numberOrStringType,
 		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string,
@@ -79,8 +79,8 @@ var Container = React.createClass({
 	getDefaultProps: function () {
 		return {
 			cssPrefix: "container",
-			collSpacing: 0,
-			collPadding: 0,
+			cellSpacing: 0,
+			cellPadding: 0,
 			border: 0,
 			align: "left",
 			wrapper: {
@@ -114,8 +114,8 @@ var Container = React.createClass({
 	// Private API
 	getTableProps: function () {
 		return {
-			collSpacing: this.props.collSpacing,
-			collPadding: this.props.collPadding,
+			cellSpacing: this.props.cellSpacing,
+			cellPadding: this.props.cellPadding,
 			border: this.props.border,
 			width: this.props.width,
 			align: this.props.align,
