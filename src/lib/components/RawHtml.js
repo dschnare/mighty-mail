@@ -2,6 +2,7 @@
 
 
 var React = require("react");
+var mixin = require("../util/mixin");
 
 
 var RawHtml = React.createClass({
@@ -14,7 +15,25 @@ var RawHtml = React.createClass({
 		};
 	},
 	render: function () {
+		var wrapperProps = this.getWrapperProps();
+		return React.createElement(this.props.wrapper, wrapperProps);
+	},
+	// Private API
+	getWrapperProps: function () {
+		var props = mixin({}, this.props);
+
+		delete props.children;
+		delete props.wrapper;
+
+		props.dangerouslySetInnerHTML = {
+			__html: this.convertChildrenToHtml()
+		};
+
+		return props;
+	},
+	convertChildrenToHtml: function () {
 		var html = "";
+
 		React.Children.forEach(this.props.children, function (child) {
 			if (typeof child === "string") {
 				html += child;
@@ -23,15 +42,7 @@ var RawHtml = React.createClass({
 			}
 		});
 
-		var props = {};
-		for (var k in this.props) {
-			if (k !== "wrapper" && k !== "children") {
-				props[k] = this.props[k];
-			}
-		}
-		props.dangerouslySetInnerHTML = {__html: html};
-
-		return React.createElement(this.props.wrapper, props);
+		return html;
 	}
 });
 

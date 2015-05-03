@@ -6,7 +6,7 @@
 
 var React = require("react");
 var classNames = require("classnames");
-var RawHtml = require("./raw-html");
+var RawHtml = require("./RawHtml");
 var px = require("../util/px");
 
 
@@ -34,8 +34,23 @@ var Button = React.createClass({
 		};
 	},
 	render: function () {
+		var vmlRectBegin = this.getVmlRectBegin();
+		var vmlRectEnd = this.getVmlRectEnd();
+		var anchorProps = this.getAnchorProps();
+		var children = [
+			vmlRectBegin,
+			<a {...anchorProps}>{this.props.children}</a>,
+			vmlRectEnd
+		];
+
+		return (
+			<RawHtml className={classNames("button", this.props.className)}>{children}</RawHtml>
+		);
+	},
+	// Private API
+	getVmlRectBegin: function () {
 		var props = this.props;
-		var vmlRectBegin = [
+		return [
 			"<!--[if mso]>",
 				'<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" stroke="f" fillcolor="%bgColor%">',
 					"<w:anchorlock/>",
@@ -44,44 +59,36 @@ var Button = React.createClass({
 		].join("\n").replace(/%([^%]+)%/g, function (token, id) {
 			return props[id];
 		});
-
-		var vmlRectEnd = [
+	},
+	getVmlRectEnd: function () {
+		return [
 			"<!--[if mso]>",
 					"</center>",
 				"</v:roundrect>",
 			"<![endif]-->"
 		].join("\n");
+	},
+	getAnchorProps: function () {
+		var props = this.props;
 
-		var style = {
-				backgroundColor: props.bgColor,
-				color: props.textColor,
-				display: "inline-block",
-				fontFamily: "sans-serif",
-				fontSize: px(props.fontSize),
-				fontWeight: "bold",
-				lineHeight: px(props.height),
-				textAlign: "center",
-				textDecoration: "none",
-				width: px(props.width),
-				borderRadius: props.borderRadius,
-				WebkitTextSizeAdjust: "none"
-		};
-
-		var anchorAttrs = {
+		return {
 			href: props.href,
-			className: classNames(this.props.className),
-			style: style
+			style: {
+					backgroundColor: props.bgColor,
+					color: props.textColor,
+					display: "inline-block",
+					fontFamily: "sans-serif",
+					fontSize: px(props.fontSize),
+					fontWeight: "bold",
+					lineHeight: px(props.height),
+					textAlign: "center",
+					textDecoration: "none",
+					width: px(props.width),
+					borderRadius: props.borderRadius,
+					WebkitTextSizeAdjust: "none"
+			}
 		};
-
-		return (
-			<div>
-				<RawHtml>{vmlRectBegin}</RawHtml>
-				<a {...anchorAttrs}>{this.props.children}</a>
-				<RawHtml>{vmlRectEnd}</RawHtml>
-			</div>
-		);
 	}
-	// Private API
 	// Public API
 });
 

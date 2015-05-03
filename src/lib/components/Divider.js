@@ -8,7 +8,7 @@ var React = require("react");
 var Container = require("./layout/Container");
 
 
-var Divider = React.createClass({displayName: "Divider",
+var Divider = React.createClass({
 	// Component API
 	propTypes: {
 		width: React.PropTypes.oneOfType([
@@ -31,9 +31,9 @@ var Divider = React.createClass({displayName: "Divider",
 		var colProps = this.getColProps();
 
 		return (
-			React.createElement(Container, React.__spread({},  containerProps), 
-				React.createElement(Container, React.__spread({},  colProps))
-			)
+			<Container {...containerProps}>
+				<Container {...colProps} />
+			</Container>
 		);
 	},
 	// Private API

@@ -5,8 +5,8 @@
 
 
 var React = require("react");
-var Row = require("./row");
-var Col = require("./col");
+var Row = require("./layout/Row");
+var Col = require("./layout/Col");
 var classNames = require("classnames");
 var applyChildMask = require("../util/apply-child-mask");
 var px = require("../util/px");
@@ -28,58 +28,75 @@ var MediaObject = React.createClass({
 		};
 	},
 	render: function () {
-		var gutter = this.props.gutter;
-		var media = this.getMediaChild(this.props.children);
-		var content = this.getContentChild(this.props.children);
-		var mediaWidth = this.props.mediaWidth + gutter * 2;
-		var contentWidth = this.props.width - mediaWidth;
-		var mediaCellStyle = {
-			paddingLeft: px(gutter),
-			paddingRight: px(gutter)
-		};
+		var rowProps = this.getRowProps();
+		var cols = this.getColumns();
 
-		var rowAttrs = {
-			width: this.props.width,
-			classNames: { wrapper: "media-object", cell: "media-object-cell" }
-		};
-
-		var mediaColAttrs = {
-			width: mediaWidth,
-			float: this.props.mediaFloat,
-			classNames: { cell: "media-object-media-cell" },
-			styles: { cell: mediaCellStyle }
-		};
-
-		var contentColAttrs = {
-			width: contentWidth,
-			classNames: { cell: "media-object-content-cell" }
-		};
-
-		var cols = [
-			<Col {...contentColAttrs}>{content}</Col>,
-			<Col {...mediaColAttrs}>{media}</Col>
-		];
-
-		if (media && content) {
-			if (this.isMediaChildFirst(this.props.children)) {
-				cols.reverse();
-			}
-
-			return (
-				<Row {...rowAttrs}>
-					{cols}
-				</Row>
-			);
-		}
-
-		return null;
+		return (
+			<Row {...rowProps}>
+				{cols}
+			</Row>
+		);
 	},
 	// Private API
+	getColumns: function () {
+		var media = this.getMediaChild(this.props.children);
+		var content = this.getContentChild(this.props.children);
+
+		var gutter = this.props.gutter;
+		var mediaWidth = this.props.mediaWidth + gutter * 2;
+		var contentWidth = this.props.width - mediaWidth;
+
+		var mediaColProps = this.getMediaColProps(mediaWidth, gutter);
+		var contentColProps = this.getContentColProps(contentWidth);
+
+		var cols = [
+			<Col {...contentColProps}>{content}</Col>,
+			<Col {...mediaColProps}>{media}</Col>
+		];
+
+		if (this.isMediaChildFirst(this.props.children)) {
+			cols.reverse();
+		}
+
+		return cols;
+	},
 	getMediaChild: function (children) {
 		return applyChildMask({ img: true }).shift();
 	},
 	getContentChild: function (children) {
 		return applyChildMask({ Col: true }).shift();
+	},
+	getRowProps: function () {
+		return {
+			width: this.props.width,
+			className: "media-object",
+			wrapper: {
+				className: "media-object-wrapper"
+			}
+		};
+	},
+	getMediaColProps: function (mediaWidth, gutter) {
+		return {
+			width: mediaWidth,
+			float: this.props.mediaFloat,
+			className: "media-object-media",
+			wrapper: {
+				className: "media-object-media-wrapper",
+				style: {
+					paddingLeft: px(gutter),
+					paddingRight: px(gutter)
+				}
+			}
+		};
+	},
+	getContentColProps: function (contentWidth) {
+		return {
+			width: contentWidth,
+			className: "media-object-content",
+			wrapper: {
+				className: "media-object-content-wrapper"
+			}
+		};
 	},
 	isMediaChildFirst: function (children) {
 		var kids = applyChildMask({ img: true, Col: true });

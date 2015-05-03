@@ -12,10 +12,32 @@ var List = React.createClass({
 		className: React.PropTypes.string
 	},
 	render: function () {
+		var tableProps = this.getTableProps();
+		var listItems = this.getListItems();
+
+		return (
+			<table {...tableProps}>
+				<tbody>
+					{listItems}
+				</tbody>
+			</table>
+		);
+	},
+	// Private API
+	getTableProps: function () {
+		return {
+			cellSpacing: 0,
+			cellPadding: 0,
+			border: 0,
+			align: "left",
+			className: classNames("list", this.props.className)
+		};
+	},
+	getListItems: function () {
 		var listItems = applyChildMask({ ListItem: true }, this.props.children);
 		var count = listItems.length;
 
-		listItems = listItems.map(function (child, i) {
+		return listItems.map(function (child, i) {
 			var firstChildClassName = i === 0 ? "first-child" : "";
 			var lastChildClassName = i === count - 1 ? "last-child" : "";
 
@@ -24,23 +46,7 @@ var List = React.createClass({
 				classNames: classNames(child.props.className, firstChildClassName, lastChildClassName)
 			});
 		});
-
-		var tableAttrs = {
-			cellSpacing: 0,
-			cellPadding: 0,
-			border: 0,
-			className: classNames("list", this.props.className)
-		};
-
-		return (
-			<table {...tableAttrs}>
-				<tbody>
-					{listItems}
-				</tbody>
-			</table>
-		);
 	}
-	// Private API
 	// Public API
 });
 

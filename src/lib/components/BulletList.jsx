@@ -3,7 +3,7 @@
 /*eslint no-unused-vars: 0*/
 
 var React = require("react");
-var List = require("./list");
+var List = require("./List");
 var classNames = require("classnames");
 var applyChildMask = require("../util/apply-child-mask");
 
@@ -20,19 +20,22 @@ var BulletList = React.createClass({
 		};
 	},
 	render: function () {
-		var bullet = this.props.bullet;
-		var listItems = applyChildMask({ ListItem: true }, this.props.children);
-		listItems = listItems.map(function (li, i) {
-			return React.cloneElement(li, { bullet: bullet, key: i });
-		});
+		var listItems = this.getListItems();
 
 		return (
 			<List className={this.props.className}>
 				{listItems}
 			</List>
 		);
-	}
+	},
 	// Private API
+	getListItems: function () {
+		var bullet = this.props.bullet;
+		var listItems = applyChildMask({ ListItem: true }, this.props.children);
+		return listItems.map(function (li, i) {
+			return React.cloneElement(li, { bullet: bullet, key: i });
+		});
+	}
 	// Public API
 });
 
