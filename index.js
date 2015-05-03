@@ -17,3 +17,4 @@ module.exports.BulletList = require("./lib/components/BulletList");
 module.exports.ListItem = require("./lib/components/ListItem");
 module.exports.Divider = require("./lib/components/Divider");
 module.exports.MediaObject = require("./lib/components/MediaObject");
+module.exports.Hero = require("./lib/components/Hero");

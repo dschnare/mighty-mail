@@ -9,7 +9,7 @@ var ReactInjection = require("react/lib/ReactInjection");
 
 // See: https://github.com/facebook/react/issues/140
 var attributes = [
-  "align", "valign", "bgcolor", "border"
+  "align", "valign", "bgcolor", "border", "background"
 ];
 var properties = {};
 attributes.forEach(function (attr) {

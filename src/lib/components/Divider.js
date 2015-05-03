@@ -28,12 +28,9 @@ var Divider = React.createClass({
 	},
 	render: function () {
 		var containerProps = this.getContainerProps();
-		var colProps = this.getColProps();
 
 		return (
-			<Container {...containerProps}>
-				<Container {...colProps} />
-			</Container>
+			<Container {...containerProps} />
 		);
 	},
 	// Private API
@@ -45,21 +42,9 @@ var Divider = React.createClass({
 			className: this.props.className,
 			wrapper: {
 				align: "center",
-				width: this.props.width
-			}
-		};
-	},
-	getColProps: function () {
-		return {
-			cssPrefix: "col",
-			align: "center",
-			width: this.props.width,
-			className: "divider-line",
-			wrapper: {
-				bgColor: this.props.bgColor,
-				height: this.props.thickness,
 				width: this.props.width,
-				className: "divider-line-wrapper",
+				height: this.props.thickness,
+				bgColor: this.props.bgColor,
 				style: {
 					fontSize: "1px",
 					lineHeight: "1px",
