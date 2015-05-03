@@ -44,7 +44,7 @@ var Divider = React.createClass({
 				align: "center",
 				width: this.props.width,
 				height: this.props.thickness,
-				bgColor: this.props.bgColor,
+				bgColor: this.props.color,
 				style: {
 					fontSize: "1px",
 					lineHeight: "1px",

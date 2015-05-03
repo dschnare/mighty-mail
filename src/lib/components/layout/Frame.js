@@ -63,6 +63,10 @@ var Frame = React.createClass({
 
 		containerProps.style = mixin({}, containerProps.style || {}, this.getContainerStyle());
 
+		if (typeof containerProps.width === "number") {
+			containerProps.wrapper.width = containerProps.width;
+		}
+
 		return containerProps;
 	},
 	getContainerStyle: function () {
