@@ -7,6 +7,7 @@
 var React = require("react");
 var classNames = require("classnames");
 var Table = require("./layout/Table");
+var Col = require("./layout/Col");
 var RawHtml = require("./RawHtml");
 
 
@@ -44,21 +45,22 @@ var Hero = React.createClass({
 		return {
 			width: this.props.width,
 			height: this.props.height,
-			className: classNames("hero", this.props.className)
+			className: classNames("hero", "row", this.props.className)
 		};
 	},
 	getTdProps: function () {
 		return {
 			background: this.props.background,
 			bgColor: this.props.bgColor,
-			className: "hero-wrapper"
+			width: this.props.width,
+			className: "hero-wrapper row-wrapper"
 		};
 	},
 	transformChildren: function () {
 		var children = [];
 
 		children.push(this.getVmlBgBegin());
-		children.push(<div>{this.props.children}</div>);
+		children.push(<div><Col float="center">{this.props.children}</Col></div>);
 		children.push(this.getVmlBgEnd());
 
 		return children;
