@@ -18,6 +18,7 @@ var Col = React.createClass({
 		className: React.PropTypes.string,
 		style: React.PropTypes.object,
 		width: React.PropTypes.number,
+		height: React.PropTypes.number,
 		float: React.PropTypes.oneOf(["left", "center", "right"]),
 		wrapper: React.PropTypes.shape({
 			className: React.PropTypes.string,

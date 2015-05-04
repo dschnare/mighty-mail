@@ -32,7 +32,9 @@ var Row = React.createClass({
 		wrapper: React.PropTypes.shape({
 			className: React.PropTypes.string,
 			style: React.PropTypes.object,
-			bgColor: React.PropTypes.string
+			bgColor: React.PropTypes.string,
+			align: React.PropTypes.oneOf(["left", "center", "right"]),
+			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
 		})
 	},
 	getDefaultProps: function () {

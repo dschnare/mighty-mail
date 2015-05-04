@@ -67,6 +67,7 @@ var Container = React.createClass({
 		className: React.PropTypes.string,
 		style: React.PropTypes.object,
 		width: numberOrStringType,
+		height: numberOrStringType,
 		align: React.PropTypes.oneOf(["left", "center", "right"]),
 		wrapper: React.PropTypes.shape({
 			className: React.PropTypes.string,
@@ -92,6 +93,7 @@ var Container = React.createClass({
 	render: function () {
 		var tableProps = this.getTableProps();
 		var tdProps = this.props.wrapper;
+		var content = React.Children.count(this.props.children) === 0 ? "\u00A0" : this.props.children;
 
 		if (this.props.cssPrefix) {
 			tableProps.className = classNames(this.props.cssPrefix, tableProps.className);
@@ -105,7 +107,7 @@ var Container = React.createClass({
 			<table {...tableProps}>
 				<tbody>
 					<tr>
-						<RawHtml wrapper="td" {...tdProps}>{this.props.children}</RawHtml>
+						<RawHtml wrapper="td" {...tdProps}>{content}</RawHtml>
 					</tr>
 				</tbody>
 			</table>
@@ -118,6 +120,7 @@ var Container = React.createClass({
 			cellPadding: this.props.cellPadding,
 			border: this.props.border,
 			width: this.props.width,
+			height: this.props.height,
 			align: this.props.align,
 			bgColor: this.props.bgColor,
 			className: this.props.className,
