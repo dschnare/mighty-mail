@@ -1,0 +1,61 @@
+// Styles to set top and bottom padding.
+
+$baseline: 20px;
+
+.topline-quarter {
+  padding-top: $baseline * 0.25;
+}
+
+.topline-half {
+  padding-top: $baseline * 0.5;
+}
+
+.topline {
+  padding-top: $baseline;
+}
+
+.topline-1_5x {
+  padding-top: $baseline * 1.5;
+}
+
+.topline-2x {
+  padding-top: $baseline * 2;
+}
+
+.topline-2_5x {
+  padding-top: $baseline * 2.5;
+}
+
+.topline-3x {
+  padding-top: $baseline * 3;
+}
+
+//--
+
+.baseline-quarter {
+  padding-bottom: $baseline * 0.25;
+}
+
+.baseline-half {
+  padding-bottom: $baseline * 0.5;
+}
+
+.baseline {
+  padding-bottom: $baseline;
+}
+
+.baseline-1_5x {
+  padding-bottom: $baseline * 1.5;
+}
+
+.baseline-2x {
+  padding-bottom: $baseline * 2;
+}
+
+.baseline-2_5x {
+  padding-bottom: $baseline * 2.5;
+}
+
+.baseline-3x {
+  padding-bottom: $baseline * 3;
+}

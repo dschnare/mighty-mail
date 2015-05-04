@@ -1,0 +1,113 @@
+// Styles to set font family, font size and link styles.
+
+$text-color: #363636;
+$link-color: #365ebf;
+
+// Font family
+
+body,
+div,
+p,
+td {
+  font-family: Arial, Helvetica, sans-serif;
+  color: $text-color;
+}
+
+.font-serif {
+  font-family: Georgia, serif;
+}
+
+// Links
+
+a {
+  text-decoration: underline;
+  color: $link-color;
+}
+
+// Font sizing
+
+body,
+div,
+p,
+td {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.text-mice,
+.text-mice td {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.text-small,
+.text-small td {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.text-medium,
+.text-medium td {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.text-large,
+.text-large td {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.text-x-large,
+.text-x-large td {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.text-xx-large,
+.text-xx-large td {
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.text-hero,
+.text-hero td {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+sup {
+  line-height: 0;
+  font-size: 10px;
+  vertical-align: 4px;
+}
+
+.text-mice sup {
+  font-size: 8px;
+  vertical-align: 4px;
+}
+
+.text-small sup {
+  font-size: 9px;
+  vertical-align: 4px;
+}
+
+.text-medium sup {
+  font-size: 10px;
+  vertical-align: 6px;
+}
+
+.text-large sup {
+  font-size: 11px;
+  vertical-align: 8px;
+}
+
+.text-x-large sup {
+  font-size: 12px;
+  vertical-align: 9px;
+}
+
+.text-hero sup {
+  font-size: 12px;
+  vertical-align: 12px;
+}

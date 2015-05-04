@@ -4,19 +4,11 @@
 var fs = require("fs");
 var path = require("path");
 var mkdir = require("mkdir-p");
-var browserify = require("browserify");
-var reactify = require("reactify");
 var html = require("html");
 
 var gulp = require("gulp");
 var cfg = require("./gulp.config");
 var eslint = require("gulp-eslint");
-var rename = require("gulp-rename");
-var uglify = require("gulp-uglify");
-var react = require("gulp-react");
-
-var buffer = require("vinyl-buffer");
-var source = require("vinyl-source-stream");
 
 
 gulp.task('script:lint', function () {
@@ -31,21 +23,6 @@ gulp.task('script:lint', function () {
 gulp.task("script:build", ["script:lint"], function () {
 	return gulp.src(cfg.srcFiles, { base: "src" })
 		.pipe(react())
-		.pipe(gulp.dest(cfg.dest));
-});
-
-gulp.task("script:build:web", ["script:build"], function () {
-	var b = browserify({
-		entries: cfg.srcMainEntry,
-		debug: true,
-		standalone: "mighty"
-	});
-
-	return b.bundle()
-		.pipe(source("index.js"))
-		.pipe(buffer())
-		.pipe(uglify())
-		.pipe(rename({ suffix: ".min" }))
 		.pipe(gulp.dest(cfg.dest));
 });
 
