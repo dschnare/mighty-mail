@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+*May 5, 2015*
+
+- Add styles to set images to inline-block when using any horizontal alignment properties.
+
 
 ## 0.1.3
 
