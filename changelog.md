@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 0.1.3
+
+*May 5, 2015*
+
+- Build the JSX into JS.
+- Add require for gulp-react in gulpfile.
+
+
 ## 0.1.2
 
 *May 5, 2015*

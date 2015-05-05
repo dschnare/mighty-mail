@@ -9,6 +9,7 @@ var html = require("html");
 var gulp = require("gulp");
 var cfg = require("./gulp.config");
 var eslint = require("gulp-eslint");
+var react = require("gulp-react");
 
 
 gulp.task('script:lint', function () {
