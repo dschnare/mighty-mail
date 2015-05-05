@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.11
+
+*May 5, 2015*
+
+- Resolve issue with checking child.type.displayName instead of child.type when determining if <img> occurs first.
+
+
 ## 0.1.10
 
 *May 5, 2015*

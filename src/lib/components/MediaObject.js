@@ -104,7 +104,7 @@ var MediaObject = React.createClass({
 	},
 	isMediaChildFirst: function (children) {
 		var kids = applyChildMask({ img: true, Col: true }, children);
-		return kids.length && kids[0].type && kids[0].type.displayName === "img";
+		return kids.length && kids[0].type === "img";
 	}
 	// Public API
 });
