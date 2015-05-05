@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.10
+
+*May 5, 2015*
+
+- Resolve issue with not passing children to applyChildMask() in MediaObject component.
+- Update applyChildMask() to check child.type and child.type.displayName.
+
+
 ## 0.1.9
 
 *May 5, 2015*
