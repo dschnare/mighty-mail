@@ -48,13 +48,14 @@ var MediaObject = React.createClass({
 
 		var mediaColProps = this.getMediaColProps(mediaWidth, gutter);
 		var contentColProps = this.getContentColProps(contentWidth);
+		contentColProps.key = "1";
 
 		// Content is a Col so we might as well just clone it.
 		content = React.cloneElement(content, contentColProps);
 
 		var cols = [
 			content,
-			<Col {...mediaColProps}>{media}</Col>
+			<Col key="2" {...mediaColProps}>{media}</Col>
 		];
 
 		if (this.isMediaChildFirst(this.props.children)) {

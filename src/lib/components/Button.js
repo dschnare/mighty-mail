@@ -39,7 +39,7 @@ var Button = React.createClass({
 		var anchorProps = this.getAnchorProps();
 		var children = [
 			vmlRectBegin,
-			<a {...anchorProps}>{this.props.children}</a>,
+			<a key="1" {...anchorProps}>{this.props.children}</a>,
 			vmlRectEnd
 		];
 

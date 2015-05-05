@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.8
+
+*May 5, 2015*
+
+- Add key to children of Button component.
+- Add key to children of MediaObject component.
+- Remove deprecated JS files.
+
+
 ## 0.1.7
 
 *May 5, 2015*
