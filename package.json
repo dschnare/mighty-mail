@@ -1,6 +1,6 @@
 {
   "name": "mighty-mail",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Reactjs components for static server rendering of HTML emails.",
   "repository": {
     "type": "git",

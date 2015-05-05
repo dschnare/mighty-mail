@@ -52,6 +52,7 @@ var Paragraph = React.createClass({
 			className: this.props.className,
 			style: this.props.style,
 			wrapper: this.props.wrapper,
+			align: this.props.align,
 			width: this.props.width,
 			height: this.props.height
 		};

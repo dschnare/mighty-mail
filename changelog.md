@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.9
+
+*May 5, 2015*
+
+- Use align property to render() Paragraph.
+
+
 ## 0.1.8
 
 *May 5, 2015*
