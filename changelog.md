@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5
+
+*May 5, 2015*
+
+- Remove the grid.less file.
+
+
 ## 0.1.4
 
 *May 5, 2015*
