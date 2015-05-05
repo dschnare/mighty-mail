@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.7
+
+*May 5, 2015*
+
+- Require the Paragraph component in the mighty mail module entry point.
+
+
 ## 0.1.6
 
 *May 5, 2015*
