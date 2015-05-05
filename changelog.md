@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.6
+
+*May 5, 2015*
+
+- Remove the paragraph.less file.
+- Add width and height properties to Paragraph.
+- Set default value Paragraph of align property to "left".
+
+
 ## 0.1.5
 
 *May 5, 2015*
