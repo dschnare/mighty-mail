@@ -53,7 +53,7 @@ var Button = React.createClass({
 			'<v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" fillcolor="%bgColor%">',
 			"	<w:anchorlock/>",
 			'	<center style="color:%textColor%;font-family:sans-serif;font-size:%fontSize%px;font-weight:bold;">%text%</center>',
-			"</v:roundrect>",
+			"</v:rect>",
 			'<![endif]-->'
 		].join("\n").replace(/%([^%]+)%/g, function (token, id) {
 			if (id === "text") {

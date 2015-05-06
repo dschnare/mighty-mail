@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.15
+
+*May 6, 2015*
+
+- Change the closing `</v:roundrect>` to `</v:rect>` to resolve Outlook rendering issues with the Button component.
+
+
 ## 0.1.14
 
 *May 6, 2015*
