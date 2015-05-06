@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.16
+
+*May 6, 2015*
+
+- Revert back to original markup for the Button component. The root issue was mangled conditional if blocks for Outlook.
+
+
 ## 0.1.15
 
 *May 6, 2015*

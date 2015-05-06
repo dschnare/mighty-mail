@@ -35,10 +35,12 @@ var Button = React.createClass({
 	},
 	render: function () {
 		var vmlRectBegin = this.getVmlRectBegin();
+		var vmlRectEnd = this.getVmlRectEnd();
 		var anchorProps = this.getAnchorProps();
 		var children = [
 			vmlRectBegin,
-			<a key="1" {...anchorProps}>{this.props.children}</a>
+			<a key="1" {...anchorProps}>{this.props.children}</a>,
+			vmlRectEnd
 		];
 
 		return (
@@ -50,17 +52,24 @@ var Button = React.createClass({
 		var props = this.props;
 		return [
 			"<!--[if mso]>",
-			'<v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" fillcolor="%bgColor%">',
+			'<v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" stroke="f" fillcolor="%bgColor%">',
 			"	<w:anchorlock/>",
-			'	<center style="color:%textColor%;font-family:sans-serif;font-size:%fontSize%px;font-weight:bold;">%text%</center>',
-			"</v:rect>",
-			'<![endif]-->'
+			"	<center>",
+			"<![endif]-->"
 		].join("\n").replace(/%([^%]+)%/g, function (token, id) {
 			if (id === "text") {
 				return props.children;
 			}
 			return props[id];
 		});
+	},
+	getVmlRectEnd: function () {
+		return [
+			"<!--[if mso]>",
+			"	</center>",
+			"</v:rect>",
+			"<![endif]-->"
+		].join("\n");
 	},
 	getAnchorProps: function () {
 		var props = this.props;
