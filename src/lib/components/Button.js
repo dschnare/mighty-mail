@@ -35,12 +35,10 @@ var Button = React.createClass({
 	},
 	render: function () {
 		var vmlRectBegin = this.getVmlRectBegin();
-		var vmlRectEnd = this.getVmlRectEnd();
 		var anchorProps = this.getAnchorProps();
 		var children = [
 			vmlRectBegin,
-			<a key="1" {...anchorProps}>{this.props.children}</a>,
-			vmlRectEnd
+			<a key="1" {...anchorProps}>{this.props.children}</a>
 		];
 
 		return (
@@ -52,21 +50,14 @@ var Button = React.createClass({
 		var props = this.props;
 		return [
 			"<!--[if mso]>",
-			'	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" stroke="f" fillcolor="%bgColor%">',
-			"		<w:anchorlock/>",
-			"		<center>",
-			"<![endif]-->"
+			'<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" arcsize="10%" fillcolor="%bgColor%">',
+			"	<w:anchorlock/>",
+			'	<center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Show me the button!</center>',
+			"</v:roundrect>",
+			'<![endif]-->'
 		].join("\n").replace(/%([^%]+)%/g, function (token, id) {
 			return props[id];
 		});
-	},
-	getVmlRectEnd: function () {
-		return [
-			"<!--[if mso]>",
-			"		</center>",
-			"	</v:roundrect>",
-			"<![endif]-->"
-		].join("\n");
 	},
 	getAnchorProps: function () {
 		var props = this.props;
@@ -74,18 +65,18 @@ var Button = React.createClass({
 		return {
 			href: props.href,
 			style: {
-					backgroundColor: props.bgColor,
-					color: props.textColor,
-					display: "inline-block",
-					fontFamily: "sans-serif",
-					fontSize: px(props.fontSize),
-					fontWeight: "bold",
-					lineHeight: px(props.height),
-					textAlign: "center",
-					textDecoration: "none",
-					width: px(props.width),
-					borderRadius: props.borderRadius,
-					WebkitTextSizeAdjust: "none"
+				backgroundColor: props.bgColor,
+				color: props.textColor,
+				display: "inline-block",
+				fontFamily: "sans-serif",
+				fontSize: px(props.fontSize),
+				fontWeight: "bold",
+				lineHeight: px(props.height),
+				textAlign: "center",
+				textDecoration: "none",
+				width: px(props.width),
+				borderRadius: props.borderRadius,
+				WebkitTextSizeAdjust: "none"
 			}
 		};
 	}
