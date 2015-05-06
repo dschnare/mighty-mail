@@ -33,6 +33,7 @@ var Row = React.createClass({
 			className: React.PropTypes.string,
 			style: React.PropTypes.object,
 			bgColor: React.PropTypes.string,
+			width: React.PropTypes.number,
 			align: React.PropTypes.oneOf(["left", "center", "right"]),
 			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
 		})

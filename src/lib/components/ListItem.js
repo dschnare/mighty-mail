@@ -25,7 +25,7 @@ var ListItem = React.createClass({
 			);
 		} else {
 			return (
-				<tr>
+				<tr className={classNames(this.props.className)}>
 					<td {...itemProps}>{this.props.children}</td>
 				</tr>
 			);

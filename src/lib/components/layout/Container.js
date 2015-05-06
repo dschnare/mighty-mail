@@ -67,12 +67,13 @@ var Container = React.createClass({
 		className: React.PropTypes.string,
 		style: React.PropTypes.object,
 		width: numberOrStringType,
-		height: numberOrStringType,
 		align: React.PropTypes.oneOf(["left", "center", "right"]),
 		wrapper: React.PropTypes.shape({
 			className: React.PropTypes.string,
 			style: React.PropTypes.object,
 			bgColor: React.PropTypes.string,
+			width: numberOrStringType,
+			height: numberOrStringType,
 			align: React.PropTypes.oneOf(["left", "center", "right"]),
 			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
 		})
@@ -120,7 +121,6 @@ var Container = React.createClass({
 			cellPadding: this.props.cellPadding,
 			border: this.props.border,
 			width: this.props.width,
-			height: this.props.height,
 			align: this.props.align,
 			bgColor: this.props.bgColor,
 			className: this.props.className,

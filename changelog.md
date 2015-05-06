@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0
+
+*May 6, 2015*
+
+- Change Paragraph component markup to render <tr> with single <td>.
+- Implement ParagraphBlock component that accepts only Paragraph children.
+- Move the height property from any component that exposed it or tried to set it on a <table>.
+- Add width and height properties to <td> elements (i.e. wrappers) for any compnent where it makes sense.
+- Add className to <tr> when rendering a ListItem without a bullet.
+
+
 ## 0.1.16
 
 *May 6, 2015*
