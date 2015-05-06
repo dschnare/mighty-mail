@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+*May 6, 2015*
+
+- Require the new ParagraphBlock component.
+
+
 ## 0.2.0
 
 *May 6, 2015*

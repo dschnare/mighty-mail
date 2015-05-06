@@ -19,3 +19,4 @@ module.exports.Divider = require("./lib/components/Divider");
 module.exports.MediaObject = require("./lib/components/MediaObject");
 module.exports.Hero = require("./lib/components/Hero");
 module.exports.Paragraph = require("./lib/components/Paragraph");
+module.exports.ParagraphBlock = require("./lib/components/ParagraphBlock");
