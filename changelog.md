@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2
+
+*May 6, 2015*
+
+- Change require path for applyChildMask() in ParagraphBlock to be the correct path.
+
+
 ## 0.2.1
 
 *May 6, 2015*
