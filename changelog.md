@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.13
+
+*May 6, 2015*
+
+- Update Outlook conditional markup for Button component.
+
+
 ## 0.1.12
 
 *May 6, 2015*

@@ -50,12 +50,15 @@ var Button = React.createClass({
 		var props = this.props;
 		return [
 			"<!--[if mso]>",
-			'<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" arcsize="10%" fillcolor="%bgColor%">',
+			'<v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" fillcolor="%bgColor%">',
 			"	<w:anchorlock/>",
-			'	<center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Show me the button!</center>',
+			'	<center style="color:%color%;font-family:sans-serif;font-size:%fontSize%px;font-weight:bold;">%text%</center>',
 			"</v:roundrect>",
 			'<![endif]-->'
 		].join("\n").replace(/%([^%]+)%/g, function (token, id) {
+			if (id === "text") {
+				return props.children;
+			}
 			return props[id];
 		});
 	},
