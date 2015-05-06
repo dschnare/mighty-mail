@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.14
+
+*May 6, 2015*
+
+- Change the token %color% to %textColor% in the Button component.
+
+
 ## 0.1.13
 
 *May 6, 2015*
