@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.1
+
+*May 7, 2015*
+
+- Resolve issue when calling getTdProps() in FullWidthRow() with undefined.
+
+
 ## 0.3.0
 
 *May 7, 2015*

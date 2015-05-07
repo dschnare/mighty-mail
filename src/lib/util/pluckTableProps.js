@@ -5,6 +5,7 @@ var classNames = require("classnames");
 
 
 function pluckTableProps(o) {
+	o = o || {};
 	return {
 		cellSpacing: o.cellSpacing,
 		cellPadding: o.cellPadding,
