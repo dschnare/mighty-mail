@@ -6,6 +6,7 @@
 var React = require("react");
 var Container = require("./Container");
 var mixin = require("../../util/mixin");
+var pluckTableProps = require("../../util/pluckTableProps");
 
 
 // !! Cols will have their widths and padding overridden by the parent Row.
@@ -18,7 +19,8 @@ var Col = React.createClass({
 		className: React.PropTypes.string,
 		style: React.PropTypes.object,
 		width: React.PropTypes.number,
-		float: React.PropTypes.oneOf(["left", "center", "right"]),
+		align: React.PropTypes.oneOf(["left", "center", "right"]),
+		float: React.PropTypes.oneOf(["left", "right"]),
 		wrapper: React.PropTypes.shape({
 			className: React.PropTypes.string,
 			width: React.PropTypes.number,
@@ -31,7 +33,7 @@ var Col = React.createClass({
 	getDefaultProps: function () {
 		return {
 			span: 1,
-			float: "left",
+			align: "left",
 			wrapper: {
 				align: "left",
 				valign: "top",
@@ -50,23 +52,23 @@ var Col = React.createClass({
 	},
 	// Private API
 	getContainerProps: function () {
-		var containerProps = mixin({}, this.props, {
-			cssPrefix: "col"
+		var containerProps = pluckTableProps(this.props);
+
+		containerProps.cssPrefix = "col";
+		containerProps.align = this.props.float || containerProps.align;
+
+		var gutter = this.props.gutter;
+
+		containerProps.wrapper = mixin({}, this.props.wrapper || {}, {
+			width: containerProps.width
 		});
-		var float = containerProps.float;
-		var gutter = containerProps.gutter;
-
-		delete containerProps.children;
-		delete containerProps.gutter;
-		delete containerProps.span;
-		delete containerProps.float;
-
-		containerProps.align = float;
-		containerProps.wrapper = mixin({}, containerProps.wrapper);
-		containerProps.wrapper.width = containerProps.width;
 
 		if (gutter && typeof gutter === "number") {
-			containerProps.wrapper.style.paddingLeft = gutter + "px";
+			if (!containerProps.wrapper.style) {
+				containerProps.wrapper.style = {};
+			}
+
+			containerProps.wrapper.style.paddingLeft = gutter;
 		}
 
 		return containerProps;

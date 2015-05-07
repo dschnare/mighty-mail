@@ -2,21 +2,33 @@
 
 
 require("./lib/email-attributes");
+var entities = require("./lib/util/entities");
 
-module.exports.Table = require("./lib/components/layout/Table");
-module.exports.RawHtml = require("./lib/components/RawHtml");
-module.exports.Container = require("./lib/components/layout/Container");
-module.exports.Frame = require("./lib/components/layout/Frame");
-module.exports.Row = require("./lib/components/layout/Row");
-module.exports.FullWidthRow = require("./lib/components/layout/FullWidthRow");
-module.exports.Col = require("./lib/components/layout/Col");
+exports.Table = require("./lib/components/layout/Table");
+exports.RawHtml = require("./lib/components/RawHtml");
+exports.Container = require("./lib/components/layout/Container");
+exports.Frame = require("./lib/components/layout/Frame");
+exports.Row = require("./lib/components/layout/Row");
+exports.FullWidthRow = require("./lib/components/layout/FullWidthRow");
+exports.Col = require("./lib/components/layout/Col");
 
-module.exports.Button = require("./lib/components/Button");
-module.exports.List = require("./lib/components/List");
-module.exports.BulletList = require("./lib/components/BulletList");
-module.exports.ListItem = require("./lib/components/ListItem");
-module.exports.Divider = require("./lib/components/Divider");
-module.exports.MediaObject = require("./lib/components/MediaObject");
-module.exports.Hero = require("./lib/components/Hero");
-module.exports.Paragraph = require("./lib/components/Paragraph");
-module.exports.ParagraphBlock = require("./lib/components/ParagraphBlock");
+exports.Button = require("./lib/components/Button");
+exports.List = require("./lib/components/List");
+exports.BulletList = require("./lib/components/BulletList");
+exports.ListItem = require("./lib/components/ListItem");
+exports.Divider = require("./lib/components/Divider");
+exports.MediaObject = require("./lib/components/MediaObject");
+exports.Hero = require("./lib/components/Hero");
+exports.Paragraph = require("./lib/components/Paragraph");
+exports.ParagraphBlock = require("./lib/components/ParagraphBlock");
+
+exports.NBSP = entities.NBSP;
+exports.RSQUO = entities.RSQUO;
+exports.LSQUO = entities.LSQUO;
+exports.RDQUO = entities.RDQUO;
+exports.LDQUO = entities.LDQUO;
+exports.EMDASH = entities.EMDASH;
+exports.ENDASH = entities.ENDASH;
+exports.REG = entities.REG;
+exports.TM = entities.TM;
+exports.BULL = entities.BULL;

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0
+
+*May 7, 2015*
+
+- Rename apply-child-mask.js to applyChildMask.js.
+- Implement modules to pluck <table> properties from an object.
+- Implement modules to pluck <td> properties from an object.
+- Refactor all components to use the new pluck modules.
+- Normalize properties for each component so that properties are predictable and all properties for <table> and <td> are exposed where it makes sense.
+- Pass down the properties specified on the Col component nested within a MediaObject component.
+- Support <a> or <img> child components in a MediaObject component.
+- Export properites for the HTML entities NBSP, RSQUO, LSQUO, RDQUO, LDQUO, EMDASH, ENDASH, REG, TM and BULL.
+
+
 ## 0.2.2
 
 *May 6, 2015*

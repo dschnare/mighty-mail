@@ -6,7 +6,7 @@
 
 var React = require("react");
 var mighty = require("../../index");
-var {Frame, Row, Col, List, ListItem, BulletList, Divider} = mighty;
+var {Frame, Row, Col, List, ListItem, BulletList, Divider, REG, BULL} = mighty;
 
 
 module.exports.render = function () {
@@ -15,10 +15,10 @@ module.exports.render = function () {
 				<Row width={500} gutter={10}>
 					<Col>
 						<List>
-							<ListItem>Item 1</ListItem>
+							<ListItem>Item{BULL}1</ListItem>
 							<ListItem>Item 2</ListItem>
 							<ListItem>Item 3</ListItem>
-							<ListItem>Item 4</ListItem>
+							<ListItem>Item{REG}4</ListItem>
 						</List>
 					</Col>
 					<Col>
@@ -32,7 +32,7 @@ module.exports.render = function () {
 				</Row>
 
 				<Row width={500}>
-					<Col float="center">
+					<Col align="center">
 						<Divider color="#ff0000" width={300} />
 					</Col>
 				</Row>

@@ -8,8 +8,8 @@ var React = require("react");
 var Row = require("./layout/Row");
 var Col = require("./layout/Col");
 var classNames = require("classnames");
-var applyChildMask = require("../util/apply-child-mask");
-var px = require("../util/px");
+var applyChildMask = require("../util/applyChildMask");
+var mixin = require("../util/mixin");
 
 
 var MediaObject = React.createClass({
@@ -19,7 +19,8 @@ var MediaObject = React.createClass({
 		mediaWidth: React.PropTypes.number.isRequired,
 		mediaFloat: React.PropTypes.oneOf(["left", "right"]),
 		gutter: React.PropTypes.number,
-		className: React.PropTypes.string
+		className: React.PropTypes.string,
+		style: React.PropTypes.object
 	},
 	getDefaultProps: function () {
 		return {
@@ -42,12 +43,16 @@ var MediaObject = React.createClass({
 		var media = this.getMediaChild(this.props.children);
 		var content = this.getContentChild(this.props.children);
 
+		if (!media || !content) {
+			return [];
+		}
+
 		var gutter = this.props.gutter;
 		var mediaWidth = this.props.mediaWidth + gutter * 2;
 		var contentWidth = this.props.width - mediaWidth;
 
 		var mediaColProps = this.getMediaColProps(mediaWidth, gutter);
-		var contentColProps = this.getContentColProps(contentWidth);
+		var contentColProps = this.getContentColProps(contentWidth, content.props);
 		contentColProps.key = "1";
 
 		// Content is a Col so we might as well just clone it.
@@ -65,7 +70,7 @@ var MediaObject = React.createClass({
 		return cols;
 	},
 	getMediaChild: function (children) {
-		return applyChildMask({ img: true }, children).shift();
+		return applyChildMask({ img: true }, children).shift() || applyChildMask({ a: true }, children).shift();
 	},
 	getContentChild: function (children) {
 		return applyChildMask({ Col: true }, children).shift();
@@ -87,20 +92,21 @@ var MediaObject = React.createClass({
 			wrapper: {
 				className: "media-object-media-wrapper",
 				style: {
-					paddingLeft: px(gutter),
-					paddingRight: px(gutter)
+					paddingLeft: gutter,
+					paddingRight: gutter
 				}
 			}
 		};
 	},
-	getContentColProps: function (contentWidth) {
-		return {
-			width: contentWidth,
-			className: "media-object-content",
-			wrapper: {
-				className: "media-object-content-wrapper"
-			}
-		};
+	getContentColProps: function (contentWidth, contentProps) {
+		var colProps = mixin({}, contentProps);
+
+		colProps.width = contentWidth;
+		colProps.className = classNames("media-object-content", colProps.className);
+		colProps.wrapper = mixin({}, colProps.wrapper || {});
+		colProps.wrapper.className = classNames("media-object-content", colProps.wrapper.className);
+
+		return colProps;
 	},
 	isMediaChildFirst: function (children) {
 		var kids = applyChildMask({ img: true, Col: true }, children);

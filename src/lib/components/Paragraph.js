@@ -7,6 +7,7 @@
 var React = require("react");
 var Container = require("./layout/Container");
 var classNames = require("classnames");
+var pluckTdProps = require("../util/pluckTdProps");
 
 
 var numberOrStringType = React.PropTypes.oneOfType([
@@ -17,6 +18,8 @@ var numberOrStringType = React.PropTypes.oneOfType([
 var Paragraph = React.createClass({
 	// Component API
 	propTypes: {
+		background: React.PropTypes.string,
+		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string,
 		style: React.PropTypes.object,
 		width: numberOrStringType,
@@ -40,13 +43,11 @@ var Paragraph = React.createClass({
 	},
 	// Private API
 	getTdProps: function () {
-		return {
-			className: classNames("paragraph", this.props.className),
-			style: this.props.style,
-			align: this.props.align,
-			width: this.props.width,
-			height: this.props.height
-		};
+		var tdProps = pluckTdProps(this.props);
+
+		tdProps.className = classNames("paragraph", tdProps.className);
+
+		return tdProps;
 	}
 	// Public API
 });

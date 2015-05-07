@@ -6,9 +6,10 @@
 
 var React = require("react");
 var Container = require("./Container");
-var classNames = require("classnames");
+var pluckTableProps = require("../../util/pluckTableProps");
+var pluckTdProps = require("../../util/pluckTdProps");
 var mixin = require("../../util/mixin");
-var applyChildMask = require("../../util/apply-child-mask");
+var applyChildMask = require("../../util/applyChildMask");
 
 
 function getColCount(cols) {
@@ -65,20 +66,17 @@ var Row = React.createClass({
 	},
 	// Private API
 	getContainerProps: function () {
-		var containerProps = mixin({}, this.props, {
-			cssPrefix: "row",
-			align: "center"
-		});
+		var containerProps = pluckTableProps(this.props);
 
-		delete containerProps.gutter;
-		delete containerProps.children;
+		containerProps.cssPrefix = "row";
+		containerProps.align = "center";
 
-		containerProps.wrapper = mixin({}, containerProps.wrapper, {
+		containerProps.wrapper = pluckTdProps(mixin({}, this.props.wrapper || {}, {
 			align: "center",
 			valign: "top"
-		});
+		}));
 
-		if (containerProps.width !== "100%") {
+		if (typeof containerProps.width === "number" && containerProps.width) {
 			containerProps.wrapper.width = containerProps.width;
 		}
 

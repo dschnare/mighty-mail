@@ -5,7 +5,7 @@
 
 
 var React = require("react");
-var classNames = require("classnames");
+var pluckTableProps = require("../../util/pluckTableProps");
 
 
 var numberOrStringType = React.PropTypes.oneOfType([
@@ -44,16 +44,7 @@ var Table = React.createClass({
 	},
 	// Private API
 	getTableProps: function () {
-		return {
-			cellSpacing: this.props.cellSpacing,
-			cellPadding: this.props.cellPadding,
-			border: this.props.border,
-			width: this.props.width,
-			align: this.props.align,
-			bgColor: this.props.bgColor,
-			className: classNames(this.props.className),
-			style: this.props.style
-		};
+		return pluckTableProps(this.props);
 	}
 	// Public API
 });

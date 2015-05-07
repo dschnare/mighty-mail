@@ -52,8 +52,8 @@ var Divider = React.createClass({
 				bgColor: this.props.color,
 				className: classNames(this.props.wrapper.className),
 				style: {
-					fontSize: "1px",
-					lineHeight: "1px",
+					fontSize: 1,
+					lineHeight: 1,
 					msoLineHeightRule: "exactly"
 				}
 			}
