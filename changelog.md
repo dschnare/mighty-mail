@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.3
+
+*May 7, 2015*
+
+- Update the calculation for arcsize in the Button component to ceil() after making a percent.
+
+
 ## 0.3.2
 
 *May 7, 2015*

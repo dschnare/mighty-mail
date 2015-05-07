@@ -82,7 +82,7 @@ var Button = React.createClass({
 				case "rect":
 					return rect;
 				case "borderRadius":
-					return rect === "roundrect" ? 'arcsize="' + (Math.ceil(borderRadius / height) * 100) + '%"' : "";
+					return rect === "roundrect" ? 'arcsize="' + Math.ceil((borderRadius / height) * 100) + '%"' : "";
 			}
 			return props[id];
 		});
