@@ -63,7 +63,7 @@ var MediaObject = React.createClass({
 			<Col key="2" {...mediaColProps}>{media}</Col>
 		];
 
-		if (this.isMediaChildFirst(this.props.children)) {
+		if (this.isMediaChildFirst(media, this.props.children)) {
 			cols.reverse();
 		}
 
@@ -108,9 +108,9 @@ var MediaObject = React.createClass({
 
 		return colProps;
 	},
-	isMediaChildFirst: function (children) {
-		var kids = applyChildMask({ img: true, Col: true }, children);
-		return kids.length && kids[0].type === "img";
+	isMediaChildFirst: function (media, children) {
+		var kids = applyChildMask({ img: true, a: true, Col: true }, children);
+		return kids[0] === media;
 	}
 	// Public API
 });

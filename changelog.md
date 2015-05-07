@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.4
+
+*May 7, 2015*
+
+- Implement Image component that reads the image size automatically when width and height are not specified on the component.
+
+
 ## 0.3.3
 
 *May 7, 2015*

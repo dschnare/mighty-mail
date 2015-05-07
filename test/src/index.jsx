@@ -6,8 +6,9 @@
 
 var React = require("react");
 var mighty = require("../../index");
-var {Frame, Row, Col, List, ListItem, BulletList, Divider, REG, BULL} = mighty;
+var {Frame, Row, Col, List, ListItem, BulletList, Divider, Image, REG, BULL} = mighty;
 
+Image.imageBasePath = "test";
 
 module.exports.render = function () {
 	var markup = React.renderToStaticMarkup(
@@ -34,6 +35,12 @@ module.exports.render = function () {
 				<Row width={500}>
 					<Col align="center">
 						<Divider color="#ff0000" width={300} />
+					</Col>
+				</Row>
+
+				<Row>
+					<Col align="center">
+						<Image src="images/client-dashboard.jpg" />
 					</Col>
 				</Row>
 			</Frame>

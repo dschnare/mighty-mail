@@ -21,6 +21,7 @@ exports.MediaObject = require("./lib/components/MediaObject");
 exports.Hero = require("./lib/components/Hero");
 exports.Paragraph = require("./lib/components/Paragraph");
 exports.ParagraphBlock = require("./lib/components/ParagraphBlock");
+exports.Image = require("./lib/components/Image");
 
 exports.NBSP = entities.NBSP;
 exports.RSQUO = entities.RSQUO;

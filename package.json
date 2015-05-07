@@ -1,6 +1,6 @@
 {
   "name": "mighty-mail",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Reactjs components for static server rendering of HTML emails.",
   "repository": {
     "type": "git",
@@ -35,7 +35,8 @@
     "mkdir-p": "0.0.6"
   },
   "dependencies": {
-    "react": "^0.13.2",
-    "classnames": "^1.2.1"
+    "classnames": "^1.2.1",
+    "image-size": "^0.3.5",
+    "react": "^0.13.2"
   }
 }
