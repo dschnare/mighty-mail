@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.3
+
+*May 8, 2015*
+
+- Update row-wrapper and list-item-wrapper styles so that the selectors don't use two classes on same element. This is not supported by Campaign Monitor's email inliner.
+- Remove the code that sets the width of .row-wrapper in the Row component.
+- Add readme file with partial documentation.
+
+
+
 ## 0.4.2
 
 *May 8, 2015*

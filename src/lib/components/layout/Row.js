@@ -76,10 +76,6 @@ var Row = React.createClass({
 			valign: "top"
 		}));
 
-		if (typeof containerProps.width === "number" && containerProps.width) {
-			containerProps.wrapper.width = containerProps.width;
-		}
-
 		return containerProps;
 	},
 	transformColsForOutlook: function (cols) {

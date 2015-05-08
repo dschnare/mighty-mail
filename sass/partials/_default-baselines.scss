@@ -18,7 +18,7 @@
 	padding-top: $baseline;
 }
 
-.paragraph.first-child .paragraph-wrapper {
+.first-child .paragraph-wrapper {
 	padding-top: 0;
 }
 
@@ -37,7 +37,7 @@
 	}
 }
 
-.list-item.first-child {
+.first-child {
 	.list-item-wrapper,
 	.list-bullet-wrapper {
 		padding-top: 0;
