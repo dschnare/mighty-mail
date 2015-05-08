@@ -55,7 +55,18 @@ var ParagraphBlock = React.createClass({
 		return tableProps;
 	},
 	getParagraphs: function () {
-		return applyChildMask({ Paragraph: true }, this.props.children);
+		var paragraphs = applyChildMask({ Paragraph: true }, this.props.children);
+		var last = paragraphs.length - 1;
+
+		if (paragraphs[0]) {
+			paragraphs[0].className = classNames(paragraphs[0].className, "first-child");
+		}
+
+		if (paragraphs[last]) {
+			paragraphs[last].className = classNames(paragraphs[last].className, "last-child");
+		}
+
+		return paragraphs;
 	}
 	// Public API
 });

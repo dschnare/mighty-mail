@@ -1,0 +1,38 @@
+// Styles for default baseline rules for various elements.
+
+.row-wrapper {
+	padding-top: $topline * 1.5;
+}
+
+.full-width-row .full-width-row-wrapper {
+	padding-top: $topline * 1.5;
+	padding-bottom: $baseline * 1.5;
+
+	.row-wrapper {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+}
+
+.paragraph-wrapper {
+	padding-top: $topline;
+}
+
+.paragraph.first-child .paragraph-wrapper {
+	padding-top: 0;
+}
+
+
+.list-item-wrapper {
+	padding-top: $topline;
+}
+
+.list-item-with-bullet {
+	.list-item-wrapper {
+		padding-top: 0;
+	}
+
+	.list-bullet-wrapper {
+		padding-top: $topline;
+	}
+}

@@ -7,6 +7,7 @@ var React = require("react");
 var Container = require("./Container");
 var mixin = require("../../util/mixin");
 var pluckTableProps = require("../../util/pluckTableProps");
+var pluckTdProps = require("../../util/pluckTdProps");
 
 
 // !! Cols will have their widths and padding overridden by the parent Row.
@@ -23,6 +24,7 @@ var Col = React.createClass({
 		float: React.PropTypes.oneOf(["left", "right"]),
 		wrapper: React.PropTypes.shape({
 			className: React.PropTypes.string,
+			bgColor: React.PropTypes.string,
 			width: React.PropTypes.number,
 			height: React.PropTypes.number,
 			style: React.PropTypes.object,
@@ -59,9 +61,8 @@ var Col = React.createClass({
 
 		var gutter = this.props.gutter;
 
-		containerProps.wrapper = mixin({}, this.props.wrapper || {}, {
-			width: containerProps.width
-		});
+		containerProps.wrapper = pluckTdProps(this.props.wrapper);
+		containerProps.wrapper.width = containerProps.width;
 
 		if (gutter && typeof gutter === "number") {
 			if (!containerProps.wrapper.style) {

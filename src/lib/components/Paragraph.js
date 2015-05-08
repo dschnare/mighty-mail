@@ -18,34 +18,37 @@ var numberOrStringType = React.PropTypes.oneOfType([
 var Paragraph = React.createClass({
 	// Component API
 	propTypes: {
-		background: React.PropTypes.string,
-		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string,
-		style: React.PropTypes.object,
-		width: numberOrStringType,
-		height: numberOrStringType,
-		align: React.PropTypes.oneOf(["left", "center", "right"]),
-		valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
+		wrapper: React.PropTypes.shape({
+			bgColor: React.PropTypes.string,
+			style: React.PropTypes.object,
+			width: numberOrStringType,
+			height: numberOrStringType,
+			align: React.PropTypes.oneOf(["left", "center", "right"]),
+			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
+		})
 	},
 	getDefaultProps: function () {
 		return {
-			align: "left"
+			wrapper: {
+				align: "left"
+			}
 		};
 	},
 	render: function () {
 		var tdProps = this.getTdProps();
 
 		return (
-			<tr>
+			<tr className={classNames("paragraph", this.props.className)}>
 				<td {...tdProps}>{this.props.children}</td>
 			</tr>
 		);
 	},
 	// Private API
 	getTdProps: function () {
-		var tdProps = pluckTdProps(this.props);
+		var tdProps = pluckTdProps(this.props.wrapper || {});
 
-		tdProps.className = classNames("paragraph", tdProps.className);
+		tdProps.className = classNames("paragraph-wrapper", tdProps.className);
 
 		return tdProps;
 	}

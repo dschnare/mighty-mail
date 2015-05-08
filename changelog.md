@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.4.0
+
+*May 8, 2015*
+
+- Add support for Image components in MediaObjects.
+- Add first-child and last-child classes to child Paragraph components within a ParagraphBlock.
+- Add class name to <tr> for ListItem and Paragraph components.
+- Add list-item-wrapper and list-bullet-wrapper classes to the <td> elements in Paragraph component.
+- Add paragraph-wrapper class to <td> in Paragraph component.
+- Expose itemWrapper and bulletWrapper properties on ListItem.
+- Expose rowWrapper property on FullWidthRow.
+- Update list styles.
+- Add default baseline treatment styles for common components.
+
+
 ## 0.3.4
 
 *May 7, 2015*
