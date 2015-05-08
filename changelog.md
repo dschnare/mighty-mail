@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.1
+
+*May 8, 2015*
+
+- Clone each Paragrah child in ParagraphBlock and ensure they each have keys.
+- Clone the first and last Paragraph children to add the first-child and last-child class names.
+
+
+
 ## 0.4.0
 
 *May 8, 2015*

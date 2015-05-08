@@ -59,14 +59,16 @@ var ParagraphBlock = React.createClass({
 		var last = paragraphs.length - 1;
 
 		if (paragraphs[0]) {
-			paragraphs[0].className = classNames(paragraphs[0].className, "first-child");
+			paragraphs[0] = React.cloneElement(paragraphs[0], { className: classNames(paragraphs[0].className, "first-child") });
 		}
 
 		if (paragraphs[last]) {
-			paragraphs[last].className = classNames(paragraphs[last].className, "last-child");
+			paragraphs[last] = React.cloneElement(paragraphs[last], { className: classNames(paragraphs[last].className, "last-child") });
 		}
 
-		return paragraphs;
+		return paragraphs.map(function (p, k) {
+			React.cloneElement(p, { key: k });
+		});
 	}
 	// Public API
 });
