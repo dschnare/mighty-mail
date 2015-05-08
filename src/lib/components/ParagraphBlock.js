@@ -67,7 +67,7 @@ var ParagraphBlock = React.createClass({
 		}
 
 		return paragraphs.map(function (p, k) {
-			React.cloneElement(p, { key: k });
+			return React.cloneElement(p, { key: k });
 		});
 	}
 	// Public API

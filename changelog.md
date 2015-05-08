@@ -1,12 +1,22 @@
 # Changelog
 
+## 0.4.2
+
+*May 8, 2015*
+
+- Resolve $topline variable reference issue in default baselines stylesheet.
+- Add return statement when cloning each Paragraph child in a ParagraphBlock.
+- Correctly set className property instead of classNames property when cloning ListItem children in a List.
+- Correctly set className property on retrieving <table> properties in a List.
+- Add styles to remove baseline from first list item.
+
+
 ## 0.4.1
 
 *May 8, 2015*
 
 - Clone each Paragrah child in ParagraphBlock and ensure they each have keys.
-- Clone the first and last Paragraph children to add the first-child and last-child class names.
-
+- Clone the first and last Paragraph children to add the first-child and last-child class names.\
 
 
 ## 0.4.0
