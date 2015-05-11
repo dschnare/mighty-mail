@@ -1,5 +1,15 @@
 # Changelog
 
+## O.4.4
+
+*May 11, 2015*
+
+- Update the readme with rest of documentation.
+- Add align property to Hero component.
+- Update Outlook conditionls in Hero component to use fixed dimensions.
+- Remove `wrapper.background` property from Container component.
+
+
 ## 0.4.3
 
 *May 8, 2015*

@@ -18,8 +18,9 @@ var Hero = React.createClass({
 	propTypes: {
 		background: React.PropTypes.string.isRequired,
 		bgColor: React.PropTypes.string.isRequired,
-		width: React.PropTypes.number,
-		height: React.PropTypes.number,
+		width: React.PropTypes.number.isRequired,
+		height: React.PropTypes.number.isRequired,
+		align: React.PropTypes.string,
 		className: React.PropTypes.string,
 		style: React.PropTypes.object,
 		wrapper: React.PropTypes.shape({
@@ -31,7 +32,6 @@ var Hero = React.createClass({
 	},
 	getDefaultProps: function () {
 		return {
-			width: "100%",
 			align: "center",
 			wrapper: {
 				align: "center",
@@ -88,7 +88,7 @@ var Hero = React.createClass({
 
 		return [
 		'<!--[if gte mso 9]>',
-		'	<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;height:%height%px;">',
+		'	<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:%width%px;height:%height%px;">',
 		'		<v:fill type="tile" src="%background%" color="%bgColor%" />',
 		'		<v:textbox inset="0,0,0,0">',
 		'<![endif]-->'].join("\n").replace(/%([^%]+)%/g, function (token, prop) {

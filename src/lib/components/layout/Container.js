@@ -75,7 +75,6 @@ var Container = React.createClass({
 			className: React.PropTypes.string,
 			style: React.PropTypes.object,
 			bgColor: React.PropTypes.string,
-			background: React.PropTypes.string,
 			width: numberOrStringType,
 			height: numberOrStringType,
 			align: React.PropTypes.oneOf(["left", "center", "right"]),

@@ -127,7 +127,6 @@ The `Container` component is general purpose, composable component that can be u
 	- className : string
 	- style : object
 	- bgColor : string
-	- background : string
 	- width : number or string
 	- height : number or string
 	- align : one of "left", "center", "right" `(default "left")`
@@ -351,22 +350,142 @@ All other properties are set on the wrapper element as-is.
 
 The `Divider` component renders a horizontal divider.
 
+**Usage**
+
+	<Divider thickness={2} color="#ff00ff" width="{500}" />
+
+**Output**
+
+	<table cellpadding="0" cellspacing="0" border="0" width="500" align="center" class="divider">
+		<tbody>
+			<tr>
+				<td align="center" width="500" height="2" bgcolor="#ff00ff" class="divider-wrapper" style="font-size: 1px; line-height: 1px; ms-line-height-rule: exactly;">&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+
+**Props**
+
+- width : number or string `(default "100%")`
+- thickness : number `(default 1)`
+- color : string `(default "#eaeaea")`
+- className : string
+- wrapper : shape
+	- className: string
+
+The `wrapper` property will have all its properties applied to the inner `.divider-row-wrapper` element.
+
 
 
 ### Image
 
 The `Image` component renders an image, but if no `width` or `height` is specified then the dimensions will be read from the file and be set on the rendered `<img>` element.
 
+**Usage**
+
+	Image.imageBasePath = ".";
+
+	<Image src="images/my-image.jpg" />
+
+**Output**
+
+	<img src="images/my-image.jpg" width="80" height="80">
+
+**Props**
+
+- src : string
+- width : number or string
+- height : number or string
+- border : number or string
+- className : string
+- style : object
+
+
 
 ### Hero
 
 The `Hero` component renders an area with a background image behind its content.
+
+**Usage**
+
+	<Hero background="images/hero.jpg" bgColor="#ffffff" width={680} height={450}>
+		Content
+	</Hero>
+
+**Output**
+
+	<table cellpadding="0" cellspacing="0" border="0" width="680" height="450" class="row hero">
+		<tbody>
+			<tr>
+				<td background="images/hero.jpg" bgcolor="#ffffff" width="680" height="450" class="row-wrapper hero-wrapper">
+				<!--[if gte mso 9]>
+					<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:680px;height:450px;">
+						<v:fill type="tile" src="images/hero.jpg" color="#ffffff" />
+						<v:textbox inset="0,0,0,0">
+				<![endif]-->
+					<div>
+						Content
+					</div>
+				<!--[if gte mso 9]>
+						</v:textbox>
+					</v:rect>
+				<![endif]-->
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+**Props**
+
+- background : string
+- bgColor : string
+- width : number
+- height : number
+- className : string
+- style : object
+- align : string `(default "center")`
+- wrapper : shape
+	- className : string
+	- style : object
+	- align : one of "left", "center", "right" `(default "center")`
+	- valign : one of "top", "middle", "bottom" `(default "middle")`
+
+The `wrapper` property will have all its properties applied to the inner `.hero-wrapper` element.
+
 
 
 ### ParagraphBlock
 
 The `ParagraphBlock` is a container for `Paragraph` components.
 
+**Usage**
+
+	<ParagraphBlock>
+		<Paragraph>Hello World!</Paragraph>
+		<Paragraph>Hello World!</Paragraph>
+	</ParagraphBlock>
+
+**Output**
+
+	<table cellpadding="0" cellspacing="0" border="0" class="paragraph-block">
+		<tbody>
+			<tr class="paragraph first-child">
+				<td align="left" class="paragraph-wrapper">Hello World!</td>
+			</tr>
+			<tr class="paragraph last-child">
+				<td align="left" class="paragraph-wrapper">Hello World!</td>
+			</tr>
+		</tbody>
+	</table>
+
+**Props**
+
+border: number or string
+bgColor: string
+className: string
+style: object
+width: number or string
+align: one of "left", "center", "right" `(default "left")`
 
 
 ### Paragraph
@@ -374,11 +493,75 @@ The `ParagraphBlock` is a container for `Paragraph` components.
 The `Paragraph` component represents a paragraph of content that gives more control over vertical spacing.
 These components can only be used within `ParagraphBlock` components.
 
+**Usage**
+
+	<Paragraph>Hello World!</Paragraph>
+
+**Output**
+
+	<tr class="paragraph first-child">
+		<td align="left" class="paragraph-wrapper">Hello World!</td>
+	</tr>
+
+**Props**
+
+- className: string
+	- wrapper: shape
+	- bgColor: string
+	- style: object
+	- width: number or string
+	- height: number or string
+	- align: one of "left", "center", "right" `(default "left")`
+	- valign: one of "top", "middle", "bottom"
+
 
 
 ### Button
 
 The `Button` component renders a bulletproof button from Campaign Monitor.
+
+**Usage**
+
+	<Button width={250} height={40} bgColor="#ff00ff" href="http://google.com/">Learn more</Button>
+
+	<Button width={250} height={40} bgColor="#ff00ff" borderColor="#ff0000" href="http://google.com/">Learn more</Button>
+
+**Output**
+
+	<div>
+		<!--[if mso]>
+			<v:%rect% xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;" stroke="f" fillcolor="#ff00ff">
+				<w:anchorlock/>
+				<center>
+		<![endif]-->
+		<a href="http://google.com/" style="background-color: #ff00ff; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 13px; font-weight: bold; line-height: 40px; text-align: center; text-decoration: none; width: 250px; border-radius: 0; web-kit-text-size-adjust: none;">Learn more</a>
+		<!--[if mso]>
+			</center>
+			</v:%rect%>
+		<![endif]-->
+	</div>
+
+	<div>
+		<!--[if mso]>
+			<v:%rect% xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;" strokecolor="#ff0000" fillcolor="#ff00ff">
+				<w:anchorlock/>
+				<center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Learn more</center>
+			</v:%rect%>
+		<![endif]-->
+		<a href="http://google.com/" style="background-color: #ff00ff; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 13px; font-weight: bold; line-height: 40px; text-align: center; text-decoration: none; width: 250px; border-radius: 0; web-kit-text-size-adjust: none;">Learn more</a>
+	</div>
+
+**Props**
+
+- width : number `(default 200)`
+- height : number `(default 40)`
+- href : string `(default "http://replaceme.com/")`
+- borderColor : string
+- textColor : string `(default "#ffffff")`
+- fontSize : number `(default 13)`
+- bgColor : string `(default "#000000")`
+- className : string
+- borderRadius : number `(default 0)`
 
 
 
@@ -386,6 +569,36 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
 
 The `List` component renders a list of items when more control over spacing is needed.
 
+**Usage**
+
+	<List>
+		<ListItem>First</ListItem>
+		<ListItem>Second</ListItem>
+	</List>
+
+**Output**
+
+	<table cellpadding="0" cellspacing="0" border="0" class="list">
+		<tbody>
+			<tr class="list-item first-child">
+				<td class="list-item-wrapper">First</td>
+			</tr>
+			<tr class="list-item last-child">
+				<td class="list-item-wrapper">Second</td>
+			</tr>
+		</tbody>
+	</table>
+
+**Props**
+
+- cellSpacing : number or string
+- cellPadding : number or string
+- border : number or string
+- bgColor : string
+- className : string
+- style : object
+- width : number or string
+- align : one of "left", "center", "right"
 
 
 ### ListItem
@@ -393,8 +606,82 @@ The `List` component renders a list of items when more control over spacing is n
 The `ListItem` component represents an item in a list that gives more control over vertical and horizontal spacing.
 These components can only be used within `List` or `BulletList` components.
 
+**Usage**
+
+	<ListItem>First</ListItem>
+	<ListItem bullet="\u2022">Second</ListItem>
+
+**Output**
+
+	<tr class="list-item first-child">
+		<td class="list-item-wrapper">First</td>
+	</tr>
+	<tr class="list-item list-item-with-bullet last-child">
+		<td class="list-bullet-wrapper">•</td>
+		<td class="list-item-wrapper">Second</td>
+	</tr>
+
+**Props**
+
+- bullet : string
+- className : string
+- itemWrapper : shape
+	- className : string
+	- style : object
+	- bgColor : string
+	- width : number
+	- height : number
+	- align : one of "left", "center", "right" `(default "left")`
+	- valign : one of "top", "middle", "bottom" `(default "top")`
+- bulletWrapper : shape
+	- className : string
+	- style : object
+	- bgColor : string
+	- width : number
+	- height : number
+	- align : one of "left", "center", "right" `(default "left")`
+	- valign : one of "top", "middle", "bottom" `(default "top")`
+
+The `itemWrapper` property will have all its properties applied to the inner `.list-item-wrapper` element.
+
+The `bulletWrapper` property will have all its properties applied to the inner `.list-bullet-wrapper` element
+
 
 
 ### BulletList
 
 The `BulletList` component is a shortcut for using a `List` and setting the `bullet` property on each `ListItem`.
+
+**Usage**
+
+	<BulletList>
+		<ListItem>First</ListItem>
+		<ListItem>Second</ListItem>
+	</BulletList>
+
+**Output**
+
+	<table cellpadding="0" cellspacing="0" border="0" class="list">
+		<tbody>
+			<tr class="list-item list-item-with-bullet first-child">
+				<td class="list-bullet-wrapper">•</td>
+				<td class="list-item-wrapper">First</td>
+			</tr>
+			<tr class="list-item list-item-with-bullet last-child">
+				<td class="list-bullet-wrapper">•</td>
+				<td class="list-item-wrapper">Second</td>
+			</tr>
+		</tbody>
+	</table>
+
+**Props**
+
+- bullet : string `(default "\u2022")`
+- cellSpacing : number or string
+- cellPadding : number or string
+- border : number or string
+- bgColor : string
+- className : string
+- style : object
+- width : number or string
+- align : one of "left", "center", "right"

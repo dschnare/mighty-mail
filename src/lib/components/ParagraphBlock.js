@@ -19,10 +19,7 @@ var numberOrStringType = React.PropTypes.oneOfType([
 var ParagraphBlock = React.createClass({
 	// Component API
 	propTypes: {
-		border: React.PropTypes.oneOfType([
-			React.PropTypes.number,
-			React.PropTypes.string
-		]),
+		border: numberOrStringType,
 		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string,
 		style: React.PropTypes.object,
