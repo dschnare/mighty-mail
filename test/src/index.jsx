@@ -8,9 +8,14 @@ var React = require("react");
 var mighty = require("../../index");
 var {
 		Frame, Row, Col, FullWidthRow, Table,
-		List, ListItem, Divider, Image, Hero,
+		List, OrderedList, ListItem, Divider, Image, Hero,
 		MediaObject, Para, ParaBlock, Button
 } = mighty;
+
+var Ol = OrderedList;
+var Ul = List;
+var Li = ListItem;
+
 //"images/client-dashboard.jpg";//
 var imgSrc = "http://arabic-media.com/articles/id/upload/life-on-earth-end-in-3-5bn-years.jpg";
 
@@ -29,23 +34,23 @@ module.exports.render = function () {
 
 				<Row width={500} gutter={10}>
 					<Col>
-						<List>
-							<ListItem>Item 1</ListItem>
-							<ListItem>Item 2</ListItem>
-							<ListItem>Item 3</ListItem>
-							<ListItem>Item 4</ListItem>
-						</List>
+						<Ul>
+							<Li>Item 1</Li>
+							<Li>Item 2</Li>
+							<Li>Item 3</Li>
+							<Li>Item 4</Li>
+						</Ul>
 					</Col>
 					<Col>
 						Hello World!
 					</Col>
 					<Col>
-						<List bullet={List.NUMERIC}>
-							<ListItem>Item 1</ListItem>
-							<ListItem>Item 2</ListItem>
-							<ListItem>Item 3</ListItem>
-							<ListItem>Item 4</ListItem>
-						</List>
+						<Ol>
+							<Li>Item 1</Li>
+							<Li>Item 2</Li>
+							<Li>Item 3</Li>
+							<Li>Item 4</Li>
+						</Ol>
 					</Col>
 				</Row>
 

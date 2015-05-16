@@ -14,7 +14,7 @@ var mixin = require("../util/mixin");
 var entities = require("../util/entities");
 
 
-var NUMERIC = "__NUMERIC_LIST_STYLE__";
+var ORDERED = "__ORDERED_LIST_STYLE__";
 
 var List = React.createClass({
 	// Component API
@@ -42,7 +42,7 @@ var List = React.createClass({
 	getTableProps: function () {
 		var tableProps = pluckTableProps(this.props);
 
-		tableProps.className = classNames("list", this.props.bullet === NUMERIC ? "list-numeric" : false, tableProps.className);
+		tableProps.className = classNames("list", this.props.bullet === ORDERED ? "list-ordered" : false, tableProps.className);
 
 		return tableProps;
 	},
@@ -56,7 +56,7 @@ var List = React.createClass({
 			var lastChildClassName = i === count - 1 ? "last-child" : "";
 			var bull = bullet.toString();
 
-			if (bullet === NUMERIC) {
+			if (bullet === ORDERED) {
 				bull = (i + 1).toString();
 			}
 
@@ -70,6 +70,8 @@ var List = React.createClass({
 	// Public API
 });
 
-List.NUMERIC = NUMERIC;
+List.ORDERED = ORDERED;
+// Kept for backward compatability.
+List.NUMERIC = ORDERED;
 
 module.exports = List;

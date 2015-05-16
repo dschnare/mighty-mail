@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.0
+
+*May 16, 2015*
+
+- Add OrderedList component.
+- Rename list-numeric class to list-ordered.
+- Add List.ORDERED constant (List.NUMERIC still exists for backward compatability).
+- Add test for aliased component names. Can't actually alias bulitin HTML element names.
+
+
+# Changelog
+
 ## 1.0.0
 
 *May 15, 2015*

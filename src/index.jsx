@@ -16,6 +16,7 @@ exports.Col = require("./lib/components/layout/Col");
 
 exports.Button = require("./lib/components/Button");
 exports.List = require("./lib/components/List");
+exports.OrderedList = require("./lib/components/OrderedList");
 exports.ListItem = require("./lib/components/ListItem");
 exports.Divider = require("./lib/components/Divider");
 exports.MediaObject = require("./lib/components/MediaObject");
