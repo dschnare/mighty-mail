@@ -6,29 +6,46 @@
 
 var React = require("react");
 var mighty = require("../../index");
-var {Frame, Row, Col, List, ListItem, BulletList, Divider, Image, REG, BULL} = mighty;
+var {
+		Frame, Row, Col, FullWidthRow, Table,
+		List, ListItem, Divider, Image, Hero,
+		MediaObject, Para, ParaBlock, Button
+} = mighty;
+//"images/client-dashboard.jpg";//
+var imgSrc = "http://arabic-media.com/articles/id/upload/life-on-earth-end-in-3-5bn-years.jpg";
 
 Image.imageBasePath = "test";
 
 module.exports.render = function () {
 	var markup = React.renderToStaticMarkup(
-			<Frame width={500}>
+			<Frame width={500} border="1" borderColor="#d7d7d7">
+				<Row>
+					<Col align="center" wrapper={{align: "center"}}>
+						<Hero background={imgSrc} width={308} height={220}>
+							Yep I am a hero.
+						</Hero>
+					</Col>
+				</Row>
+
 				<Row width={500} gutter={10}>
 					<Col>
 						<List>
-							<ListItem>Item{BULL}1</ListItem>
-							<ListItem>Item 2</ListItem>
-							<ListItem>Item 3</ListItem>
-							<ListItem>Item{REG}4</ListItem>
-						</List>
-					</Col>
-					<Col>
-						<BulletList>
 							<ListItem>Item 1</ListItem>
 							<ListItem>Item 2</ListItem>
 							<ListItem>Item 3</ListItem>
 							<ListItem>Item 4</ListItem>
-						</BulletList>
+						</List>
+					</Col>
+					<Col>
+						Hello World!
+					</Col>
+					<Col>
+						<List bullet={List.NUMERIC}>
+							<ListItem>Item 1</ListItem>
+							<ListItem>Item 2</ListItem>
+							<ListItem>Item 3</ListItem>
+							<ListItem>Item 4</ListItem>
+						</List>
 					</Col>
 				</Row>
 
@@ -40,7 +57,40 @@ module.exports.render = function () {
 
 				<Row>
 					<Col align="center">
-						<Image src="images/client-dashboard.jpg" />
+						<Image src={imgSrc} width="308" height="220" />
+					</Col>
+				</Row>
+
+				<Row>
+					<Col align="center">
+						<MediaObject width={400}>
+							<Col width={200}><Image src={imgSrc} width="190" /></Col>
+							<Col align="right" width="200">
+								<strong>Boom</strong><br/>
+								Hello World!
+							</Col>
+						</MediaObject>
+					</Col>
+				</Row>
+
+				<Row>
+					<Col align="center">
+						<MediaObject width={300}>
+							<Col align="right" width={200}><Image src={imgSrc} width="140" /></Col>
+							<Col width="200">
+								<strong>Boom 2</strong><br/>
+								Hello World!
+							</Col>
+						</MediaObject>
+					</Col>
+				</Row>
+
+				<Row>
+					<Col>
+						<ParaBlock>
+							<Para>Yep some text that is ahd laks kas dlk lksdl flsdf.</Para>
+							<Para>Yep some text that is ahd laks kas dlk lksdl flsdf.</Para>
+						</ParaBlock>
 					</Col>
 				</Row>
 			</Frame>

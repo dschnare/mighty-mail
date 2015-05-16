@@ -14,30 +14,21 @@
 	}
 }
 
-.paragraph-wrapper {
-	padding-top: @baseline;
+.para-wrapper {
+	padding-top: @baseline * 0.5;
 }
 
-.first-child .paragraph-wrapper {
+.first-child .para-wrapper {
 	padding-top: 0;
 }
 
 
-.list-item-wrapper {
+.list-item-wrapper,
+.list-bullet-wrapper {
 	padding-top: @baseline;
 }
 
-.list-item-with-bullet {
-	.list-item-wrapper {
-		padding-top: 0;
-	}
-
-	.list-bullet-wrapper {
-		padding-top: @baseline;
-	}
-}
-
-.first-child {
+.list .first-child {
 	.list-item-wrapper,
 	.list-bullet-wrapper {
 		padding-top: 0;

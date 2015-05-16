@@ -7,6 +7,8 @@
 var React = require("react");
 var Container = require("./Container");
 var mixin = require("../../util/mixin");
+var defineTableProps = require("../../util/defineTableProps");
+var defineTdProps = require("../../util/defineTdProps");
 var pluckTableProps = require("../../util/pluckTableProps");
 
 
@@ -17,24 +19,11 @@ var numberOrStringType = React.PropTypes.oneOfType([
 
 var Frame = React.createClass({
 	// Component API
-	propTypes: {
-		border: numberOrStringType,
+	propTypes: mixin({
+		border: React.PropTypes.number,
 		borderColor: React.PropTypes.string,
-		bgColor: React.PropTypes.string,
-		className: React.PropTypes.string,
-		style: React.PropTypes.object,
-		width: numberOrStringType,
-		align: React.PropTypes.oneOf(["left", "center", "right"]),
-		wrapper: React.PropTypes.shape({
-			className: React.PropTypes.string,
-			style: React.PropTypes.object,
-			bgColor: React.PropTypes.string,
-			width: numberOrStringType,
-			height: numberOrStringType,
-			align: React.PropTypes.oneOf(["left", "center", "right"]),
-			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-		})
-	},
+		wrapper: React.PropTypes.shape(defineTdProps())
+	}, defineTableProps()),
 	getDefaultProps: function () {
 		return {
 			width: "100%",
@@ -59,28 +48,26 @@ var Frame = React.createClass({
 	getContainerProps: function () {
 		var containerProps = pluckTableProps(this.props);
 
+		delete containerProps.border;
 		containerProps.cssPrefix = "frame";
 
-		containerProps.style = this.getContainerStyle();
-
 		if (containerProps.width && typeof containerProps.width === "number") {
-			if (!containerProps.wrapper) {
-				containerProps.wrapper = {};
-			}
-
+			containerProps.wrapper = this.props.wrapper || {};
 			containerProps.wrapper.width = containerProps.width;
 		}
 
+		containerProps.wrapper.style = this.getBorderStyle();
+
 		return containerProps;
 	},
-	getContainerStyle: function () {
-		var containerStyle = mixin({}, this.props.style || {});
+	getBorderStyle: function () {
+		var borderStyle = mixin({}, this.props.wrapper.style || {});
 
-		if (this.props.borderColor) {
-			containerStyle.borderColor = this.props.borderColor;
+		if (this.props.border && this.props.borderColor) {
+			borderStyle.border = this.props.border + "px solid " + this.props.borderColor;
 		}
 
-		return containerStyle;
+		return borderStyle;
 	}
 	// Public API
 });

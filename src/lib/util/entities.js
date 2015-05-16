@@ -10,3 +10,5 @@ exports.ENDASH = "\u2013";
 exports.REG = "\u00AE";
 exports.TM = "\u2122";
 exports.BULL = "\u2022";
+exports.GT = "\u003E";
+exports.LT = "\u003C";

@@ -4,6 +4,8 @@
 var React = require("react");
 var classNames = require("classnames");
 var pluckTdProps = require("../util/pluckTdProps");
+var defineTdProps = require("../util/defineTdProps");
+var entities = require("../util/entities");
 
 
 var ListItem = React.createClass({
@@ -11,27 +13,12 @@ var ListItem = React.createClass({
 	propTypes: {
 		bullet: React.PropTypes.string,
 		className: React.PropTypes.string,
-		itemWrapper: React.PropTypes.shape({
-			className: React.PropTypes.string,
-			style: React.PropTypes.object,
-			bgColor: React.PropTypes.string,
-			width: React.PropTypes.number,
-			height: React.PropTypes.number,
-			align: React.PropTypes.oneOf(["left", "center", "right"]),
-			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-		}),
-		bulletWrapper: React.PropTypes.shape({
-			className: React.PropTypes.string,
-			style: React.PropTypes.object,
-			bgColor: React.PropTypes.string,
-			width: React.PropTypes.number,
-			height: React.PropTypes.number,
-			align: React.PropTypes.oneOf(["left", "center", "right"]),
-			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-		})
+		itemWrapper: React.PropTypes.shape(defineTdProps()),
+		bulletWrapper: React.PropTypes.shape(defineTdProps())
 	},
 	getDefaultProps: function () {
 		return {
+			bullet: entities.BULL,
 			itemWrapper: {
 				align: "left",
 				valing: "top"
@@ -45,21 +32,14 @@ var ListItem = React.createClass({
 	render: function () {
 		var itemProps = this.getItemProps();
 		var bulletProps = this.getBulletProps();
+		var bullet = this.props.bullet || entities.BULL;
 
-		if (this.props.bullet) {
-			return (
-				<tr className={classNames("list-item", "list-item-with-bullet", this.props.className)}>
-					<td {...bulletProps}>{this.props.bullet}</td>
-					<td {...itemProps}>{this.props.children}</td>
-				</tr>
-			);
-		} else {
-			return (
-				<tr className={classNames("list-item", this.props.className)}>
-					<td {...itemProps}>{this.props.children}</td>
-				</tr>
-			);
-		}
+		return (
+			<tr className={classNames("list-item", this.props.className)}>
+				<td {...bulletProps}>{bullet}</td>
+				<td {...itemProps}>{this.props.children}</td>
+			</tr>
+		);
 	},
 	// Private API
 	getItemProps: function () {

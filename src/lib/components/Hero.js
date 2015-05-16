@@ -9,27 +9,27 @@ var classNames = require("classnames");
 var Table = require("./layout/Table");
 var Col = require("./layout/Col");
 var RawHtml = require("./RawHtml");
+var defineTableProps = require("../util/defineTableProps");
+var defineTdProps = require("../util/defineTdProps");
 var pluckTableProps = require("../util/pluckTableProps");
 var pluckTdProps = require("../util/pluckTdProps");
+var mixin = require("../util/mixin");
 
 
 var Hero = React.createClass({
 	// Component API
-	propTypes: {
+	propTypes: mixin({
 		background: React.PropTypes.string.isRequired,
-		bgColor: React.PropTypes.string.isRequired,
-		width: React.PropTypes.number.isRequired,
 		height: React.PropTypes.number.isRequired,
-		align: React.PropTypes.string,
-		className: React.PropTypes.string,
-		style: React.PropTypes.object,
 		wrapper: React.PropTypes.shape({
 			className: React.PropTypes.string,
 			style: React.PropTypes.object,
 			align: React.PropTypes.oneOf(["left", "center", "right"]),
 			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
 		})
-	},
+	}, defineTableProps(), {
+		width: React.PropTypes.number.isRequired
+	}),
 	getDefaultProps: function () {
 		return {
 			align: "center",
@@ -44,6 +44,8 @@ var Hero = React.createClass({
 		var tdProps = this.getTdProps();
 		var children = this.transformChildren();
 
+		tdProps.className = "hero-bg";
+
 		return (
 			<Table {...tableProps}>
 				<tbody>
@@ -57,9 +59,7 @@ var Hero = React.createClass({
 	// Private API
 	getTableProps: function () {
 		var tableProps = pluckTableProps(this.props);
-
-		delete tableProps.bgColor;
-		tableProps.className = classNames("row", "hero", tableProps.className);
+		tableProps.className = classNames("hero", tableProps.className);
 
 		return tableProps;
 	},
@@ -70,15 +70,16 @@ var Hero = React.createClass({
 		tdProps.bgColor = this.props.bgColor;
 		tdProps.width = this.props.width;
 		tdProps.height = this.props.height;
-		tdProps.className = classNames("row-wrapper", "hero-wrapper", tdProps.className);
+		tdProps.className = classNames("hero-wrapper", tdProps.className);
 
 		return tdProps;
 	},
 	transformChildren: function () {
 		var children = [];
+		var tdProps = this.getTdProps();
 
 		children.push(this.getVmlBgBegin());
-		children.push(<div><Col align="center">{this.props.children}</Col></div>);
+		children.push(<div key="1"><Col align="center" wrapper={tdProps}>{this.props.children}</Col></div>);
 		children.push(this.getVmlBgEnd());
 
 		return children;

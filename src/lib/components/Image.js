@@ -36,7 +36,7 @@ var Image = React.createClass({
 	},
 	// Private API
 	getImgProps: function () {
-		var size = imageSize(path.join(Image.imageBasePath, this.props.src));
+		var size = this.getImageSize(this.props.src);
 		var width = this.props.width;
 		var height = this.props.height;
 
@@ -53,6 +53,13 @@ var Image = React.createClass({
 			className: classNames(this.props.className) || undefined,
 			style: this.props.style
 		};
+	},
+	getImageSize: function (src) {
+		if (src.indexOf("http") === 0) {
+			return null;
+		} else {
+			return imageSize(path.join(Image.imageBasePath, src));
+		}
 	}
 	// Public API
 });

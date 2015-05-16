@@ -4,83 +4,23 @@
 /*eslint no-unused-vars: 0*/
 
 
-/*
-The Container component will render a <table> with a single
-<td> wrapper. The main benefit of a Container are the default
-<table> and <td> properties. The following properties are supported.
-
-	cssPrefix: React.PropTypes.string,
-	cellSpacing: numberOrStringType,
-	cellPadding: numberOrStringType,
-	border: numberOrStringType,
-	bgColor: React.PropTypes.string,
-	className: React.PropTypes.string,
-	style: React.PropTypes.object,
-	width: numberOrStringType,
-	align: React.PropTypes.oneOf(["left", "center", "right"]),
-	wrapper: React.PropTypes.shape({
-		className: React.PropTypes.string,
-		style: React.PropTypes.object,
-		bgColor: React.PropTypes.string,
-		align: React.PropTypes.oneOf(["left", "center", "right"]),
-		valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-	})
-
-The "wrapper" property contain all the properties that will
-be passed on to the <td> wrapper element.
-
-The following are the property defaults.
-
-	{
-		cssPrefix: "container",
-		cellSpacing: 0,
-		cellPadding: 0,
-		border: 0,
-		align: "left",
-		wrapper: {
-			align: "left",
-			valign: "top"
-		}
-	}
-
-*/
-
-
 var React = require("react");
 var classNames = require("classnames");
 var RawHtml = require("../RawHtml");
+var defineTableProps = require("../../util/defineTableProps");
+var defineTdProps = require("../../util/defineTdProps");
 var pluckTableProps = require("../../util/pluckTableProps");
 var pluckTdProps = require("../../util/pluckTdProps");
 var entities = require("../../util/entities");
+var mixin = require("../../util/mixin");
 
-
-var numberOrStringType = React.PropTypes.oneOfType([
-	React.PropTypes.number,
-	React.PropTypes.string
-]);
 
 var Container = React.createClass({
 	// Component API
-	propTypes: {
+	propTypes: mixin({
 		cssPrefix: React.PropTypes.string,
-		cellSpacing: numberOrStringType,
-		cellPadding: numberOrStringType,
-		border: numberOrStringType,
-		bgColor: React.PropTypes.string,
-		className: React.PropTypes.string,
-		style: React.PropTypes.object,
-		width: numberOrStringType,
-		align: React.PropTypes.oneOf(["left", "center", "right"]),
-		wrapper: React.PropTypes.shape({
-			className: React.PropTypes.string,
-			style: React.PropTypes.object,
-			bgColor: React.PropTypes.string,
-			width: numberOrStringType,
-			height: numberOrStringType,
-			align: React.PropTypes.oneOf(["left", "center", "right"]),
-			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-		})
-	},
+		wrapper: React.PropTypes.shape(defineTdProps())
+	}, defineTableProps()),
 	getDefaultProps: function () {
 		return {
 			cssPrefix: "container",

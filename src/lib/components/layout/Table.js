@@ -5,26 +5,13 @@
 
 
 var React = require("react");
+var defineTableProps = require("../../util/defineTableProps");
 var pluckTableProps = require("../../util/pluckTableProps");
 
 
-var numberOrStringType = React.PropTypes.oneOfType([
-	React.PropTypes.number,
-	React.PropTypes.string
-]);
-
 var Table = React.createClass({
 	// Component API
-	propTypes: {
-		cellSpacing: numberOrStringType,
-		cellPadding: numberOrStringType,
-		border: numberOrStringType,
-		bgColor: React.PropTypes.string,
-		className: React.PropTypes.string,
-		style: React.PropTypes.object,
-		width: numberOrStringType,
-		align: React.PropTypes.oneOf(["left", "center", "right"])
-	},
+	propTypes: defineTableProps(),
 	getDefaultProps: function () {
 		return {
 			cellSpacing: 0,

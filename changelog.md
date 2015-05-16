@@ -1,5 +1,32 @@
 # Changelog
 
+## 1.0.0
+
+*May 15, 2015*
+
+- Rename default-baseline.less to default-baselines.less.
+- Pass wrapper property down to Container in the Frame component.
+- Resolve Frame border not rendering in most Outlook clients.
+- Add responsive styles for nested Frame components.
+- Refactor MediaObject component to layout two Col components without using a conditional <td>.
+- Update media object styles for imagery.
+- Refactor the responsive styles for the Frame component.
+- Add LT and GT entities.
+- Modify default baselines for list items.
+- Remove padding left on list-bullet-item class.
+- Rename Paragraph to Para.
+- Rename ParagraphBlock to ParaBlock.
+- Normalize all properties so that <table> and <td> properties are defined the same and exposed consitently where appropriate.
+- Deprecate BulletList, instead List sets bullet to BULL by default.
+- Add support for numbered lists by setting the bullet property on a List to List.NUMERIC.
+- Add CSS classes to remove padding.
+- Rename CSS classes that remove padding when on mobile to be consistent with other padding classes.
+- Add responsive styles for all imagery.
+- Update test email to incorporate more components.
+- Change CSS class names of Para and ParaBlock to be para, para-wrapper and para-block, para-block-wrapper respectively.
+- Add responsive styles for Hero component.
+
+
 ## O.4.4
 
 *May 11, 2015*

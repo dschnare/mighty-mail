@@ -8,6 +8,8 @@ function config() {
 	var cfg = {};
 
 	cfg.dest = ".";
+	cfg.styles = "sass";
+	cfg.template = "template.html";
 
 	cfg.srcFiles = glob.sync("src/**/*.js?(x)");
 	cfg.srcMainEntry = "./index.js";

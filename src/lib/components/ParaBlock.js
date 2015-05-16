@@ -7,25 +7,14 @@
 var React = require("react");
 var Table = require("./layout/Table");
 var applyChildMask = require("../util/applyChildMask");
+var defineTableProps = require("../util/defineTableProps");
 var pluckTableProps = require("../util/pluckTableProps");
 var classNames = require("classnames");
 
 
-var numberOrStringType = React.PropTypes.oneOfType([
-	React.PropTypes.number,
-	React.PropTypes.string
-]);
-
-var ParagraphBlock = React.createClass({
+var ParaBlock = React.createClass({
 	// Component API
-	propTypes: {
-		border: numberOrStringType,
-		bgColor: React.PropTypes.string,
-		className: React.PropTypes.string,
-		style: React.PropTypes.object,
-		width: numberOrStringType,
-		align: React.PropTypes.oneOf(["left", "center", "right"])
-	},
+	propTypes: defineTableProps(),
 	getDefaultProps: function () {
 		return {
 			align: "left"
@@ -47,12 +36,12 @@ var ParagraphBlock = React.createClass({
 	getTableProps: function () {
 		var tableProps = pluckTableProps(this.props);
 
-		tableProps.className = classNames("paragraph-block", tableProps.className);
+		tableProps.className = classNames("para-block", tableProps.className);
 
 		return tableProps;
 	},
 	getParagraphs: function () {
-		var paragraphs = applyChildMask({ Paragraph: true }, this.props.children);
+		var paragraphs = applyChildMask({ Para: true }, this.props.children);
 		var last = paragraphs.length - 1;
 
 		if (paragraphs[0]) {
@@ -70,4 +59,4 @@ var ParagraphBlock = React.createClass({
 	// Public API
 });
 
-module.exports = ParagraphBlock;
+module.exports = ParaBlock;

@@ -8,6 +8,8 @@ This package is intended to be used as part of a Reactjs build system. For conve
 stylesheets that take care of email client resetting and adding classes for several useful styles. Think of these
 styles as a base. All styles are also included as sass and less files.
 
+	npm install mighty-mail
+
 # Components
 
 ## Layout

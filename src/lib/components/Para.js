@@ -7,31 +7,21 @@
 var React = require("react");
 var Container = require("./layout/Container");
 var classNames = require("classnames");
+var defineTdProps = require("../util/defineTdProps");
 var pluckTdProps = require("../util/pluckTdProps");
 
 
-var numberOrStringType = React.PropTypes.oneOfType([
-	React.PropTypes.number,
-	React.PropTypes.string
-]);
-
-var Paragraph = React.createClass({
+var Para = React.createClass({
 	// Component API
 	propTypes: {
 		className: React.PropTypes.string,
-		wrapper: React.PropTypes.shape({
-			bgColor: React.PropTypes.string,
-			style: React.PropTypes.object,
-			width: numberOrStringType,
-			height: numberOrStringType,
-			align: React.PropTypes.oneOf(["left", "center", "right"]),
-			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-		})
+		wrapper: React.PropTypes.shape(defineTdProps())
 	},
 	getDefaultProps: function () {
 		return {
 			wrapper: {
-				align: "left"
+				align: "left",
+				valign: "top"
 			}
 		};
 	},
@@ -39,7 +29,7 @@ var Paragraph = React.createClass({
 		var tdProps = this.getTdProps();
 
 		return (
-			<tr className={classNames("paragraph", this.props.className)}>
+			<tr className={classNames("para", this.props.className)}>
 				<td {...tdProps}>{this.props.children}</td>
 			</tr>
 		);
@@ -48,11 +38,11 @@ var Paragraph = React.createClass({
 	getTdProps: function () {
 		var tdProps = pluckTdProps(this.props.wrapper || {});
 
-		tdProps.className = classNames("paragraph-wrapper", tdProps.className);
+		tdProps.className = classNames("para-wrapper", tdProps.className);
 
 		return tdProps;
 	}
 	// Public API
 });
 
-module.exports = Paragraph;
+module.exports = Para;

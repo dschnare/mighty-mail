@@ -8,6 +8,7 @@ var React = require("react");
 var Row = require("./Row");
 var Container = require("./Container");
 var mixin = require("../../util/mixin");
+var defineTdProps = require("../../util/defineTdProps");
 var pluckTdProps = require("../../util/pluckTdProps");
 
 
@@ -21,20 +22,8 @@ var FullWidthRow = React.createClass({
 		gutter: React.PropTypes.number,
 		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string,
-		wrapper: React.PropTypes.shape({
-			className: React.PropTypes.string,
-			style: React.PropTypes.object,
-			bgColor: React.PropTypes.string,
-			align: React.PropTypes.oneOf(["left", "center", "right"]),
-			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-		}),
-		rowWrapper: React.PropTypes.shape({
-			className: React.PropTypes.string,
-			style: React.PropTypes.object,
-			bgColor: React.PropTypes.string,
-			align: React.PropTypes.oneOf(["left", "center", "right"]),
-			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
-		})
+		wrapper: React.PropTypes.shape(defineTdProps()),
+		rowWrapper: React.PropTypes.shape(defineTdProps())
 	},
 	render: function () {
 		var containerProps = this.getContainerProps();

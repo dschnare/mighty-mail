@@ -8,25 +8,23 @@ var React = require("react");
 var classNames = require("classnames");
 var Table = require("./layout/Table");
 var applyChildMask = require("../util/applyChildMask");
+var defineTableProps = require("../util/defineTableProps");
 var pluckTableProps = require("../util/pluckTableProps");
+var mixin = require("../util/mixin");
+var entities = require("../util/entities");
 
 
-var numberOrStringType = React.PropTypes.oneOfType([
-	React.PropTypes.number,
-	React.PropTypes.string
-]);
+var NUMERIC = "__NUMERIC_LIST_STYLE__";
 
 var List = React.createClass({
 	// Component API
-	propTypes: {
-		cellSpacing: numberOrStringType,
-		cellPadding: numberOrStringType,
-		border: numberOrStringType,
-		bgColor: React.PropTypes.string,
-		className: React.PropTypes.string,
-		style: React.PropTypes.object,
-		width: numberOrStringType,
-		align: React.PropTypes.oneOf(["left", "center", "right"])
+	propTypes: mixin({
+		bullet: React.PropTypes.string
+	}, defineTableProps()),
+	getDefaultProps: function () {
+		return {
+			bullet: entities.BULL
+		};
 	},
 	render: function () {
 		var tableProps = this.getTableProps();
@@ -44,25 +42,34 @@ var List = React.createClass({
 	getTableProps: function () {
 		var tableProps = pluckTableProps(this.props);
 
-		tableProps.className = classNames("list", tableProps.className);
+		tableProps.className = classNames("list", this.props.bullet === NUMERIC ? "list-numeric" : false, tableProps.className);
 
 		return tableProps;
 	},
 	getListItems: function () {
 		var listItems = applyChildMask({ ListItem: true }, this.props.children);
 		var count = listItems.length;
+		var bullet = this.props.bullet || entities.BULL;
 
 		return listItems.map(function (child, i) {
 			var firstChildClassName = i === 0 ? "first-child" : "";
 			var lastChildClassName = i === count - 1 ? "last-child" : "";
+			var bull = bullet.toString();
+
+			if (bullet === NUMERIC) {
+				bull = (i + 1).toString();
+			}
 
 			return React.cloneElement(child, {
 				key: i,
+				bullet: bull,
 				className: classNames(child.props.className, firstChildClassName, lastChildClassName)
 			});
 		});
 	}
 	// Public API
 });
+
+List.NUMERIC = NUMERIC;
 
 module.exports = List;
