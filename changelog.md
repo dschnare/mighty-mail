@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.1
+
+*May 19, 2015*
+
+- Add build task for auto generating component documentation.
+
+
 ## 1.1.0
 
 *May 16, 2015*

@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "async": "^0.9.0",
-    "glob": "^5.0.5",
+    "glob": "^5.0.6",
     "gulp": "^3.8.11",
     "gulp-eslint": "^0.9.0",
     "gulp-less": "^3.0.3",

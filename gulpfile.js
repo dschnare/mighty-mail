@@ -1,7 +1,9 @@
 "use strict";
 
 
+var React = require("react");
 var fs = require("fs");
+var glob = require("glob");
 var path = require("path");
 var mkdir = require("mkdir-p");
 var html = require("html");
@@ -69,6 +71,53 @@ gulp.task("test", ["test:build"], function (done) {
 				}
 			});
 		}
+	});
+});
+
+gulp.task("docs", ["script:build"], function (done) {
+	var mighty = require("./index");
+
+	glob("./lib/components/**/*.js", function (error, files) {
+		if (error) {
+			done(error);
+			return;
+		}
+
+		var componentFiles = files.filter(function (file) {
+			return file.indexOf(".example") < 0;
+		});
+
+		async.each(componentFiles, function (componentFile, callback) {
+			var dir = path.dirname(componentFile);
+			var componentName = path.basename(componentFile, ".js");
+			console.log("componentName:", componentName);
+			var El = mighty[componentName];
+
+			glob(path.join(dir, componentName + ".example.*"), function (err, exampleFiles) {
+				if (err) {
+					callback(err);
+					return;
+				}
+
+				async.eachSeries(exampleFiles, function (exampleFile, cb) {
+					fs.readFile(exampleFile, function (e, exampleSrc) {
+						if (e) {
+							cb(e);
+							return;
+						}
+
+						var example = require(exampleFile);
+						var exampleMarkup = React.renderToStaticMarkup(example);
+
+						// TODO: Inline exampleSrc
+						// TODO: Inline exampleMarkup
+						// TODO: Inline property docs using El.propTypes, El.defaultProps and React.PropTypes
+
+						cb();
+					});
+				}, callback);
+			});
+		}, done);
 	});
 });
 
