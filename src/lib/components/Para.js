@@ -9,6 +9,7 @@ var Container = require("./layout/Container");
 var classNames = require("classnames");
 var defineTdProps = require("../util/defineTdProps");
 var pluckTdProps = require("../util/pluckTdProps");
+var mixin = require("../util/mixin");
 
 
 var Para = React.createClass({
@@ -36,7 +37,7 @@ var Para = React.createClass({
 	},
 	// Private API
 	getTdProps: function () {
-		var tdProps = pluckTdProps(this.props.wrapper || {});
+		var tdProps = pluckTdProps(mixin({}, Para.defaultProps.wrapper, this.props.wrapper || {}));
 
 		tdProps.className = classNames("para-wrapper", tdProps.className);
 

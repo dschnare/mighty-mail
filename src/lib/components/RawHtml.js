@@ -7,7 +7,7 @@ var mixin = require("../util/mixin");
 
 var RawHtml = React.createClass({
 	propTypes: {
-		wrapper: React.PropTypes.string
+		wrapper: React.PropTypes.string.isRequired
 	},
 	getDefaultProps: function () {
 		return {

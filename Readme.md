@@ -21,21 +21,34 @@ The following are layout oriented components that will help semantically setup y
 
 The `Table` component is an alias for creating a `<table>` with `cellspacing`, `cellpadding` and `border` set to `0`.
 
-**Usage**
+**Example**
 
-	<Table>
-		<tr>
-			<td>My column</td>
-		</tr>
-	</Table>
+    var React = require("react");
+    var Table = require("./Table");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Table>
+        <tbody>
+          <tr>
+            <td>Col 1</td>
+            <td>Col 2</td>
+          </tr>
+        </tbody>
+      </Table>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0">
-		<tr>
-			<td>My column</td>
-		</tr>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" class="" align="left">
+      <tbody>
+        <tr>
+          <td>Col 1</td>
+          <td>Col 2</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
@@ -46,77 +59,39 @@ The `Table` component is an alias for creating a `<table>` with `cellspacing`, `
 - className : string
 - style : object
 - width : string or number
-- align : one of [left", "center", "right" `(default "left")`
-
-
-
-### Frame
-
-The `Frame` component makes it easy to wrap content in a `<table>` with a border.
-
-**Usage**
-
-	<Frame width={600} borderColor="#eaeaea">
-		Email body
-	</Frame>
-
-**Output**
-
-	<table cellpadding="0" cellspacing="0" width="600" border="1" align="center" style="border-color: #eaeaea;" class="frame">
-		<tbody>
-			<tr>
-				<td align="center" valign="top" width="600" class="frame-wrapper">Email Body</td>
-			</tr>
-		</tbody>
-	</table>
-
-**Props**
-
-- border : number or string `(default 1)`
-- borderColor : string
-- bgColor: string
-- className : string
-- style: object
-- width: number or string `(default "100%")`
-- align: one of "left", "center", "right" `default "center")`
-- wrapper : shape 
-	- className : string
-	- style : object
-	- bgColor : string
-	- width : number or string
-	- height : number or string
-	- align : one of "left", "center", "right" `(default "center")`
-	- valign : one of "top", "middle", "bottom" `(default "top")`
-
-
-The `wrapper` property will have all its properties applied to the inner `.frame-wrapper` element.
-
+- align : one of "left", "center", "right" `(default "left")`
 
 
 ### Container
 
 The `Container` component is general purpose, composable component that can be used by other components or as a `<table>` wrapper on its own.
 
-**Usage**
+**Example**
 
-	<Container>
-		Content
-	</Container>
+    var React = require("react");
+    var Container = require("./Container");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Container>
+        My Content
+      </Container>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" align="left" class="container">
-		<tbody>
-			<tr>
-				<td align="left" valign="top" class="container-wrapper">Content</td>
-			</tr>
-		</tbody>
-	</table>
-
+    <table cellspacing="0" cellpadding="0" border="0" class="container" align="left">
+      <tbody>
+        <tr>
+          <td class="container-wrapper" align="left" valign="top">My Content</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- cssPrefix : string `(default "container")`
+- cssPrefix : string ***[required]*** `(default "container")`
 - cellSpacing : number or string `(default 0)`
 - cellPadding : number or string `(default 0)`
 - border : number or string `(default 0)`
@@ -140,61 +115,131 @@ The `cssPrefix` property will be used as the class name prefix when setting the 
 for the `<table>` and `<td>` elements.
 
 
+### Frame
+
+The `Frame` component makes it easy to wrap content in a `<table>` with a border.
+
+**Example**
+
+    var React = require("react");
+    var Frame = require("./Frame");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Frame borderColor="#ff0000">
+        My Content
+      </Frame>
+    );
+
+**Result**
+
+    <table cellspacing="0" cellpadding="0" border="0" class="frame" width="100%"
+    align="center">
+      <tbody>
+        <tr>
+          <td class="frame-wrapper" style="border:1px solid #ff0000;" align="center"
+          valign="top">My Content</td>
+        </tr>
+      </tbody>
+    </table>
+
+**Props**
+
+- cellSpacing : number or string `(default 0)`
+- cellPadding : number or string `(default 0)`
+- border : number or string `(default 1)`
+- borderColor : string
+- bgColor: string
+- className : string
+- style: object
+- width: number or string `(default "100%")`
+- align: one of "left", "center", "right" `default "center")`
+- wrapper : shape 
+	- className : string
+	- style : object
+	- bgColor : string
+	- width : number or string
+	- height : number or string
+	- align : one of "left", "center", "right" `(default "center")`
+	- valign : one of "top", "middle", "bottom" `(default "top")`
+
+
+The `wrapper` property will have all its properties applied to the inner `.frame-wrapper` element.
+
+
 
 ### Row
 
 The `Row` component will layout `Col` components in a single horizontal row with an optionally gutter between each column.
 
-**Usage**
+**Example**
 
-	<Row width={600} gutter={10}>
-		<Col>
-			Column 1
-		</Col>
-		<Col>
-			Column 2
-		</Col>
-	</Row>
+    var React = require("react");
+    var Row = require("./Row");
+    var Col = require("./Col");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Row width={600} gutter={10}>
+        <Col wrapper={{align: "center"}}>One</Col>
+        <Col wrapper={{align: "center"}}>Two</Col>
+      </Row>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" align="center" class="row">
-		<tbody>
-			<tr>
-				<td class="row-wrapper">
-					<table cellpadding="0" cellspacing="0" border="0" align="left" width="290" class="col">
-						<tbody>
-							<tr>
-								<td align="left" valign="top" class="col-wrapper">Column 1</td>
-							</tr>
-						</tbody>
-					</table>
-				<!--[if mso]></td><td><![endif]-->
-					<table cellpadding="0" cellspacing="0" border="0" align="left" width="310" style="padding-left: 10px;" class="col">
-						<tbody>
-							<tr>
-								<td align="left" valign="top" class="col-wrapper">Column 1</td>
-							</tr>
-						</tbody>
-					</table>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" class="row" width="600"
+    align="center">
+      <tbody>
+        <tr>
+          <td class="row-wrapper" align="center" valign="top">
+            <table cellspacing="0" cellpadding="0" border="0" class="col" width="295"
+            align="left">
+              <tbody>
+                <tr>
+                  <td class="col-wrapper" width="295" align="center">One</td>
+                </tr>
+              </tbody>
+            </table>
+            <!--[if mso]>
+          </td>
+          <td align="center" valign="top">
+          <![endif]-->
+          <table cellspacing="0" cellpadding="0" border="0" class="col" width="305"
+          align="left">
+            <tbody>
+              <tr>
+                <td class="col-wrapper" style="padding-left:10px;" width="305" align="center">Two</td>
+              </tr>
+            </tbody>
+          </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- width : string or number `(default "100%")`
-- gutter : number
-- bgColor : string
+- cellSpacing : number or string `(default 0)`
+- cellPadding : number or string `(default 0)`
+- border : number or string `(default 0)`
+- borderColor : string
+- bgColor: string
 - className : string
-- wrapper : shape
+- style: object
+- width: number or string `(default "100%")`
+- align: one of "left", "center", "right" `(default "center")`
+- gutter : number
+- wrapper : shape 
 	- className : string
 	- style : object
 	- bgColor : string
-	- width : number
-	- align : one of "left", "center", "right"
-	- valign : one of "top", "middle", "bottom"
+	- width : number or string
+	- height : number or string
+	- align : one of "left", "center", "right" `(default "left")`
+	- valign : one of "top", "middle", "bottom" `(default "top")`
 
 The `wrapper` property will have all its properties applied to the inner `.row-wrapper` element.
 
@@ -208,38 +253,46 @@ a number with no gutter and manually specify your column widths.
 
 The `Col` component is mainly used as a column within a row, but there are no restrictions as to where it can be used.
 
-**Usage**
+**Example**
 
-	<Col>
-		Content
-	</Col>
+    var React = require("react");
+    var Col = require("./Col");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Col wrapper={{align: "center"}}>My Column</Col>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" class="col">
-		<tbody>
-			<tr>
-				<td align="left" valign="top" class="col-wrapper">Content</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" class="col" align="left">
+      <tbody>
+        <tr>
+          <td class="col-wrapper" align="center">My Column</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- span : number `(default 1)`
-- gutter : number
-- bgColor : string
-- className : string
-- style : object
-- width : number
+- cellSpacing : number or string `(default 0)`
+- cellPadding : number or string `(default 0)`
+- border : number or string `(default 0)`
+- bgColor : .string
+- className : .string
+- style : .object
+- width : number or string
 - align : one of "left", "center", "right" `(default "left")`
 - float : one of "left", "right"
+- span : number `(default 1)`
+- gutter : number
 - wrapper : shape
 	- className : string
-	- bgColor : string
-	- width : number
-	- height : number
 	- style : object
+	- bgColor : string
+	- width : number or string
+	- height : number or string
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
@@ -255,60 +308,84 @@ The `FullWidthRow` is a kind of row that will span the entire width of an email 
 This component is useful for having a full width section with a background color while still having your content
 respect the deimensions of the email body.
 
-**Usage**
+**Example**
 
-	<FullWidthRow bgColor="#ff0000" width={600}>
-		<Col width={600}>
-			Content
-		</Col>
-	</FullWidthRow>
+    var React = require("react");
+    var FullWidthRow = require("./FullWidthRow");
+    var Col = require("./Col");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <FullWidthRow bgColor="#eaeaea">
+        <Col>One</Col>
+        <Col>Two</Col>
+      </FullWidthRow>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" width="100%" align="center" bgcolor="#ff0000" class="full-width-row">
-		<tbody>
-			<tr>
-				<td align="center" valign="top" class="full-width-row-wrapper">
-					<table cellpadding="0" cellspacing="0" border="0" width="600" align="center" class="row">
-						<tbody>
-							<tr>
-								<td class="row-wrapper">
-									<table cellpadding="0" cellspacing="0" border="0" width="600" align="left" class="col">
-										<tbody>
-											<tr>
-												<td align="left" valign="top" width="600" class="col-wrapper">
-													Content
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" bgcolor="#eaeaea" class="full-width-row"
+    width="100%" align="center">
+      <tbody>
+        <tr>
+          <td class="full-width-row-wrapper" align="center" valign="top">
+            <table cellspacing="0" cellpadding="0" border="0" class="row" width="100%"
+            align="center">
+              <tbody>
+                <tr>
+                  <td class="row-wrapper" align="center" valign="top">
+                    <table cellspacing="0" cellpadding="0" border="0" class="col" align="left">
+                      <tbody>
+                        <tr>
+                          <td class="col-wrapper" align="left" valign="top">One</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!--[if mso]>
+                  </td>
+                  <td align="center" valign="top">
+                  <![endif]-->
+                  <table cellspacing="0" cellpadding="0" border="0" class="col" align="left">
+                    <tbody>
+                      <tr>
+                        <td class="col-wrapper" align="left" valign="top">Two</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- width: number or string
-- gutter: number
-- bgColor: string
-- className: string
-- wrapper: shape
-	- className: string
-	- style: object
-	- bgColor: string
-	- align: one of "left", "center", "right" `(default "center")`
-	- valign: one of "top", "middle", "bottom" `(default "top")`
-- rowWrapper: shape
-	- className: string
-	- style: object
-	- bgColor: string
-	- align: one of "left", "center", "right"
-	- valign: one of "top", "middle", "bottom"
+- cellSpacing : number or string `(default 0)`
+- cellPadding : number or string `(default 0)`
+- border : number or string `(default 0)`
+- bgColor : .string
+- className : .string
+- style : .object
+- width : number or string `(default "100%")`
+- align : one of "left", "center", "right" `(default "left")`
+- wrapper : shape
+	- className : string
+	- style : object
+	- bgColor : string
+	- width : number or string
+	- height : number or string
+- rowWrapper : shape
+	- className : string
+	- style : object
+	- bgColor : string
+	- width : number or string
+	- height : number or string
+	- align : one of "left", "center", "right" `(default "left")`
+	- valign : one of "top", "middle", "bottom" `(default "top")`
 
 The `bgColor` and `className` properties are applied to the `.full-width-row` element.
 
@@ -327,19 +404,26 @@ The following are content oriented components that will help you semantically or
 
 The `RawHtml` component is a convenient way to render complex HTML or comments that would not otherwise be permitted with Reactjs.
 
-**Usage**
+**Example**
 
-	<RawHtml>
-		{"<!--[if mso]>Yep MSO<![endif]-->"}
-	</RawHtml>
+    var React = require("react");
+    var RawHtml = require("./RawHtml");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <RawHtml>{"<!-- This will be redered as an HTML comment -->"}</RawHtml>
+    );
 
-**Output**
+**Result**
 
-	<div><!--[if mso]>Yep MSO<![endif]--></div>
+    <div>
+      <!-- This will be redered as an HTML comment -->
+    </div>
 
 **Props**
 
-- wrapper : string `(default "div")`
+- wrapper : string ***[required]*** `(default "div")`
 - any property
 
 The `wrapper` propery is the name of the element to wrap the conetent of the component with.
@@ -352,19 +436,28 @@ All other properties are set on the wrapper element as-is.
 
 The `Divider` component renders a horizontal divider.
 
-**Usage**
+**Example**
 
-	<Divider thickness={2} color="#ff00ff" width="{500}" />
+    var React = require("react");
+    var Divider = require("./Divider");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Divider color="#000000" thickness={2} />
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" width="500" align="center" class="divider">
-		<tbody>
-			<tr>
-				<td align="center" width="500" height="2" bgcolor="#ff00ff" class="divider-wrapper" style="font-size: 1px; line-height: 1px; ms-line-height-rule: exactly;">&nbsp;</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" class="divider" width="100%"
+    align="center">
+      <tbody>
+        <tr>
+          <td bgcolor="#000000" class="divider-wrapper" style="font-size:1px;line-height:1;mso-line-height-rule:exactly;"
+          width="100%" height="2" align="center"> </td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
@@ -383,22 +476,27 @@ The `wrapper` property will have all its properties applied to the inner `.divid
 
 The `Image` component renders an image, but if no `width` or `height` is specified then the dimensions will be read from the file and be set on the rendered `<img>` element.
 
-**Usage**
+**Example**
 
-	Image.imageBasePath = ".";
+    var React = require("react");
+    var Image = require("./Image");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Image width="200" src="images/logo.jpg" />
+    );
 
-	<Image src="images/my-image.jpg" />
+**Result**
 
-**Output**
-
-	<img src="images/my-image.jpg" width="80" height="80">
+    <img src="images/logo.jpg" width="200" border="0">
 
 **Props**
 
 - src : string
 - width : number or string
 - height : number or string
-- border : number or string
+- border : number or string `(default 0)`
 - className : string
 - style : object
 
@@ -408,44 +506,64 @@ The `Image` component renders an image, but if no `width` or `height` is specifi
 
 The `Hero` component renders an area with a background image behind its content.
 
-**Usage**
+**Example**
 
-	<Hero background="images/hero.jpg" bgColor="#ffffff" width={680} height={450}>
-		Content
-	</Hero>
+    var React = require("react");
+    var Hero = require("./Hero");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Hero width={600} height={400} background="images/hero.jpg" bgColor="#ffffff">
+        This is in the middle of the hero.
+      </Hero>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" width="680" height="450" class="row hero">
-		<tbody>
-			<tr>
-				<td background="images/hero.jpg" bgcolor="#ffffff" width="680" height="450" class="row-wrapper hero-wrapper">
-				<!--[if gte mso 9]>
-					<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:680px;height:450px;">
-						<v:fill type="tile" src="images/hero.jpg" color="#ffffff" />
-						<v:textbox inset="0,0,0,0">
-				<![endif]-->
-					<div>
-						Content
-					</div>
-				<!--[if gte mso 9]>
-						</v:textbox>
-					</v:rect>
-				<![endif]-->
-				</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" class="hero"
+    width="600" align="center">
+      <tbody>
+        <tr>
+          <td bgcolor="#ffffff" class="hero-bg" width="600" height="400" align="center"
+          valign="middle" background="images/hero.jpg">
+            <!--[if gte mso 9]>
+              <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"
+              style="width:600px;height:400px;">
+                <v:fill type="tile" src="images/hero.jpg" color="#ffffff" />
+                <v:textbox inset="0,0,0,0">
+                <![endif]-->
+                <div>
+                  <table cellspacing="0" cellpadding="0" border="0" class="col" align="center">
+                    <tbody>
+                      <tr>
+                        <td bgcolor="#ffffff" class="col-wrapper hero-wrapper" height="400" align="center"
+                        valign="middle">This is in the middle of the hero.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!--[if gte mso 9]>
+                </v:textbox>
+              </v:rect>
+            <![endif]-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- background : string
+- cellPadding : string `(default 0)`
+- cellSpacing : string `(default 0)`
+- border : number `(default 0)`
 - bgColor : string
-- width : number
-- height : number
 - className : string
 - style : object
-- align : string `(default "center")`
+- width : string or number
+- align : one of "left", "center", "right" `(default "center")`
+- background : string
+- height : number
 - wrapper : shape
 	- className : string
 	- style : object
@@ -456,54 +574,82 @@ The `wrapper` property will have all its properties applied to the inner `.hero-
 
 
 
-### ParagraphBlock
+### ParaBlock
 
-The `ParagraphBlock` is a container for `Paragraph` components.
+The `ParaBlock` is a container for `Paragraph` components.
 
-**Usage**
+**Example**
 
-	<ParagraphBlock>
-		<Paragraph>Hello World!</Paragraph>
-		<Paragraph>Hello World!</Paragraph>
-	</ParagraphBlock>
+    var React = require("react");
+    var ParaBlock = require("./ParaBlock");
+    var Para = require("./Para");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <ParaBlock>
+        <Para>Paragraph <strong>one</strong>.</Para>
+        <Para>Paragraph two.</Para>
+      </ParaBlock>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" class="paragraph-block">
-		<tbody>
-			<tr class="paragraph first-child">
-				<td align="left" class="paragraph-wrapper">Hello World!</td>
-			</tr>
-			<tr class="paragraph last-child">
-				<td align="left" class="paragraph-wrapper">Hello World!</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
+      <tbody>
+        <tr class="para first-child">
+          <td class="para-wrapper" align="left" valign="top">Paragraph <strong>one</strong>.</td>
+        </tr>
+        <tr class="para last-child">
+          <td class="para-wrapper" align="left" valign="top">Paragraph two.</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-border: number or string
-bgColor: string
-className: string
-style: object
-width: number or string
-align: one of "left", "center", "right" `(default "left")`
+- cellPadding : string `(default 0)`
+- cellSpacing : string `(default 0)`
+- border : number `(default 0)`
+- bgColor : string
+- className : string
+- style : object
+- width : string or number
+- align : one of "left", "center", "right" `(default "left")`
 
 
-### Paragraph
+### Para
 
-The `Paragraph` component represents a paragraph of content that gives more control over vertical spacing.
+The `Para` component represents a paragraph of content that gives more control over vertical spacing.
 These components can only be used within `ParagraphBlock` components.
 
-**Usage**
+**Example**
 
-	<Paragraph>Hello World!</Paragraph>
+    var React = require("react");
+    var ParaBlock = require("./ParaBlock");
+    var Para = require("./Para");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <ParaBlock>
+        <Para>Paragraph <strong>one</strong>.</Para>
+        <Para wrapper={{className: "text-large"}}>Paragraph two.</Para>
+      </ParaBlock>
+    );
 
-**Output**
+**Result**
 
-	<tr class="paragraph first-child">
-		<td align="left" class="paragraph-wrapper">Hello World!</td>
-	</tr>
+    <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
+      <tbody>
+        <tr class="para first-child">
+          <td class="para-wrapper" align="left" valign="top">Paragraph <strong>one</strong>.</td>
+        </tr>
+        <tr class="para last-child">
+          <td class="para-wrapper text-large" align="left" valign="top">Paragraph two.</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
@@ -514,7 +660,7 @@ These components can only be used within `ParagraphBlock` components.
 	- width: number or string
 	- height: number or string
 	- align: one of "left", "center", "right" `(default "left")`
-	- valign: one of "top", "middle", "bottom"
+	- valign: one of "top", "middle", "bottom" `(default "top")`
 
 
 
@@ -522,36 +668,56 @@ These components can only be used within `ParagraphBlock` components.
 
 The `Button` component renders a bulletproof button from Campaign Monitor.
 
-**Usage**
+**Example**
 
-	<Button width={250} height={40} bgColor="#ff00ff" href="http://google.com/">Learn more</Button>
+    var React = require("react");
+    var Button = require("./Button");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Button width={250} height={40} bgColor="#ff00ff" borderColor="#ff0000" href="http://google.com/">Learn more</Button>
+    );
 
-	<Button width={250} height={40} bgColor="#ff00ff" borderColor="#ff0000" href="http://google.com/">Learn more</Button>
+**Result**
 
-**Output**
+    <div class="button">
+      <!--[if mso]>
+        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+        href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;"
+        strokecolor="#ff0000" fillcolor="#ff00ff">
+          <w:anchorlock/>
+          <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Learn more</center>
+        </v:rect>
+      <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
+    </div>
 
-	<div>
-		<!--[if mso]>
-			<v:%rect% xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;" stroke="f" fillcolor="#ff00ff">
-				<w:anchorlock/>
-				<center>
-		<![endif]-->
-		<a href="http://google.com/" style="background-color: #ff00ff; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 13px; font-weight: bold; line-height: 40px; text-align: center; text-decoration: none; width: 250px; border-radius: 0; web-kit-text-size-adjust: none;">Learn more</a>
-		<!--[if mso]>
-			</center>
-			</v:%rect%>
-		<![endif]-->
-	</div>
+**Example**
 
-	<div>
-		<!--[if mso]>
-			<v:%rect% xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;" strokecolor="#ff0000" fillcolor="#ff00ff">
-				<w:anchorlock/>
-				<center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Learn more</center>
-			</v:%rect%>
-		<![endif]-->
-		<a href="http://google.com/" style="background-color: #ff00ff; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 13px; font-weight: bold; line-height: 40px; text-align: center; text-decoration: none; width: 250px; border-radius: 0; web-kit-text-size-adjust: none;">Learn more</a>
-	</div>
+    var React = require("react");
+    var Button = require("./Button");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Button width={250} height={40} bgColor="#ff00ff" href="http://google.com/">Learn more</Button>
+    );
+
+**Result**
+
+    <div class="button">
+      <!--[if mso]>
+        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+        href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;"
+        stroke="f" fillcolor="#ff00ff">
+          <w:anchorlock/>
+          <center>
+          <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
+          <!--[if mso]>
+          </center>
+        </v:rect>
+      <![endif]-->
+    </div>
 
 **Props**
 
@@ -571,36 +737,49 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
 
 The `List` component renders a list of items when more control over spacing is needed.
 
-**Usage**
+**Example**
 
-	<List>
-		<ListItem>First</ListItem>
-		<ListItem>Second</ListItem>
-	</List>
+    var React = require("react");
+    var List = require("./List");
+    var ListItem = require("./ListItem");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <List>
+        <ListItem>Item <strong>one</strong>.</ListItem>
+        <ListItem>Item two.</ListItem>
+      </List>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" class="list">
-		<tbody>
-			<tr class="list-item first-child">
-				<td class="list-item-wrapper">First</td>
-			</tr>
-			<tr class="list-item last-child">
-				<td class="list-item-wrapper">Second</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
+      <tbody>
+        <tr class="list-item first-child">
+          <td class="list-bullet-wrapper" align="left">•</td>
+          <td class="list-item-wrapper" align="left">Item <strong>one</strong>.</td>
+        </tr>
+        <tr class="list-item last-child">
+          <td class="list-bullet-wrapper" align="left">•</td>
+          <td class="list-item-wrapper" align="left">Item two.</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- cellSpacing : number or string
-- cellPadding : number or string
-- border : number or string
+- cellPadding : string `(default 0)`
+- cellSpacing : string `(default 0)`
+- border : number `(default 0)`
 - bgColor : string
 - className : string
 - style : object
-- width : number or string
-- align : one of "left", "center", "right"
+- width : string or number
+- align : one of "left", "center", "right" `(default "left")`
+- bullet : string ***[required]*** `(default "\u2022" -- the bullet character)`
+
+The `bullet` property is passed down to each `ListItem` child so that the entire list has the same bullet value.
 
 
 ### ListItem
@@ -608,27 +787,41 @@ The `List` component renders a list of items when more control over spacing is n
 The `ListItem` component represents an item in a list that gives more control over vertical and horizontal spacing.
 These components can only be used within `List` or `BulletList` components.
 
-**Usage**
+**Example**
 
-	<ListItem>First</ListItem>
-	<ListItem bullet="\u2022">Second</ListItem>
+    var React = require("react");
+    var List = require("./List");
+    var ListItem = require("./ListItem");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <List>
+        <ListItem itemWrapper={{className: "text-large"}}>Item <strong>one</strong>.</ListItem>
+        <ListItem>Item two.</ListItem>
+      </List>
+    );
 
-**Output**
+**Result**
 
-	<tr class="list-item first-child">
-		<td class="list-item-wrapper">First</td>
-	</tr>
-	<tr class="list-item list-item-with-bullet last-child">
-		<td class="list-bullet-wrapper">•</td>
-		<td class="list-item-wrapper">Second</td>
-	</tr>
+    <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
+      <tbody>
+        <tr class="list-item first-child">
+          <td class="list-bullet-wrapper text-large" align="left">•</td>
+          <td class="list-item-wrapper text-large" align="left">Item <strong>one</strong>.</td>
+        </tr>
+        <tr class="list-item last-child">
+          <td class="list-bullet-wrapper" align="left">•</td>
+          <td class="list-item-wrapper" align="left">Item two.</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- bullet : string
+- bullet : string ***[required]*** `(default "\u2022" -- the bullet character)`
 - className : string
 - itemWrapper : shape
-	- className : string
 	- style : object
 	- bgColor : string
 	- width : number
@@ -636,7 +829,6 @@ These components can only be used within `List` or `BulletList` components.
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 - bulletWrapper : shape
-	- className : string
 	- style : object
 	- bgColor : string
 	- width : number
@@ -648,42 +840,125 @@ The `itemWrapper` property will have all its properties applied to the inner `.l
 
 The `bulletWrapper` property will have all its properties applied to the inner `.list-bullet-wrapper` element
 
+The `className` property will be applied to the `.list-item-wrapper` and the `.list-bullet-wrapper` elements.
 
 
-### BulletList
+### OrderedList
 
-The `BulletList` component is a shortcut for using a `List` and setting the `bullet` property on each `ListItem`.
+The `OrderedList` component represents an ordered list of `ListeItem` components.
 
-**Usage**
+**Example**
 
-	<BulletList>
-		<ListItem>First</ListItem>
-		<ListItem>Second</ListItem>
-	</BulletList>
+    var React = require("react");
+    var OrderedList = require("./OrderedList");
+    var ListItem = require("./ListItem");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <OrderedList>
+        <ListItem>Item <strong>one</strong>.</ListItem>
+        <ListItem>Item two.</ListItem>
+      </OrderedList>
+    );
 
-**Output**
+**Result**
 
-	<table cellpadding="0" cellspacing="0" border="0" class="list">
-		<tbody>
-			<tr class="list-item list-item-with-bullet first-child">
-				<td class="list-bullet-wrapper">•</td>
-				<td class="list-item-wrapper">First</td>
-			</tr>
-			<tr class="list-item list-item-with-bullet last-child">
-				<td class="list-bullet-wrapper">•</td>
-				<td class="list-item-wrapper">Second</td>
-			</tr>
-		</tbody>
-	</table>
+    <table cellspacing="0" cellpadding="0" border="0" class="list list-ordered"
+    align="left">
+      <tbody>
+        <tr class="list-item first-child">
+          <td class="list-bullet-wrapper" align="left">1</td>
+          <td class="list-item-wrapper" align="left">Item <strong>one</strong>.</td>
+        </tr>
+        <tr class="list-item last-child">
+          <td class="list-bullet-wrapper" align="left">2</td>
+          <td class="list-item-wrapper" align="left">Item two.</td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
-- bullet : string `(default "\u2022")`
-- cellSpacing : number or string
-- cellPadding : number or string
-- border : number or string
+- cellPadding : string `(default 0)`
+- cellSpacing : string `(default 0)`
+- border : number `(default 0)`
 - bgColor : string
 - className : string
 - style : object
-- width : number or string
-- align : one of "left", "center", "right"
+- width : string or number
+- align : one of "left", "center", "right" `(default "left")`
+
+
+
+## MediaObject
+
+The `MediaObject` component makes it easy to create a two column layout without a conditional `<td>` as a separator.
+
+Note that there must exactly two `Col` child elements. It's permissible to specify the width of one, two or no `Col` children.
+
+**Example**
+
+    var React = require("react");
+    var MediaObject = require("./MediaObject");
+    var Col = require("./layout/Col");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <MediaObject width={500}>
+        <Col width={300} wrapper={{className: "text-large"}}><img src="images/offer.jpg" /></Col>
+        <Col align="right">This is the block of copy.</Col>
+      </MediaObject>
+    );
+
+**Result**
+
+    <table cellspacing="0" cellpadding="0" border="0" class="media-object"
+    width="500" align="center">
+      <tbody>
+        <tr>
+          <td class="media-object-wrapper">
+            <table cellspacing="0" cellpadding="0" border="0" class="col" width="290"
+            align="left">
+              <tbody>
+                <tr>
+                  <td class="col-wrapper text-large" width="290">
+                    <img src="images/offer.jpg">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table cellspacing="0" cellpadding="0" border="0" class="col" width="190"
+            align="right">
+              <tbody>
+                <tr>
+                  <td class="col-wrapper" width="190" align="left" valign="top">This is the block of copy.</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+**Props**
+
+- cellPadding : string `(default 0)`
+- cellSpacing : string `(default 0)`
+- border : number `(default 0)`
+- bgColor : string
+- className : string
+- style : object
+- width : number ***[required]***
+- align : one of "left", "center", "right" `(default "center")`
+- wrapper : shape
+	- className : string
+	- style : object
+	- bgColor : string
+	- width : number or string
+	- height : number or string
+	- align : one of "left", "center", "right" `(default "left")`
+	- valign : one of "top", "middle", "bottom" `(default "top")`
+
+The `wrapper` property will have all its properties applied to the inner `.media-object-wrapper` element.

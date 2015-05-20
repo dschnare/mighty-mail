@@ -8,7 +8,7 @@ var List = require("./List");
 var OrderedList = React.createClass({
 	render: function () {
 		return (
-			<List bullet={List.ORDERED}>
+			<List {...this.props} bullet={List.ORDERED}>
 				{this.props.children}
 			</List>
 		);

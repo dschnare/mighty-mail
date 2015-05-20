@@ -1,6 +1,6 @@
 {
   "name": "mighty-mail",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Reactjs components for static server rendering of HTML emails.",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "async": "^0.9.0",
-    "glob": "^5.0.5",
+    "glob": "^5.0.6",
     "gulp": "^3.8.11",
     "gulp-eslint": "^0.9.0",
     "gulp-less": "^3.0.3",

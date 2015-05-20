@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.1
+
+*May 20, 2015*
+
+- Add build task for auto generating component example documentation.
+- Add mixins for shape properties such as wrapper on any component that has default values for such properites.
+- Add logic to check the width and height of an Image component before loading the image from disk.
+
+
 ## 1.1.0
 
 *May 16, 2015*
