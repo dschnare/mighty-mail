@@ -9,7 +9,7 @@ function config() {
 
 	cfg.dest = ".";
 	cfg.styles = "sass";
-	cfg.template = "template.html";
+	cfg.template = "templates/email.tpl.html";
 
 	cfg.srcFiles = glob.sync("src/**/*.js?(x)");
 	cfg.srcMainEntry = "./index.js";

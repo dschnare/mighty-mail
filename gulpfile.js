@@ -10,7 +10,7 @@ var html = require("html");
 var async = require("async");
 var request = require("superagent");
 
-var mighty = require("./index");
+var mighty = null;
 
 var gulp = require("gulp");
 var cfg = require("./gulp.config");
@@ -77,6 +77,8 @@ gulp.task("test", ["test:build"], function (done) {
 });
 
 gulp.task("docs", ["script:build"], function (done) {
+	mighty = require("./index");
+
 	enumerateComponentModules(function (error, componentModules) {
 		if (error) {
 			done(error);
