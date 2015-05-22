@@ -10,6 +10,58 @@ styles as a base. All styles are also included as sass and less files.
 
 	npm install mighty-mail
 
+
+# Gotchas
+
+Because we're using React there are a few gotchas that you'll have to be aware of when implementing your emails.
+
+- HTML or JavaScript comments are not permitted in JSX code.
+
+To get around this the Mighty Mail components render HTML in a fashion that permitts HTML comments
+using the React binding syntax:
+
+	{"<!-- my comment -->"}
+
+- Normally HTML entities are a big problem with React, but the Mighty Mail components are rendered in a way that permits HTML entities.
+
+For example, Mighty Mail will render this as you would expect.
+
+	<Row>
+		<Col>Procter &amp; Gamble</Col>
+	</Row>
+
+However, there may be certain cases where you get escaped output. For those cases you can use any of the built in HTML entities provided by Mighty Mail
+or you can use your own. You'll simply have to use the unicode sequence for your entity in a React binding.
+
+	// Renders the same as above.
+	<Row>
+		<Col>Procter {"\u0026"} Gamble</Col>
+	</Row>
+
+Or using the Mighty Mail entity for ampersand:
+
+	<Row>
+		<Col>Procter {mighty.AMP} Gamble</Col>
+	</Row>
+
+The following entites are exported on the module.
+
+	AMP = "\u0026";
+	NBSP = "\u00A0";
+	RSQUO = "\u2019";
+	LSQUO = "\u2018";
+	RDQUO = "\u201D";
+	LDQUO = "\u201C";
+	EMDASH = "\u2014";
+	ENDASH = "\u2013";
+	REG = "\u00AE";
+	TM = "\u2122";
+	BULL = "\u2022";
+	GT = "\u003E";
+	LT = "\u003C";
+
+
+
 # Components
 
 ## Layout
@@ -83,7 +135,7 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
 - className : string
 - style: object
 - width: number or string `(default "100%")`
-- align: one of "left", "center", "right" `default "center")`
+- align: one of "left", "center", "right" `(default "center")`
 - wrapper : shape 
 	- className : string
 	- style : object
@@ -184,7 +236,7 @@ respect the deimensions of the email body.
 - className : .string
 - style : .object
 - width : number or string `(default "100%")`
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right" `(default "center")`
 - wrapper : shape
 	- className : string
 	- style : object
@@ -421,7 +473,7 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
 - className : string
 - style : object
 - width : string or number
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 
 
 

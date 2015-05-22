@@ -25,6 +25,14 @@ var FullWidthRow = React.createClass({
 		wrapper: React.PropTypes.shape(defineTdProps()),
 		rowWrapper: React.PropTypes.shape(defineTdProps())
 	},
+	getDefaultProps: function () {
+		return {
+			wrapper: {
+				align: "center",
+				valign: "top"
+			}
+		};
+	},
 	render: function () {
 		var containerProps = this.getContainerProps();
 		var rowProps = this.getRowProps();
@@ -45,10 +53,7 @@ var FullWidthRow = React.createClass({
 			className: this.props.className,
 			width: "100%",
 			align: "center",
-			wrapper: pluckTdProps(mixin({}, this.props.wrapper || {}, {
-				align: "center",
-				valign: "top"
-			}))
+			wrapper: pluckTdProps(mixin({}, FullWidthRow.defaultProps.wrapper, this.props.wrapper || {}))
 		};
 	},
 	getRowProps: function () {

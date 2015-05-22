@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.1.2
+
+*May 22, 2015*
+
+- Add logic in mixin() to remove properties if keys are set to null or undefined.
+- Add logic in plucTdProps() and pluckTableProps() to only pluck properties that actually exist.
+- Change order of mixin of Row wrapper properties so that the defaults can be overridden.
+- Use RawHtml the following components: Table, ListeItem wrapper and Para wrapper.
+- Add section describing the HTML entities to the Readme.
+- Add section describing gotchas with React programming to the Readme.
+- Add AMP to the list of exported entities.
+
+
 ## 1.1.1
 
 *May 20, 2015*

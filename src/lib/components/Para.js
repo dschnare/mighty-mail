@@ -5,6 +5,7 @@
 
 
 var React = require("react");
+var RawHtml = require("./RawHtml");
 var Container = require("./layout/Container");
 var classNames = require("classnames");
 var defineTdProps = require("../util/defineTdProps");
@@ -21,8 +22,8 @@ var Para = React.createClass({
 	getDefaultProps: function () {
 		return {
 			wrapper: {
-				align: "left",
-				valign: "top"
+				valign: "top",
+				align: "left"
 			}
 		};
 	},
@@ -31,7 +32,7 @@ var Para = React.createClass({
 
 		return (
 			<tr className={classNames("para", this.props.className)}>
-				<td {...tdProps}>{this.props.children}</td>
+				<RawHtml wrapper="td" {...tdProps}>{this.props.children}</RawHtml>
 			</tr>
 		);
 	},

@@ -1,7 +1,11 @@
 "use strict";
 
 
+/*eslint no-unused-vars: 0*/
+
+
 var React = require("react");
+var RawHtml = require("./RawHtml");
 var classNames = require("classnames");
 var pluckTdProps = require("../util/pluckTdProps");
 var defineTdProps = require("../util/defineTdProps");
@@ -37,8 +41,8 @@ var ListItem = React.createClass({
 
 		return (
 			<tr className={classNames("list-item", this.props.className)}>
-				<td {...bulletProps}>{bullet}</td>
-				<td {...itemProps}>{this.props.children}</td>
+				<RawHtml wrapper="td" {...bulletProps}>{bullet}</RawHtml>
+				<RawHtml wrapper="td" {...itemProps}>{this.props.children}</RawHtml>
 			</tr>
 		);
 	},

@@ -33,7 +33,7 @@ var Row = React.createClass({
 			width: "100%",
 			align: "center",
 			wrapper: {
-				align: "left",
+				align: "center",
 				valign: "top"
 			}
 		};
@@ -62,20 +62,17 @@ var Row = React.createClass({
 		var containerProps = pluckTableProps(this.props);
 
 		containerProps.cssPrefix = "row";
-		containerProps.wrapper = pluckTdProps(mixin({}, this.props.wrapper || {}, {
-			align: "center",
-			valign: "top"
-		}));
+		containerProps.wrapper = pluckTdProps(mixin({}, Row.defaultProps.wrapper, this.props.wrapper || {}));
 
 		return containerProps;
 	},
 	transformColsForOutlook: function (cols) {
 		var children = [];
 		var containerProps = this.getContainerProps();
-		var outlookConditionalTd = '<!--[if mso]></td><td align="%align%" valign="%valign%"><![endif]-->';
+		var outlookConditionalTd = '<!--[if mso]></td><td %align% %valign%><![endif]-->';
 
-		outlookConditionalTd = outlookConditionalTd.replace("%align%", containerProps.wrapper.align);
-		outlookConditionalTd = outlookConditionalTd.replace("%valign%", containerProps.wrapper.valign);
+		outlookConditionalTd = outlookConditionalTd.replace("%align%", containerProps.wrapper.align ? "align=\"" + containerProps.wrapper.align + "\"" : "");
+		outlookConditionalTd = outlookConditionalTd.replace("%valign%", containerProps.wrapper.valign ? "valign=\"" + containerProps.wrapper.valign + "\"" : "");
 
 		cols.forEach(function (col, i) {
 			if (i > 0) {

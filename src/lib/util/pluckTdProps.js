@@ -4,17 +4,23 @@
 var classNames = require("classnames");
 
 
+var propNames = "bgColor,className,style,width,height,align,valign".split(",");
+
 function pluckTdProps(o) {
 	o = o || {};
-	return {
-		bgColor: o.bgColor,
-		className: classNames(o.className),
-		style: o.style,
-		width: o.width,
-		height: o.height,
-		align: o.align,
-		valign: o.valign
-	};
+	var props = {};
+
+	propNames.forEach(function (propName) {
+		if (o.hasOwnProperty(propName)) {
+			props[propName] = o[propName];
+		}
+	});
+
+	if (props.className) {
+		props.className = classNames(props.className);
+	}
+
+	return props;
 }
 
 module.exports = pluckTdProps;

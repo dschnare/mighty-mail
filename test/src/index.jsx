@@ -8,13 +8,9 @@ var React = require("react");
 var mighty = require("../../index");
 var {
 		Frame, Row, Col, FullWidthRow, Table,
-		List, OrderedList, ListItem, Divider, Image, Hero,
+		List: Ul, OrderedList: Ol, ListItem: Li, Divider, Image, Hero,
 		MediaObject, Para, ParaBlock, Button
 } = mighty;
-
-var Ol = OrderedList;
-var Ul = List;
-var Li = ListItem;
 
 //"images/client-dashboard.jpg";//
 var imgSrc = "http://arabic-media.com/articles/id/upload/life-on-earth-end-in-3-5bn-years.jpg";
@@ -24,15 +20,11 @@ Image.imageBasePath = "test";
 module.exports.render = function () {
 	var markup = React.renderToStaticMarkup(
 			<Frame width={500} border="1" borderColor="#d7d7d7">
-				<Row>
-					<Col align="center" wrapper={{align: "center"}}>
-						<Hero background={imgSrc} width={308} height={220}>
-							Yep I am a hero.
-						</Hero>
-					</Col>
-				</Row>
+				<Hero background={imgSrc} width={308} height={220}>
+					Yep I am a hero. &amp; {mighty.AMP} {"\u003C"}
+				</Hero>
 
-				<Row width={500} gutter={10}>
+				<Row width={500} gutter={10} wrapper={{valign: "middle"}}>
 					<Col>
 						<Ul>
 							<Li>Item 1</Li>

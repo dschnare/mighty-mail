@@ -13,7 +13,7 @@ function applyChildMask(mask, children) {
 	var maskedChildren = [];
 
 	React.Children.forEach(children, function (child) {
-		if (mask[child.type.displayName || child.type]) {
+		if (child.type && mask[child.type.displayName || child.type]) {
 			maskedChildren.push(child);
 		}
 	});

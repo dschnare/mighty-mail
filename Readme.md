@@ -10,6 +10,58 @@ styles as a base. All styles are also included as sass and less files.
 
 	npm install mighty-mail
 
+
+# Gotchas
+
+Because we're using React there are a few gotchas that you'll have to be aware of when implementing your emails.
+
+- HTML or JavaScript comments are not permitted in JSX code.
+
+To get around this the Mighty Mail components render HTML in a fashion that permitts HTML comments
+using the React binding syntax:
+
+	{"<!-- my comment -->"}
+
+- Normally HTML entities are a big problem with React, but the Mighty Mail components are rendered in a way that permits HTML entities.
+
+For example, Mighty Mail will render this as you would expect.
+
+	<Row>
+		<Col>Procter &amp; Gamble</Col>
+	</Row>
+
+However, there may be certain cases where you get escaped output. For those cases you can use any of the built in HTML entities provided by Mighty Mail
+or you can use your own. You'll simply have to use the unicode sequence for your entity in a React binding.
+
+	// Renders the same as above.
+	<Row>
+		<Col>Procter {"\u0026"} Gamble</Col>
+	</Row>
+
+Or using the Mighty Mail entity for ampersand:
+
+	<Row>
+		<Col>Procter {mighty.AMP} Gamble</Col>
+	</Row>
+
+The following entites are exported on the module.
+
+	AMP = "\u0026";
+	NBSP = "\u00A0";
+	RSQUO = "\u2019";
+	LSQUO = "\u2018";
+	RDQUO = "\u201D";
+	LDQUO = "\u201C";
+	EMDASH = "\u2014";
+	ENDASH = "\u2013";
+	REG = "\u00AE";
+	TM = "\u2122";
+	BULL = "\u2022";
+	GT = "\u003E";
+	LT = "\u003C";
+
+
+
 # Components
 
 ## Layout
@@ -41,7 +93,7 @@ The `Table` component is an alias for creating a `<table>` with `cellspacing`, `
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="" align="left">
+    <table cellspacing="0" cellpadding="0" border="0" align="left">
       <tbody>
         <tr>
           <td>Col 1</td>
@@ -81,10 +133,10 @@ The `Container` component is general purpose, composable component that can be u
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="container" align="left">
+    <table cellspacing="0" cellpadding="0" border="0" align="left" class="container">
       <tbody>
         <tr>
-          <td class="container-wrapper" align="left" valign="top">My Content</td>
+          <td align="left" valign="top" class="container-wrapper">My Content</td>
         </tr>
       </tbody>
     </table>
@@ -134,12 +186,11 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="frame" width="100%"
-    align="center">
+    <table cellspacing="0" cellpadding="0" border="0" width="100%" align="center"
+    class="frame">
       <tbody>
         <tr>
-          <td class="frame-wrapper" style="border:1px solid #ff0000;" align="center"
-          valign="top">My Content</td>
+          <td style="border:1px solid #ff0000;" align="center" valign="top" class="frame-wrapper">My Content</td>
         </tr>
       </tbody>
     </table>
@@ -154,7 +205,7 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
 - className : string
 - style: object
 - width: number or string `(default "100%")`
-- align: one of "left", "center", "right" `default "center")`
+- align: one of "left", "center", "right" `(default "center")`
 - wrapper : shape 
 	- className : string
 	- style : object
@@ -190,16 +241,16 @@ The `Row` component will layout `Col` components in a single horizontal row with
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="row" width="600"
-    align="center">
+    <table cellspacing="0" cellpadding="0" border="0" width="600" align="center"
+    class="row">
       <tbody>
         <tr>
-          <td class="row-wrapper" align="center" valign="top">
-            <table cellspacing="0" cellpadding="0" border="0" class="col" width="295"
-            align="left">
+          <td align="center" valign="top" class="row-wrapper">
+            <table cellspacing="0" cellpadding="0" border="0" width="295" align="left"
+            class="col">
               <tbody>
                 <tr>
-                  <td class="col-wrapper" width="295" align="center">One</td>
+                  <td width="295" align="center" class="col-wrapper">One</td>
                 </tr>
               </tbody>
             </table>
@@ -207,11 +258,11 @@ The `Row` component will layout `Col` components in a single horizontal row with
           </td>
           <td align="center" valign="top">
           <![endif]-->
-          <table cellspacing="0" cellpadding="0" border="0" class="col" width="305"
-          align="left">
+          <table cellspacing="0" cellpadding="0" border="0" width="305" align="left"
+          class="col">
             <tbody>
               <tr>
-                <td class="col-wrapper" style="padding-left:10px;" width="305" align="center">Two</td>
+                <td style="padding-left:10px;" width="305" align="center" class="col-wrapper">Two</td>
               </tr>
             </tbody>
           </table>
@@ -266,10 +317,10 @@ The `Col` component is mainly used as a column within a row, but there are no re
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="col" align="left">
+    <table cellspacing="0" cellpadding="0" border="0" align="left" class="col">
       <tbody>
         <tr>
-          <td class="col-wrapper" align="center">My Column</td>
+          <td align="center" class="col-wrapper">My Column</td>
         </tr>
       </tbody>
     </table>
@@ -329,16 +380,16 @@ respect the deimensions of the email body.
     width="100%" align="center">
       <tbody>
         <tr>
-          <td class="full-width-row-wrapper" align="center" valign="top">
-            <table cellspacing="0" cellpadding="0" border="0" class="row" width="100%"
-            align="center">
+          <td align="center" valign="top" class="full-width-row-wrapper">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%" align="center"
+            class="row">
               <tbody>
                 <tr>
-                  <td class="row-wrapper" align="center" valign="top">
-                    <table cellspacing="0" cellpadding="0" border="0" class="col" align="left">
+                  <td align="center" valign="top" class="row-wrapper">
+                    <table cellspacing="0" cellpadding="0" border="0" align="left" class="col">
                       <tbody>
                         <tr>
-                          <td class="col-wrapper" align="left" valign="top">One</td>
+                          <td align="left" valign="top" class="col-wrapper">One</td>
                         </tr>
                       </tbody>
                     </table>
@@ -346,10 +397,10 @@ respect the deimensions of the email body.
                   </td>
                   <td align="center" valign="top">
                   <![endif]-->
-                  <table cellspacing="0" cellpadding="0" border="0" class="col" align="left">
+                  <table cellspacing="0" cellpadding="0" border="0" align="left" class="col">
                     <tbody>
                       <tr>
-                        <td class="col-wrapper" align="left" valign="top">Two</td>
+                        <td align="left" valign="top" class="col-wrapper">Two</td>
                       </tr>
                     </tbody>
                   </table>
@@ -371,7 +422,7 @@ respect the deimensions of the email body.
 - className : .string
 - style : .object
 - width : number or string `(default "100%")`
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right" `(default "center")`
 - wrapper : shape
 	- className : string
 	- style : object
@@ -525,8 +576,8 @@ The `Hero` component renders an area with a background image behind its content.
     width="600" align="center">
       <tbody>
         <tr>
-          <td bgcolor="#ffffff" class="hero-bg" width="600" height="400" align="center"
-          valign="middle" background="images/hero.jpg">
+          <td align="center" valign="middle" background="images/hero.jpg" bgcolor="#ffffff"
+          width="600" height="400" class="hero-bg">
             <!--[if gte mso 9]>
               <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"
               style="width:600px;height:400px;">
@@ -534,7 +585,7 @@ The `Hero` component renders an area with a background image behind its content.
                 <v:textbox inset="0,0,0,0">
                 <![endif]-->
                 <div>
-                  <table cellspacing="0" cellpadding="0" border="0" class="col" align="center">
+                  <table cellspacing="0" cellpadding="0" border="0" align="center" class="col">
                     <tbody>
                       <tr>
                         <td bgcolor="#ffffff" class="col-wrapper hero-wrapper" height="400" align="center"
@@ -598,10 +649,10 @@ The `ParaBlock` is a container for `Paragraph` components.
     <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
       <tbody>
         <tr class="para first-child">
-          <td class="para-wrapper" align="left" valign="top">Paragraph <strong>one</strong>.</td>
+          <td align="left" valign="top" class="para-wrapper">Paragraph <strong>one</strong>.</td>
         </tr>
         <tr class="para last-child">
-          <td class="para-wrapper" align="left" valign="top">Paragraph two.</td>
+          <td align="left" valign="top" class="para-wrapper">Paragraph two.</td>
         </tr>
       </tbody>
     </table>
@@ -643,7 +694,7 @@ These components can only be used within `ParagraphBlock` components.
     <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
       <tbody>
         <tr class="para first-child">
-          <td class="para-wrapper" align="left" valign="top">Paragraph <strong>one</strong>.</td>
+          <td align="left" valign="top" class="para-wrapper">Paragraph <strong>one</strong>.</td>
         </tr>
         <tr class="para last-child">
           <td class="para-wrapper text-large" align="left" valign="top">Paragraph two.</td>
@@ -757,12 +808,12 @@ The `List` component renders a list of items when more control over spacing is n
     <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
       <tbody>
         <tr class="list-item first-child">
-          <td class="list-bullet-wrapper" align="left">•</td>
-          <td class="list-item-wrapper" align="left">Item <strong>one</strong>.</td>
+          <td align="left" class="list-bullet-wrapper">•</td>
+          <td align="left" class="list-item-wrapper">Item <strong>one</strong>.</td>
         </tr>
         <tr class="list-item last-child">
-          <td class="list-bullet-wrapper" align="left">•</td>
-          <td class="list-item-wrapper" align="left">Item two.</td>
+          <td align="left" class="list-bullet-wrapper">•</td>
+          <td align="left" class="list-item-wrapper">Item two.</td>
         </tr>
       </tbody>
     </table>
@@ -811,8 +862,8 @@ These components can only be used within `List` or `BulletList` components.
           <td class="list-item-wrapper text-large" align="left">Item <strong>one</strong>.</td>
         </tr>
         <tr class="list-item last-child">
-          <td class="list-bullet-wrapper" align="left">•</td>
-          <td class="list-item-wrapper" align="left">Item two.</td>
+          <td align="left" class="list-bullet-wrapper">•</td>
+          <td align="left" class="list-item-wrapper">Item two.</td>
         </tr>
       </tbody>
     </table>
@@ -868,12 +919,12 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
     align="left">
       <tbody>
         <tr class="list-item first-child">
-          <td class="list-bullet-wrapper" align="left">1</td>
-          <td class="list-item-wrapper" align="left">Item <strong>one</strong>.</td>
+          <td align="left" class="list-bullet-wrapper">1</td>
+          <td align="left" class="list-item-wrapper">Item <strong>one</strong>.</td>
         </tr>
         <tr class="list-item last-child">
-          <td class="list-bullet-wrapper" align="left">2</td>
-          <td class="list-item-wrapper" align="left">Item two.</td>
+          <td align="left" class="list-bullet-wrapper">2</td>
+          <td align="left" class="list-item-wrapper">Item two.</td>
         </tr>
       </tbody>
     </table>
@@ -887,7 +938,7 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
 - className : string
 - style : object
 - width : string or number
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 
 
 
@@ -914,13 +965,13 @@ Note that there must exactly two `Col` child elements. It's permissible to speci
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="media-object"
-    width="500" align="center">
+    <table cellspacing="0" cellpadding="0" border="0" width="500" align="center"
+    class="media-object">
       <tbody>
         <tr>
           <td class="media-object-wrapper">
-            <table cellspacing="0" cellpadding="0" border="0" class="col" width="290"
-            align="left">
+            <table cellspacing="0" cellpadding="0" border="0" width="290" align="left"
+            class="col">
               <tbody>
                 <tr>
                   <td class="col-wrapper text-large" width="290">
@@ -929,11 +980,11 @@ Note that there must exactly two `Col` child elements. It's permissible to speci
                 </tr>
               </tbody>
             </table>
-            <table cellspacing="0" cellpadding="0" border="0" class="col" width="190"
-            align="right">
+            <table cellspacing="0" cellpadding="0" border="0" width="190" align="right"
+            class="col">
               <tbody>
                 <tr>
-                  <td class="col-wrapper" width="190" align="left" valign="top">This is the block of copy.</td>
+                  <td width="190" align="left" valign="top" class="col-wrapper">This is the block of copy.</td>
                 </tr>
               </tbody>
             </table>

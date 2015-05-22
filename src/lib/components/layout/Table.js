@@ -5,6 +5,7 @@
 
 
 var React = require("react");
+var RawHtml = require("../RawHtml");
 var defineTableProps = require("../../util/defineTableProps");
 var pluckTableProps = require("../../util/pluckTableProps");
 
@@ -24,9 +25,9 @@ var Table = React.createClass({
 		var tableProps = this.getTableProps();
 
 		return (
-			<table {...tableProps}>
+			<RawHtml wrapper="table" {...tableProps}>
 				{this.props.children}
-			</table>
+			</RawHtml>
 		);
 	},
 	// Private API
