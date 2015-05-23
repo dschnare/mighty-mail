@@ -1,0 +1,17 @@
+.media-object-wrapper img {
+	width: 100%;
+	height: auto;
+}
+
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+	[class~="media-object"] {
+		width: 100% !important;
+	}
+
+	[class~="media-object-wrapper"] {
+		width: auto !important;
+		height: auto !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+}

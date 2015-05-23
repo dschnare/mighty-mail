@@ -1,13 +1,8 @@
 @charset "UTF-8";
 
-@import "partials/_reset";
+@import "_variables";
+@import "partials/_base";
 @import "partials/_typography";
-@import "partials/_padding";
-@import "partials/_baseline";
-@import "partials/_alignment";
-@import "partials/_dimensions";
-@import "partials/_list";
-@import "partials/_media-object";
-@import "partials/_default-baselines";
-@import "partials/_unpadding";
+@import "partials/_layout";
+@import "partials/_components";
 @import "partials/_responsive";

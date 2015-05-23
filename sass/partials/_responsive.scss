@@ -1,95 +1,6 @@
-// Styles that apply for mobile devices.
+// Convenient styles that apply to mobile devices.
 
 @media screen and (max-width: 480px), screen and (max-device-width: 480px) {
-	// Images
-
-	img {
-		max-width: 100% !important;
-		height: auto !important;
-	}
-
-	// Frame
-
-	[class~="frame"] {
-		width: 100% !important;
-	}
-
-	[class~="frame-wrapper"] {
-		width: auto !important;
-		height: auto !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
-
-	// Grid layout
-
-	[class~="row"] {
-		width: 100% !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
-
-	[class~="row-wrapper"] {
-		width: auto !important;
-		height: auto !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
-
-	[class~="col"] {
-		width: 100% !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
-
-	[class~="col-wrapper"] {
-		width: auto !important;
-		height: auto !important;
-		padding-left: 2% !important;
-		padding-right: 2% !important;
-
-		[class~="col-wrapper"] {
-			padding: 0 !important;
-		}
-	}
-
-	// Media Object
-
-	[class~="media-object"] {
-		width: 100% !important;
-	}
-
-	[class~="media-object-wrapper"] {
-		width: auto !important;
-		height: auto !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
-
-	// Hero
-
-	[class~="hero"] {
-		width: 100% !important;
-	}
-
-	[class~="hero-wrapper"],
-	[class~="hero-bg"] {
-		width: 100% !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		background-position: center;
-	}
-
-	// Divider
-
-	[class~="divider"] {
-		width: 100% !important;
-	}
-
-	[class~="divider-wrapper"] {
-		width: auto !important;
-	}
-
 	// Visibility
 
 	[class~="m-hidden"] {
@@ -166,9 +77,67 @@
 		vertical-align: bottom !important;
 	}
 
-	// Padding
+	// Baseline
 
-	$m-padding: $padding;
+	[class~="m-topline-quarter"] {
+	  padding-top: $m-baseline * 0.25 !important;
+	}
+
+	[class~="m-topline-half"] {
+	  padding-top: $m-baseline * 0.5 !important;
+	}
+
+	[class~="m-topline"] {
+	  padding-top: $m-baseline !important;
+	}
+
+	[class~="m-topline-1_5x"] {
+	  padding-top: $m-baseline * 1.5 !important;
+	}
+
+	[class~="m-topline-2x"] {
+	  padding-top: $m-baseline * 2 !important;
+	}
+
+	[class~="m-topline-2_5x"] {
+	  padding-top: $m-baseline * 2.5 !important;
+	}
+
+	[class~="m-topline-3x"] {
+	  padding-top: $m-baseline * 3 !important;
+	}
+
+	//--
+
+	[class~="m-baseline-quarter"] {
+	  padding-bottom: $m-baseline * 0.25 !important;
+	}
+
+	[class~="m-baseline-half"] {
+	  padding-bottom: $m-baseline * 0.5 !important;
+	}
+
+	[class~="m-baseline"] {
+	  padding-bottom: $m-baseline !important;
+	}
+
+	[class~="m-baseline-1_5x"] {
+	  padding-bottom: $m-baseline * 1.5 !important;
+	}
+
+	[class~="m-baseline-2x"] {
+	  padding-bottom: $m-baseline * 2 !important;
+	}
+
+	[class~="m-baseline-2_5x"]{
+	  padding-bottom: $m-baseline * 2.5 !important;
+	}
+
+	[class~="m-baseline-3x"] {
+	  padding-bottom: $m-baseline * 3 !important;
+	}
+
+	// Padding
 
 	[class~="m-padding-quarter"] {
 		padding-left: $m-padding * 0.25 !important;
@@ -273,69 +242,7 @@
 		padding-right: $m-padding * 3 !important;
 	}
 
-	// Baseline
-
-	$m-baseline: $baseline;
-
-	[class~="m-topline-quarter"] {
-	  padding-top: $m-baseline * 0.25 !important;
-	}
-
-	[class~="m-topline-half"] {
-	  padding-top: $m-baseline * 0.5 !important;
-	}
-
-	[class~="m-topline"] {
-	  padding-top: $m-baseline !important;
-	}
-
-	[class~="m-topline-1_5x"] {
-	  padding-top: $m-baseline * 1.5 !important;
-	}
-
-	[class~="m-topline-2x"] {
-	  padding-top: $m-baseline * 2 !important;
-	}
-
-	[class~="m-topline-2_5x"] {
-	  padding-top: $m-baseline * 2.5 !important;
-	}
-
-	[class~="m-topline-3x"] {
-	  padding-top: $m-baseline * 3 !important;
-	}
-
 	//--
-
-	[class~="m-baseline-quarter"] {
-	  padding-bottom: $m-baseline * 0.25 !important;
-	}
-
-	[class~="m-baseline-half"] {
-	  padding-bottom: $m-baseline * 0.5 !important;
-	}
-
-	[class~="m-baseline"] {
-	  padding-bottom: $m-baseline !important;
-	}
-
-	[class~="m-baseline-1_5x"] {
-	  padding-bottom: $m-baseline * 1.5 !important;
-	}
-
-	[class~="m-baseline-2x"] {
-	  padding-bottom: $m-baseline * 2 !important;
-	}
-
-	[class~="m-baseline-2_5x"]{
-	  padding-bottom: $m-baseline * 2.5 !important;
-	}
-
-	[class~="m-baseline-3x"] {
-	  padding-bottom: $m-baseline * 3 !important;
-	}
-
-	// Unpadding
 
 	[class~="m-padding-none-top"] {
 		padding-top: 0;

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.3
+
+*May 23, 2015*
+
+- Refactor LESS and SASS styles to be more organized and follow the SMACSS approach to categorizing styles.
+
+
 ## 1.1.2
 
 *May 22, 2015*
