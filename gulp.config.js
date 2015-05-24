@@ -8,7 +8,7 @@ function config() {
 	var cfg = {};
 
 	cfg.dest = ".";
-	cfg.styles = "less";
+	cfg.styles = "sass";
 	cfg.template = "templates/email.tpl.html";
 
 	cfg.srcFiles = glob.sync("src/**/*.js?(x)");

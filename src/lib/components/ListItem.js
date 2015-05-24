@@ -40,7 +40,7 @@ var ListItem = React.createClass({
 		var bullet = this.props.bullet;
 
 		return (
-			<tr className={classNames("list-item", this.props.className)}>
+			<tr className={classNames("list__item", this.props.className)}>
 				<RawHtml wrapper="td" {...bulletProps}>{bullet}</RawHtml>
 				<RawHtml wrapper="td" {...itemProps}>{this.props.children}</RawHtml>
 			</tr>
@@ -50,14 +50,14 @@ var ListItem = React.createClass({
 	getItemProps: function () {
 		var itemProps = pluckTdProps(mixin({}, ListItem.defaultProps.itemWrapper, this.props.itemWrapper || {}));
 
-		itemProps.className = classNames("list-item-wrapper", itemProps.className);
+		itemProps.className = classNames("list__item-wrapper", itemProps.className);
 
 		return itemProps;
 	},
 	getBulletProps: function () {
 		var itemProps = pluckTdProps(mixin({}, ListItem.defaultProps.bulletWrapper, this.props.itemWrapper || {}));
 
-		itemProps.className = classNames("list-bullet-wrapper", itemProps.className);
+		itemProps.className = classNames("list__bullet-wrapper", itemProps.className);
 
 		return itemProps;
 	}

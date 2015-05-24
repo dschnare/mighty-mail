@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0
+
+*May 23, 2015*
+
+- Refactor component classes to follow BEM approach described [here](http://cssguidelin.es/#bem-like-naming).
+- Update the "list-numbered" class to be "list--ordered".
+
+
 ## 1.1.3
 
 *May 23, 2015*

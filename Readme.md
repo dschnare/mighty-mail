@@ -136,7 +136,7 @@ The `Container` component is general purpose, composable component that can be u
     <table cellspacing="0" cellpadding="0" border="0" align="left" class="container">
       <tbody>
         <tr>
-          <td align="left" valign="top" class="container-wrapper">My Content</td>
+          <td align="left" valign="top" class="container__wrapper">My Content</td>
         </tr>
       </tbody>
     </table>
@@ -161,7 +161,7 @@ The `Container` component is general purpose, composable component that can be u
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.container-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.container__wrapper` element.
 
 The `cssPrefix` property will be used as the class name prefix when setting the base class name
 for the `<table>` and `<td>` elements.
@@ -190,7 +190,7 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
     class="frame">
       <tbody>
         <tr>
-          <td style="border:1px solid #ff0000;" align="center" valign="top" class="frame-wrapper">My Content</td>
+          <td style="border:1px solid #ff0000;" align="center" valign="top" class="frame__wrapper">My Content</td>
         </tr>
       </tbody>
     </table>
@@ -206,7 +206,7 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
 - style: object
 - width: number or string `(default "100%")`
 - align: one of "left", "center", "right" `(default "center")`
-- wrapper : shape 
+- wrapper : shape
 	- className : string
 	- style : object
 	- bgColor : string
@@ -216,7 +216,7 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
 
-The `wrapper` property will have all its properties applied to the inner `.frame-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.frame__wrapper` element.
 
 
 
@@ -245,12 +245,12 @@ The `Row` component will layout `Col` components in a single horizontal row with
     class="row">
       <tbody>
         <tr>
-          <td align="center" valign="top" class="row-wrapper">
+          <td align="center" valign="top" class="row__wrapper">
             <table cellspacing="0" cellpadding="0" border="0" width="295" align="left"
             class="col">
               <tbody>
                 <tr>
-                  <td width="295" align="center" class="col-wrapper">One</td>
+                  <td width="295" align="center" class="col__wrapper">One</td>
                 </tr>
               </tbody>
             </table>
@@ -262,7 +262,7 @@ The `Row` component will layout `Col` components in a single horizontal row with
           class="col">
             <tbody>
               <tr>
-                <td style="padding-left:10px;" width="305" align="center" class="col-wrapper">Two</td>
+                <td style="padding-left:10px;" width="305" align="center" class="col__wrapper">Two</td>
               </tr>
             </tbody>
           </table>
@@ -283,7 +283,7 @@ The `Row` component will layout `Col` components in a single horizontal row with
 - width: number or string `(default "100%")`
 - align: one of "left", "center", "right" `(default "center")`
 - gutter : number
-- wrapper : shape 
+- wrapper : shape
 	- className : string
 	- style : object
 	- bgColor : string
@@ -292,11 +292,9 @@ The `Row` component will layout `Col` components in a single horizontal row with
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.row-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.row__wrapper` element.
 
-If no `gutter` is speficied or the `width` is a string then the columns will not be distrubuted (i.e. their widths will be untouched).
-Otherwise each column will have its width distributed appropriately to support the gutter. You can still specify a width as a string or
-a number with no gutter and manually specify your column widths.
+If no `gutter` is speficied or the `width` is a string then the columns will not be distrubuted (i.e. their widths will be untouched). Otherwise each column will have its width distributed appropriately to support the gutter. You can still specify a width as a string or a number with no gutter and manually specify your column widths.
 
 
 
@@ -320,7 +318,7 @@ The `Col` component is mainly used as a column within a row, but there are no re
     <table cellspacing="0" cellpadding="0" border="0" align="left" class="col">
       <tbody>
         <tr>
-          <td align="center" class="col-wrapper">My Column</td>
+          <td align="center" class="col__wrapper">My Column</td>
         </tr>
       </tbody>
     </table>
@@ -347,7 +345,7 @@ The `Col` component is mainly used as a column within a row, but there are no re
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.col-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.col__wrapper` element.
 
 The `span` property is used by the `Row` component as a colspan for a given column.
 
@@ -380,16 +378,16 @@ respect the deimensions of the email body.
     width="100%" align="center">
       <tbody>
         <tr>
-          <td align="center" valign="top" class="full-width-row-wrapper">
+          <td align="center" valign="top" class="full-width-row__wrapper">
             <table cellspacing="0" cellpadding="0" border="0" width="100%" align="center"
             class="row">
               <tbody>
                 <tr>
-                  <td align="center" valign="top" class="row-wrapper">
+                  <td align="center" valign="top" class="row__wrapper">
                     <table cellspacing="0" cellpadding="0" border="0" align="left" class="col">
                       <tbody>
                         <tr>
-                          <td align="left" valign="top" class="col-wrapper">One</td>
+                          <td align="left" valign="top" class="col__wrapper">One</td>
                         </tr>
                       </tbody>
                     </table>
@@ -400,7 +398,7 @@ respect the deimensions of the email body.
                   <table cellspacing="0" cellpadding="0" border="0" align="left" class="col">
                     <tbody>
                       <tr>
-                        <td align="left" valign="top" class="col-wrapper">Two</td>
+                        <td align="left" valign="top" class="col__wrapper">Two</td>
                       </tr>
                     </tbody>
                   </table>
@@ -442,9 +440,9 @@ The `bgColor` and `className` properties are applied to the `.full-width-row` el
 
 The `width` and `gutter` properties are passed to a nested `Row` component.
 
-The `wrapper` property will have all its properties applied to the inner `.full-width-row-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.full-width-row__wrapper` element.
 
-The `rowWrapper` property will have all its properties applied to the inner `.row-wrapper` element.
+The `rowWrapper` property will have all its properties applied to the inner `.row__wrapper` element.
 
 
 ## Content
@@ -487,28 +485,7 @@ All other properties are set on the wrapper element as-is.
 
 The `Divider` component renders a horizontal divider.
 
-**Example**
-
-    var React = require("react");
-    var Divider = require("./Divider");
-    
-    /*eslint no-unused-vars: 0*/
-    
-    module.exports = (
-      <Divider color="#000000" thickness={2} />
-    );
-
-**Result**
-
-    <table cellspacing="0" cellpadding="0" border="0" class="divider" width="100%"
-    align="center">
-      <tbody>
-        <tr>
-          <td bgcolor="#000000" class="divider-wrapper" style="font-size:1px;line-height:1;mso-line-height-rule:exactly;"
-          width="100%" height="2" align="center"> </td>
-        </tr>
-      </tbody>
-    </table>
+{Divider:examples}
 
 **Props**
 
@@ -519,7 +496,7 @@ The `Divider` component renders a horizontal divider.
 - wrapper : shape
 	- className: string
 
-The `wrapper` property will have all its properties applied to the inner `.divider-row-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.divider__wrapper` element.
 
 
 
@@ -577,7 +554,7 @@ The `Hero` component renders an area with a background image behind its content.
       <tbody>
         <tr>
           <td align="center" valign="middle" background="images/hero.jpg" bgcolor="#ffffff"
-          width="600" height="400" class="hero-bg">
+          width="600" height="400" class="hero__bg">
             <!--[if gte mso 9]>
               <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"
               style="width:600px;height:400px;">
@@ -588,8 +565,8 @@ The `Hero` component renders an area with a background image behind its content.
                   <table cellspacing="0" cellpadding="0" border="0" align="center" class="col">
                     <tbody>
                       <tr>
-                        <td bgcolor="#ffffff" class="col-wrapper hero-wrapper" height="400" align="center"
-                        valign="middle">This is in the middle of the hero.</td>
+                        <td bgcolor="#ffffff" class="col__wrapper hero__wrapper" height="400"
+                        align="center" valign="middle">This is in the middle of the hero.</td>
                       </tr>
                     </tbody>
                   </table>
@@ -621,7 +598,7 @@ The `Hero` component renders an area with a background image behind its content.
 	- align : one of "left", "center", "right" `(default "center")`
 	- valign : one of "top", "middle", "bottom" `(default "middle")`
 
-The `wrapper` property will have all its properties applied to the inner `.hero-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.hero__wrapper` element.
 
 
 
@@ -649,10 +626,10 @@ The `ParaBlock` is a container for `Paragraph` components.
     <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
       <tbody>
         <tr class="para first-child">
-          <td align="left" valign="top" class="para-wrapper">Paragraph <strong>one</strong>.</td>
+          <td align="left" valign="top" class="para__wrapper">Paragraph <strong>one</strong>.</td>
         </tr>
         <tr class="para last-child">
-          <td align="left" valign="top" class="para-wrapper">Paragraph two.</td>
+          <td align="left" valign="top" class="para__wrapper">Paragraph two.</td>
         </tr>
       </tbody>
     </table>
@@ -672,7 +649,7 @@ The `ParaBlock` is a container for `Paragraph` components.
 ### Para
 
 The `Para` component represents a paragraph of content that gives more control over vertical spacing.
-These components can only be used within `ParagraphBlock` components.
+These components can only be used within `ParaBlock` components.
 
 **Example**
 
@@ -694,10 +671,10 @@ These components can only be used within `ParagraphBlock` components.
     <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
       <tbody>
         <tr class="para first-child">
-          <td align="left" valign="top" class="para-wrapper">Paragraph <strong>one</strong>.</td>
+          <td align="left" valign="top" class="para__wrapper">Paragraph <strong>one</strong>.</td>
         </tr>
         <tr class="para last-child">
-          <td class="para-wrapper text-large" align="left" valign="top">Paragraph two.</td>
+          <td class="para__wrapper text-large" align="left" valign="top">Paragraph two.</td>
         </tr>
       </tbody>
     </table>
@@ -719,56 +696,7 @@ These components can only be used within `ParagraphBlock` components.
 
 The `Button` component renders a bulletproof button from Campaign Monitor.
 
-**Example**
-
-    var React = require("react");
-    var Button = require("./Button");
-    
-    /*eslint no-unused-vars: 0*/
-    
-    module.exports = (
-      <Button width={250} height={40} bgColor="#ff00ff" borderColor="#ff0000" href="http://google.com/">Learn more</Button>
-    );
-
-**Result**
-
-    <div class="button">
-      <!--[if mso]>
-        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
-        href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;"
-        strokecolor="#ff0000" fillcolor="#ff00ff">
-          <w:anchorlock/>
-          <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Learn more</center>
-        </v:rect>
-      <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
-    </div>
-
-**Example**
-
-    var React = require("react");
-    var Button = require("./Button");
-    
-    /*eslint no-unused-vars: 0*/
-    
-    module.exports = (
-      <Button width={250} height={40} bgColor="#ff00ff" href="http://google.com/">Learn more</Button>
-    );
-
-**Result**
-
-    <div class="button">
-      <!--[if mso]>
-        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
-        href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;"
-        stroke="f" fillcolor="#ff00ff">
-          <w:anchorlock/>
-          <center>
-          <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
-          <!--[if mso]>
-          </center>
-        </v:rect>
-      <![endif]-->
-    </div>
+{Button:examples}
 
 **Props**
 
@@ -788,35 +716,7 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
 
 The `List` component renders a list of items when more control over spacing is needed.
 
-**Example**
-
-    var React = require("react");
-    var List = require("./List");
-    var ListItem = require("./ListItem");
-    
-    /*eslint no-unused-vars: 0*/
-    
-    module.exports = (
-      <List>
-        <ListItem>Item <strong>one</strong>.</ListItem>
-        <ListItem>Item two.</ListItem>
-      </List>
-    );
-
-**Result**
-
-    <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
-      <tbody>
-        <tr class="list-item first-child">
-          <td align="left" class="list-bullet-wrapper">•</td>
-          <td align="left" class="list-item-wrapper">Item <strong>one</strong>.</td>
-        </tr>
-        <tr class="list-item last-child">
-          <td align="left" class="list-bullet-wrapper">•</td>
-          <td align="left" class="list-item-wrapper">Item two.</td>
-        </tr>
-      </tbody>
-    </table>
+{List:examples}
 
 **Props**
 
@@ -857,13 +757,13 @@ These components can only be used within `List` or `BulletList` components.
 
     <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
       <tbody>
-        <tr class="list-item first-child">
-          <td class="list-bullet-wrapper text-large" align="left">•</td>
-          <td class="list-item-wrapper text-large" align="left">Item <strong>one</strong>.</td>
+        <tr class="list__item first-child">
+          <td class="list__bullet-wrapper text-large" align="left">•</td>
+          <td class="list__item-wrapper text-large" align="left">Item <strong>one</strong>.</td>
         </tr>
-        <tr class="list-item last-child">
-          <td align="left" class="list-bullet-wrapper">•</td>
-          <td align="left" class="list-item-wrapper">Item two.</td>
+        <tr class="list__item last-child">
+          <td align="left" class="list__bullet-wrapper">•</td>
+          <td align="left" class="list__item-wrapper">Item two.</td>
         </tr>
       </tbody>
     </table>
@@ -887,11 +787,11 @@ These components can only be used within `List` or `BulletList` components.
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `itemWrapper` property will have all its properties applied to the inner `.list-item-wrapper` element.
+The `itemWrapper` property will have all its properties applied to the inner `.list__item-wrapper` element.
 
-The `bulletWrapper` property will have all its properties applied to the inner `.list-bullet-wrapper` element
+The `bulletWrapper` property will have all its properties applied to the inner `.list__bullet-wrapper` element
 
-The `className` property will be applied to the `.list-item-wrapper` and the `.list-bullet-wrapper` elements.
+The `className` property will be applied to the `.list__item` and the element.
 
 
 ### OrderedList
@@ -915,16 +815,16 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="list list-ordered"
+    <table cellspacing="0" cellpadding="0" border="0" class="list list--ordered"
     align="left">
       <tbody>
-        <tr class="list-item first-child">
-          <td align="left" class="list-bullet-wrapper">1</td>
-          <td align="left" class="list-item-wrapper">Item <strong>one</strong>.</td>
+        <tr class="list__item first-child">
+          <td align="left" class="list__bullet-wrapper">1</td>
+          <td align="left" class="list__item-wrapper">Item <strong>one</strong>.</td>
         </tr>
-        <tr class="list-item last-child">
-          <td align="left" class="list-bullet-wrapper">2</td>
-          <td align="left" class="list-item-wrapper">Item two.</td>
+        <tr class="list__item last-child">
+          <td align="left" class="list__bullet-wrapper">2</td>
+          <td align="left" class="list__item-wrapper">Item two.</td>
         </tr>
       </tbody>
     </table>
@@ -969,12 +869,12 @@ Note that there must exactly two `Col` child elements. It's permissible to speci
     class="media-object">
       <tbody>
         <tr>
-          <td class="media-object-wrapper">
+          <td class="media-object__wrapper">
             <table cellspacing="0" cellpadding="0" border="0" width="290" align="left"
             class="col">
               <tbody>
                 <tr>
-                  <td class="col-wrapper text-large" width="290">
+                  <td class="col__wrapper text-large" width="290">
                     <img src="images/offer.jpg">
                   </td>
                 </tr>
@@ -984,7 +884,7 @@ Note that there must exactly two `Col` child elements. It's permissible to speci
             class="col">
               <tbody>
                 <tr>
-                  <td width="190" align="left" valign="top" class="col-wrapper">This is the block of copy.</td>
+                  <td width="190" align="left" valign="top" class="col__wrapper">This is the block of copy.</td>
                 </tr>
               </tbody>
             </table>
@@ -1012,4 +912,4 @@ Note that there must exactly two `Col` child elements. It's permissible to speci
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.media-object-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.media-object__wrapper` element.

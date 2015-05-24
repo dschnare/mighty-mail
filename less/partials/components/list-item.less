@@ -1,22 +1,22 @@
-.list-bullet-wrapper {
+.list__bullet-wrapper {
 	font-size: larger;
 	padding-right: 10px;
 	vertical-align: top;
 	padding-top: @baseline;
 }
 
-.list-item-wrapper {
+.list__item-wrapper {
 	vertical-align: top;
 	padding-top: @baseline;
 }
 
-.list-ordered .list-bullet-wrapper {
+.list--ordered .list__bullet-wrapper {
 	font-size: inherit;
 }
 
-.list .first-child {
-	.list-item-wrapper,
-	.list-bullet-wrapper {
+.first-child {
+	> .list__item-wrapper,
+	> .list__bullet-wrapper {
 		padding-top: 0;
 	}
 }
