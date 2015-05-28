@@ -4,7 +4,7 @@ Reactjs components for static server rendering of HTML emails.
 
 # Usage
 
-This package is intended to be used as part of a Reactjs build system. For convenience Mighty Mail includes
+This package is intended to be used as part of a Reactjs build system such as [generator-mighty](https://github.com/dschnare/generator-mighty). For convenience Mighty Mail includes
 stylesheets that take care of email client resetting and adding classes for several useful styles. Think of these
 styles as a base. All styles are also included as sass and less files.
 

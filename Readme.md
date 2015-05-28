@@ -4,7 +4,7 @@ Reactjs components for static server rendering of HTML emails.
 
 # Usage
 
-This package is intended to be used as part of a Reactjs build system. For convenience Mighty Mail includes
+This package is intended to be used as part of a Reactjs build system such as [generator-mighty](https://github.com/dschnare/generator-mighty). For convenience Mighty Mail includes
 stylesheets that take care of email client resetting and adding classes for several useful styles. Think of these
 styles as a base. All styles are also included as sass and less files.
 
@@ -485,7 +485,28 @@ All other properties are set on the wrapper element as-is.
 
 The `Divider` component renders a horizontal divider.
 
-{Divider:examples}
+**Example**
+
+    var React = require("react");
+    var Divider = require("./Divider");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Divider color="#000000" thickness={2} />
+    );
+
+**Result**
+
+    <table cellspacing="0" cellpadding="0" border="0" class="divider" width="100%"
+    align="center">
+      <tbody>
+        <tr>
+          <td bgcolor="#000000" class="divider__wrapper" style="font-size:1px;line-height:1;mso-line-height-rule:exactly;"
+          width="100%" height="2" align="center"> </td>
+        </tr>
+      </tbody>
+    </table>
 
 **Props**
 
@@ -696,7 +717,56 @@ These components can only be used within `ParaBlock` components.
 
 The `Button` component renders a bulletproof button from Campaign Monitor.
 
-{Button:examples}
+**Example**
+
+    var React = require("react");
+    var Button = require("./Button");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Button width={250} height={40} bgColor="#ff00ff" borderColor="#ff0000" href="http://google.com/">Learn more</Button>
+    );
+
+**Result**
+
+    <div class="button">
+      <!--[if mso]>
+        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+        href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;"
+        strokecolor="#ff0000" fillcolor="#ff00ff">
+          <w:anchorlock/>
+          <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Learn more</center>
+        </v:rect>
+      <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
+    </div>
+
+**Example**
+
+    var React = require("react");
+    var Button = require("./Button");
+    
+    /*eslint no-unused-vars: 0*/
+    
+    module.exports = (
+      <Button width={250} height={40} bgColor="#ff00ff" href="http://google.com/">Learn more</Button>
+    );
+
+**Result**
+
+    <div class="button">
+      <!--[if mso]>
+        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+        href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;"
+        stroke="f" fillcolor="#ff00ff">
+          <w:anchorlock/>
+          <center>
+          <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
+          <!--[if mso]>
+          </center>
+        </v:rect>
+      <![endif]-->
+    </div>
 
 **Props**
 
