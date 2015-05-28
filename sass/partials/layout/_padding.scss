@@ -1,7 +1,5 @@
 // Styles to set left and right padding.
 
-$padding: 20px;
-
 .padding-quarter {
 	padding-left: $padding * 0.25;
 	padding-right: $padding * 0.25;
@@ -103,4 +101,26 @@ $padding: 20px;
 
 .padding-right-3x {
 	padding-right: $padding * 3;
+}
+
+//--
+
+.padding-none-top {
+	padding-top: 0;
+}
+
+.padding-none-right {
+	padding-right: 0;
+}
+
+.padding-none-bottom {
+	padding-bottom: 0;
+}
+
+.padding-none-left {
+	padding-left: 0;
+}
+
+.padding-none {
+	padding: 0;
 }

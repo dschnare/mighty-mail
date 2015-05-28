@@ -40,7 +40,7 @@ var Para = React.createClass({
 	getTdProps: function () {
 		var tdProps = pluckTdProps(mixin({}, Para.defaultProps.wrapper, this.props.wrapper || {}));
 
-		tdProps.className = classNames("para-wrapper", tdProps.className);
+		tdProps.className = classNames("para__wrapper", tdProps.className);
 
 		return tdProps;
 	}

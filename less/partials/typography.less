@@ -1,18 +1,15 @@
 // Styles to set font family, font size and link styles.
 
-@text-color: #363636;
-@link-color: #365ebf;
-
 // Font family
 
 body,
 td {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: @font-family-base;
   color: @text-color;
 }
 
 .font-serif {
-  font-family: Georgia, serif;
+  font-family: @font-family-serif;
 }
 
 // Links
@@ -30,80 +27,85 @@ td {
   line-height: 20px;
 }
 
-.text-mice,
-.text-mice td {
-  font-size: 10px;
-  line-height: 14px;
-}
-
-.text-small,
-.text-small td {
-  font-size: 12px;
-  line-height: 18px;
-}
-
-.text-medium,
-.text-medium td {
-  font-size: 16px;
-  line-height: 22px;
-}
-
-.text-large,
-.text-large td {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-.text-x-large,
-.text-x-large td {
-  font-size: 24px;
-  line-height: 30px;
-}
-
-.text-xx-large,
-.text-xx-large td {
-  font-size: 30px;
-  line-height: 30px;
-}
-
-.text-hero,
-.text-hero td {
-  font-size: 50px;
-  line-height: 50px;
-}
-
 sup {
   line-height: 0;
   font-size: 10px;
   vertical-align: 4px;
 }
 
-.text-mice sup {
-  font-size: 8px;
-  vertical-align: 4px;
-}
-
-.text-small sup {
-  font-size: 9px;
-  vertical-align: 4px;
-}
-
-.text-medium sup {
+.text-mice,
+.text-mice td {
   font-size: 10px;
-  vertical-align: 6px;
+  line-height: 14px;
+
+  sup {
+    font-size: 8px;
+    vertical-align: 4px;
+  }
 }
 
-.text-large sup {
-  font-size: 11px;
-  vertical-align: 8px;
-}
-
-.text-x-large sup {
+.text-small,
+.text-small td {
   font-size: 12px;
-  vertical-align: 9px;
+  line-height: 18px;
+
+  sup {
+    font-size: 9px;
+    vertical-align: 4px;
+  }
 }
 
-.text-hero sup {
-  font-size: 12px;
-  vertical-align: 12px;
+.text-medium,
+.text-medium td {
+  font-size: 16px;
+  line-height: 22px;
+
+  sup {
+    font-size: 10px;
+    vertical-align: 6px;
+  }
+}
+
+.text-large,
+.text-large td {
+  font-size: 20px;
+  line-height: 26px;
+
+  sup {
+    font-size: 11px;
+    vertical-align: 8px;
+  }
+}
+
+.text-x-large,
+.text-x-large td {
+  font-size: 24px;
+  line-height: 30px;
+
+  sup {
+    font-size: 12px;
+    vertical-align: 9px;
+  }
+}
+
+.text-xx-large,
+.text-xx-large td {
+  font-size: 30px;
+  line-height: 30px;
+
+  sup {
+    font-size: 13px;
+    vertical-align: 9px;
+  }
+}
+
+.text-hero,
+.text-hero td {
+  font-size: 50px;
+  line-height: 50px;
+
+  sup {
+    font-size: 12px;
+    vertical-align: 12px;
+  }
 }

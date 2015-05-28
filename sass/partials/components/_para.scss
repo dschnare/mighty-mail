@@ -1,0 +1,7 @@
+.para__wrapper {
+	padding-top: $baseline * 0.5;
+}
+
+.first-child > .para__wrapper {
+	padding-top: 0;
+}

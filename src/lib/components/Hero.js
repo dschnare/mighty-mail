@@ -44,7 +44,7 @@ var Hero = React.createClass({
 		var tdProps = this.getTdProps();
 		var children = this.transformChildren();
 
-		tdProps.className = "hero-bg";
+		tdProps.className = "hero__bg";
 
 		return (
 			<Table {...tableProps}>
@@ -70,7 +70,7 @@ var Hero = React.createClass({
 		tdProps.bgColor = this.props.bgColor;
 		tdProps.width = this.props.width;
 		tdProps.height = this.props.height;
-		tdProps.className = classNames("hero-wrapper", tdProps.className);
+		tdProps.className = classNames("hero__wrapper", tdProps.className);
 
 		return tdProps;
 	},

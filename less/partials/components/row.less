@@ -1,0 +1,18 @@
+.row__wrapper {
+	padding-top: @baseline * 1.5;
+}
+
+@media screen and (max-width: 480px), screen and (max-device-width: 480px) {
+	[class~="row"] {
+		width: 100% !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	[class~="row__wrapper"] {
+		width: auto !important;
+		height: auto !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+}

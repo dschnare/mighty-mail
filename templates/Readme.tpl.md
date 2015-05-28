@@ -113,7 +113,7 @@ The `Container` component is general purpose, composable component that can be u
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.container-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.container__wrapper` element.
 
 The `cssPrefix` property will be used as the class name prefix when setting the base class name
 for the `<table>` and `<td>` elements.
@@ -136,7 +136,7 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
 - style: object
 - width: number or string `(default "100%")`
 - align: one of "left", "center", "right" `(default "center")`
-- wrapper : shape 
+- wrapper : shape
 	- className : string
 	- style : object
 	- bgColor : string
@@ -146,7 +146,7 @@ The `Frame` component makes it easy to wrap content in a `<table>` with a border
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
 
-The `wrapper` property will have all its properties applied to the inner `.frame-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.frame__wrapper` element.
 
 
 
@@ -168,7 +168,7 @@ The `Row` component will layout `Col` components in a single horizontal row with
 - width: number or string `(default "100%")`
 - align: one of "left", "center", "right" `(default "center")`
 - gutter : number
-- wrapper : shape 
+- wrapper : shape
 	- className : string
 	- style : object
 	- bgColor : string
@@ -177,11 +177,9 @@ The `Row` component will layout `Col` components in a single horizontal row with
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.row-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.row__wrapper` element.
 
-If no `gutter` is speficied or the `width` is a string then the columns will not be distrubuted (i.e. their widths will be untouched).
-Otherwise each column will have its width distributed appropriately to support the gutter. You can still specify a width as a string or
-a number with no gutter and manually specify your column widths.
+If no `gutter` is speficied or the `width` is a string then the columns will not be distrubuted (i.e. their widths will be untouched). Otherwise each column will have its width distributed appropriately to support the gutter. You can still specify a width as a string or a number with no gutter and manually specify your column widths.
 
 
 
@@ -213,7 +211,7 @@ The `Col` component is mainly used as a column within a row, but there are no re
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.col-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.col__wrapper` element.
 
 The `span` property is used by the `Row` component as a colspan for a given column.
 
@@ -256,9 +254,9 @@ The `bgColor` and `className` properties are applied to the `.full-width-row` el
 
 The `width` and `gutter` properties are passed to a nested `Row` component.
 
-The `wrapper` property will have all its properties applied to the inner `.full-width-row-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.full-width-row__wrapper` element.
 
-The `rowWrapper` property will have all its properties applied to the inner `.row-wrapper` element.
+The `rowWrapper` property will have all its properties applied to the inner `.row__wrapper` element.
 
 
 ## Content
@@ -297,7 +295,7 @@ The `Divider` component renders a horizontal divider.
 - wrapper : shape
 	- className: string
 
-The `wrapper` property will have all its properties applied to the inner `.divider-row-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.divider__wrapper` element.
 
 
 
@@ -342,7 +340,7 @@ The `Hero` component renders an area with a background image behind its content.
 	- align : one of "left", "center", "right" `(default "center")`
 	- valign : one of "top", "middle", "bottom" `(default "middle")`
 
-The `wrapper` property will have all its properties applied to the inner `.hero-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.hero__wrapper` element.
 
 
 
@@ -367,7 +365,7 @@ The `ParaBlock` is a container for `Paragraph` components.
 ### Para
 
 The `Para` component represents a paragraph of content that gives more control over vertical spacing.
-These components can only be used within `ParagraphBlock` components.
+These components can only be used within `ParaBlock` components.
 
 {Para:examples}
 
@@ -451,11 +449,11 @@ These components can only be used within `List` or `BulletList` components.
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `itemWrapper` property will have all its properties applied to the inner `.list-item-wrapper` element.
+The `itemWrapper` property will have all its properties applied to the inner `.list__item-wrapper` element.
 
-The `bulletWrapper` property will have all its properties applied to the inner `.list-bullet-wrapper` element
+The `bulletWrapper` property will have all its properties applied to the inner `.list__bullet-wrapper` element
 
-The `className` property will be applied to the `.list-item-wrapper` and the `.list-bullet-wrapper` elements.
+The `className` property will be applied to the `.list__item` and the element.
 
 
 ### OrderedList
@@ -504,4 +502,4 @@ Note that there must exactly two `Col` child elements. It's permissible to speci
 	- align : one of "left", "center", "right" `(default "left")`
 	- valign : one of "top", "middle", "bottom" `(default "top")`
 
-The `wrapper` property will have all its properties applied to the inner `.media-object-wrapper` element.
+The `wrapper` property will have all its properties applied to the inner `.media-object__wrapper` element.

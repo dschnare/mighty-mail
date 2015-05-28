@@ -43,7 +43,7 @@ var List = React.createClass({
 	getTableProps: function () {
 		var tableProps = pluckTableProps(this.props);
 
-		tableProps.className = classNames("list", this.props.bullet === ORDERED ? "list-ordered" : false, tableProps.className);
+		tableProps.className = classNames("list", this.props.bullet === ORDERED ? "list--ordered" : false, tableProps.className);
 
 		return tableProps;
 	},

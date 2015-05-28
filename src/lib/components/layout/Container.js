@@ -41,7 +41,7 @@ var Container = React.createClass({
 
 		if (this.props.cssPrefix) {
 			tableProps.className = classNames(this.props.cssPrefix, tableProps.className);
-			tdProps.className = classNames(this.props.cssPrefix + "-wrapper", tdProps.className);
+			tdProps.className = classNames(this.props.cssPrefix + "__wrapper", tdProps.className);
 		} else {
 			delete tableProps.className;
 			delete tdProps.className;
