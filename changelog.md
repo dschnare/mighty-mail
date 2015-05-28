@@ -32,8 +32,6 @@
 - Add test for aliased component names. Can't actually alias bulitin HTML element names.
 
 
-# Changelog
-
 ## 1.0.0
 
 *May 15, 2015*
@@ -50,7 +48,7 @@
 - Remove padding left on list-bullet-item class.
 - Rename Paragraph to Para.
 - Rename ParagraphBlock to ParaBlock.
-- Normalize all properties so that <table> and <td> properties are defined the same and exposed consitently where appropriate.
+- Normalize all properties so that `<table>` and `<td>` properties are defined the same and exposed consitently where appropriate.
 - Deprecate BulletList, instead List sets bullet to BULL by default.
 - Add support for numbered lists by setting the bullet property on a List to List.NUMERIC.
 - Add CSS classes to remove padding.
@@ -88,7 +86,7 @@
 - Resolve $topline variable reference issue in default baselines stylesheet.
 - Add return statement when cloning each Paragraph child in a ParagraphBlock.
 - Correctly set className property instead of classNames property when cloning ListItem children in a List.
-- Correctly set className property on retrieving <table> properties in a List.
+- Correctly set className property on retrieving `<table>` properties in a List.
 - Add styles to remove baseline from first list item.
 
 
@@ -106,9 +104,9 @@
 
 - Add support for Image components in MediaObjects.
 - Add first-child and last-child classes to child Paragraph components within a ParagraphBlock.
-- Add class name to <tr> for ListItem and Paragraph components.
-- Add list-item-wrapper and list-bullet-wrapper classes to the <td> elements in Paragraph component.
-- Add paragraph-wrapper class to <td> in Paragraph component.
+- Add class name to `<tr>` for ListItem and Paragraph components.
+- Add list-item-wrapper and list-bullet-wrapper classes to the `<td>` elements in Paragraph component.
+- Add paragraph-wrapper class to `<td>` in Paragraph component.
 - Expose itemWrapper and bulletWrapper properties on ListItem.
 - Expose rowWrapper property on FullWidthRow.
 - Update list styles.
@@ -148,12 +146,12 @@
 *May 7, 2015*
 
 - Rename apply-child-mask.js to applyChildMask.js.
-- Implement modules to pluck <table> properties from an object.
-- Implement modules to pluck <td> properties from an object.
+- Implement modules to pluck `<table>` properties from an object.
+- Implement modules to pluck `<td>` properties from an object.
 - Refactor all components to use the new pluck modules.
-- Normalize properties for each component so that properties are predictable and all properties for <table> and <td> are exposed where it makes sense.
+- Normalize properties for each component so that properties are predictable and all properties for `<table>` and `<td>` are exposed where it makes sense.
 - Pass down the properties specified on the Col component nested within a MediaObject component.
-- Support <a> or <img> child components in a MediaObject component.
+- Support `<a>` or `<img>` child components in a MediaObject component.
 - Export properites for the HTML entities NBSP, RSQUO, LSQUO, RDQUO, LDQUO, EMDASH, ENDASH, REG, TM and BULL.
 
 
@@ -175,11 +173,11 @@
 
 *May 6, 2015*
 
-- Change Paragraph component markup to render <tr> with single <td>.
+- Change Paragraph component markup to render `<tr>` with single `<td>`.
 - Implement ParagraphBlock component that accepts only Paragraph children.
-- Move the height property from any component that exposed it or tried to set it on a <table>.
-- Add width and height properties to <td> elements (i.e. wrappers) for any compnent where it makes sense.
-- Add className to <tr> when rendering a ListItem without a bullet.
+- Move the height property from any component that exposed it or tried to set it on a `<table>`.
+- Add width and height properties to `<td>` elements (i.e. wrappers) for any compnent where it makes sense.
+- Add className to `<tr>` when rendering a ListItem without a bullet.
 
 
 ## 0.1.16
@@ -221,7 +219,7 @@
 
 *May 5, 2015*
 
-- Resolve issue with checking child.type.displayName instead of child.type when determining if <img> occurs first.
+- Resolve issue with checking child.type.displayName instead of child.type when determining if `<img>` occurs first.
 
 
 ## 0.1.10
@@ -290,7 +288,7 @@
 
 *May 5, 2015*
 
-- Add %subject% token in the <title> element.
+- Add %subject% token in the `<title>` element.
 
 
 ## 0.1.1
@@ -299,4 +297,4 @@
 
 - Replace $ prefixed variables in responsive.less.
 - Rename the Frame in the template to Wrapper.
-- Wrap the %styles% token in template.html with <style> tags.
+- Wrap the %styles% token in template.html with `<style>` tags.
