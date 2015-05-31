@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.1
+
+*May 31, 2015*
+
+- Change order of `component` and `layout` styles so that layout has higher priority. All layout classes are used for overriding.
+- Only remove padding left and right in nested Col components instead of all padding.
+
+
 ## 2.0.0
 
 *May 23, 2015*
