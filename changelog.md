@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.2
+
+*May 31, 2015*
+
+- Add `!important` to `m-padding-none-` styles.
+
+
 ## 2.0.1
 
 *May 31, 2015*
