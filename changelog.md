@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.3
+
+*May 31, 2015*
+
+- Remove padding on the hero__bg <td>.
+
+
 ## 2.0.2
 
 *May 31, 2015*

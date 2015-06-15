@@ -574,8 +574,8 @@ The `Hero` component renders an area with a background image behind its content.
     width="600" align="center">
       <tbody>
         <tr>
-          <td align="center" valign="middle" background="images/hero.jpg" bgcolor="#ffffff"
-          width="600" height="400" class="hero__bg">
+          <td class="hero__wrapper hero__bg" background="images/hero.jpg" style="background-color:#ffffff;"
+          width="600" height="400">
             <!--[if gte mso 9]>
               <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false"
               style="width:600px;height:400px;">
@@ -586,8 +586,7 @@ The `Hero` component renders an area with a background image behind its content.
                   <table cellspacing="0" cellpadding="0" border="0" align="center" class="col">
                     <tbody>
                       <tr>
-                        <td bgcolor="#ffffff" class="col__wrapper hero__wrapper" height="400"
-                        align="center" valign="middle">This is in the middle of the hero.</td>
+                        <td class="col__wrapper hero__wrapper" height="400" align="center" valign="middle">This is in the middle of the hero.</td>
                       </tr>
                     </tbody>
                   </table>

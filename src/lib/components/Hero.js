@@ -41,10 +41,8 @@ var Hero = React.createClass({
 	},
 	render: function () {
 		var tableProps = this.getTableProps();
-		var tdProps = this.getTdProps();
+		var tdProps = this.getHeroBgTdProps();
 		var children = this.transformChildren();
-
-		tdProps.className = "hero__bg";
 
 		return (
 			<Table {...tableProps}>
@@ -63,11 +61,21 @@ var Hero = React.createClass({
 
 		return tableProps;
 	},
+	getHeroBgTdProps: function () {
+		var tdProps = {};
+
+		tdProps.className = "hero__bg";
+		tdProps.background = this.props.background;
+		tdProps.style = mixin({backgroundColor: this.props.bgColor}, tdProps.style || {});
+		tdProps.width = this.props.width;
+		tdProps.height = this.props.height;
+		tdProps.className = classNames("hero__wrapper", tdProps.className);
+
+		return tdProps;
+	},
 	getTdProps: function () {
 		var tdProps = pluckTdProps(mixin({}, Hero.defaultProps.wrapper, this.props.wrapper || {}));
 
-		tdProps.background = this.props.background;
-		tdProps.bgColor = this.props.bgColor;
 		tdProps.width = this.props.width;
 		tdProps.height = this.props.height;
 		tdProps.className = classNames("hero__wrapper", tdProps.className);
