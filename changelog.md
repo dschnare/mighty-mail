@@ -1,8 +1,22 @@
 # Changelog
 
+## 2.0.4
+
+*June 15, 2015*
+
+- Add cell property to the Hero component and adjust how properties are applied to HTML.
+
+
 ## 2.0.3
 
-*May 31, 2015*
+*June 15, 2015*
+
+- Remove padding on the hero__bg <td>.
+
+
+## 2.0.3
+
+*June 15, 2015*
 
 - Remove padding on the hero__bg <td>.
 
