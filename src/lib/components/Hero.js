@@ -26,6 +26,14 @@ var Hero = React.createClass({
 			style: React.PropTypes.object,
 			align: React.PropTypes.oneOf(["left", "center", "right"]),
 			valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
+		}),
+		cell: React.PropTypes.shape({
+			wrapper: React.PropTypes.shape({
+				className: React.PropTypes.string,
+				style: React.PropTypes.object,
+				align: React.PropTypes.oneOf(["left", "center", "right"]),
+				valign: React.PropTypes.oneOf(["top", "middle", "bottom"])
+			})
 		})
 	}, defineTableProps(), {
 		width: React.PropTypes.number.isRequired
@@ -36,6 +44,13 @@ var Hero = React.createClass({
 			wrapper: {
 				align: "center",
 				valign: "middle"
+			},
+			cell: {
+				align: "center",
+				wrapper: {
+					align: "center",
+					valign: "middle"
+				}
 			}
 		};
 	},
@@ -62,19 +77,19 @@ var Hero = React.createClass({
 		return tableProps;
 	},
 	getHeroBgTdProps: function () {
-		var tdProps = {};
+		var tdProps = pluckTdProps(mixin({}, Hero.defaultProps.wrapper, this.props.wrapper || {}));
 
-		tdProps.className = "hero__bg";
+		tdProps.className = classNames("hero__bg", tdProps.className);
 		tdProps.background = this.props.background;
 		tdProps.style = mixin({backgroundColor: this.props.bgColor}, tdProps.style || {});
 		tdProps.width = this.props.width;
 		tdProps.height = this.props.height;
-		tdProps.className = classNames("hero__wrapper", tdProps.className);
 
 		return tdProps;
 	},
 	getTdProps: function () {
-		var tdProps = pluckTdProps(mixin({}, Hero.defaultProps.wrapper, this.props.wrapper || {}));
+		var cell = this.props.cell || {};
+		var tdProps = pluckTdProps(mixin({}, Hero.defaultProps.cell.wrapper, cell.wrapper || {}));
 
 		tdProps.width = this.props.width;
 		tdProps.height = this.props.height;
@@ -84,10 +99,11 @@ var Hero = React.createClass({
 	},
 	transformChildren: function () {
 		var children = [];
+		var colProps = pluckTableProps(mixin({}, Hero.defaultProps.cell, this.props.cell || {}));
 		var tdProps = this.getTdProps();
 
 		children.push(this.getVmlBgBegin());
-		children.push(<div key="1"><Col align="center" wrapper={tdProps}>{this.props.children}</Col></div>);
+		children.push(<div key="1"><Col {...colProps} wrapper={tdProps}>{this.props.children}</Col></div>);
 		children.push(this.getVmlBgEnd());
 
 		return children;

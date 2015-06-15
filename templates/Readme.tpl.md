@@ -339,8 +339,17 @@ The `Hero` component renders an area with a background image behind its content.
 	- style : object
 	- align : one of "left", "center", "right" `(default "center")`
 	- valign : one of "top", "middle", "bottom" `(default "middle")`
+- cell : shape
+	- align `(default "center")`
+	- wrapper : shape
+		- className : string
+		- style : object
+		- align : one of "left", "center", "right" `(default "center")`
+		- valign : one of "top", "middle", "bottom" `(default "middle")`
 
-The `wrapper` property will have all its properties applied to the inner `.hero__wrapper` element.
+The `wrapper` property will have all its properties applied to the `.hero__bg` element.
+The `cell` property will have all its properties applied to the `<table>` column wrapping the hero content.
+The `cell.wrapper` property will have all its properties applied to the `.hero__wrapper` element.
 
 
 
