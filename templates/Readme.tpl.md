@@ -404,7 +404,9 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
 - href : string `(default "http://replaceme.com/")`
 - borderColor : string
 - textColor : string `(default "#ffffff")`
+- fontFamily : string `(default "sans-serif")`
 - fontSize : number `(default 13)`
+- fontWeight : number `(default "bold")`
 - bgColor : string `(default "#000000")`
 - className : string
 - borderRadius : number `(default 0)`

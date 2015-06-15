@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.5
+
+*June 15, 2015*
+
+- Add support for fontFamily and fontWeight to Button component.
+
+
 ## 2.0.4
 
 *June 15, 2015*

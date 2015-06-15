@@ -744,7 +744,7 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
         href="http://google.com/" style="height:40px;v-text-anchor:middle;width:250px;"
         strokecolor="#ff0000" fillcolor="#ff00ff">
           <w:anchorlock/>
-          <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Learn more</center>
+          <center style="color:#ffffff;font-family:sans-serif;font-weight:bold;font-size:13px;font-weight:bold;">Learn more</center>
         </v:rect>
       <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
     </div>
@@ -783,7 +783,9 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
 - href : string `(default "http://replaceme.com/")`
 - borderColor : string
 - textColor : string `(default "#ffffff")`
+- fontFamily : string `(default "sans-serif")`
 - fontSize : number `(default 13)`
+- fontWeight : number `(default "bold")`
 - bgColor : string `(default "#000000")`
 - className : string
 - borderRadius : number `(default 0)`

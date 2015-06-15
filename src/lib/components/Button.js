@@ -18,7 +18,9 @@ var Button = React.createClass({
 		href: React.PropTypes.string,
 		borderColor: React.PropTypes.string,
 		textColor: React.PropTypes.string,
+		fontFamily: React.PropTypes.string,
 		fontSize: React.PropTypes.number,
+		fontWeight: React.PropTypes.string,
 		bgColor: React.PropTypes.string,
 		className: React.PropTypes.string,
 		borderRadius: React.PropTypes.number
@@ -28,7 +30,9 @@ var Button = React.createClass({
 			href: "http://replaceme.com/",
 			textColor: "#ffffff",
 			bgColor: "#000000",
+			fontFamily: "sans-serif",
 			fontSize: 13,
+			fontWeight: "bold",
 			width: 200,
 			height: 40,
 			borderRadius: 0
@@ -61,7 +65,7 @@ var Button = React.createClass({
 				"<!--[if mso]>",
 				'<v:%rect% xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="%href%" style="height:%height%px;v-text-anchor:middle;width:%width%px;" strokecolor="%borderColor%" %borderRadius% fillcolor="%bgColor%">',
 				"	<w:anchorlock/>",
-				'	<center style="color:%textColor%;font-family:sans-serif;font-size:%fontSize%px;font-weight:bold;">%text%</center>',
+				'	<center style="color:%textColor%;font-family:%fontFamily%;font-weight:%fontWeight%;font-size:%fontSize%px;font-weight:bold;">%text%</center>',
 				"</v:%rect%>",
 				"<![endif]-->"
 			].join("\n");
@@ -118,9 +122,9 @@ var Button = React.createClass({
 				backgroundColor: props.bgColor,
 				color: props.textColor,
 				display: "inline-block",
-				fontFamily: "sans-serif",
+				fontFamily: props.fontFamily,
 				fontSize: px(props.fontSize),
-				fontWeight: "bold",
+				fontWeight: props.fontWeight,
 				lineHeight: px(props.height),
 				textAlign: "center",
 				textDecoration: "none",
