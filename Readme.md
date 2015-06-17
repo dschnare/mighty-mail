@@ -838,7 +838,7 @@ These components can only be used within `List` or `BulletList` components.
     <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
       <tbody>
         <tr class="list__item first-child">
-          <td class="list__bullet-wrapper text-large" align="left">•</td>
+          <td align="left" class="list__bullet-wrapper">•</td>
           <td class="list__item-wrapper text-large" align="left">Item <strong>one</strong>.</td>
         </tr>
         <tr class="list__item last-child">

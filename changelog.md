@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.6
+
+*June 17, 2015*
+
+- Correctly use the bulletWrapper property to apply properties to the `list__bullet-wrapper` element.
+
+
 ## 2.0.5
 
 *June 15, 2015*
