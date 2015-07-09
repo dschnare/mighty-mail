@@ -403,13 +403,14 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
 - height : number `(default 40)`
 - href : string `(default "http://replaceme.com/")`
 - borderColor : string
+- borderSize : number `(default 1)`
+- borderRadius : number `(default 0)`
 - textColor : string `(default "#ffffff")`
 - fontFamily : string `(default "sans-serif")`
 - fontSize : number `(default 13)`
 - fontWeight : number `(default "bold")`
 - bgColor : string `(default "#000000")`
 - className : string
-- borderRadius : number `(default 0)`
 
 
 

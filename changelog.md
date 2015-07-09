@@ -4,6 +4,14 @@
 
 *June 17, 2015*
 
+- Add support for borderSize to Button component.
+- Correctly apply border styles to nested `<a>` element in the Button component.
+
+
+## 2.0.6
+
+*June 17, 2015*
+
 - Correctly use the bulletWrapper property to apply properties to the `list__bullet-wrapper` element.
 
 

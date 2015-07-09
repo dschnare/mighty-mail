@@ -733,7 +733,7 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
     /*eslint no-unused-vars: 0*/
     
     module.exports = (
-      <Button width={250} height={40} bgColor="#ff00ff" borderColor="#ff0000" href="http://google.com/">Learn more</Button>
+      <Button width={250} height={40} bgColor="#ff00ff" borderSize={1} borderColor="#ff0000" href="http://google.com/">Learn more</Button>
     );
 
 **Result**
@@ -746,7 +746,7 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
           <w:anchorlock/>
           <center style="color:#ffffff;font-family:sans-serif;font-weight:bold;font-size:13px;font-weight:bold;">Learn more</center>
         </v:rect>
-      <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
+      <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;border-radius:0;border-color:#ff0000;border-width:1px;border-style:solid;">Learn more</a>
     </div>
 
 **Example**
@@ -769,7 +769,7 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
         stroke="f" fillcolor="#ff00ff">
           <w:anchorlock/>
           <center>
-          <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;border-radius:0;-webkit-text-size-adjust:none;">Learn more</a>
+          <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;">Learn more</a>
           <!--[if mso]>
           </center>
         </v:rect>
@@ -782,13 +782,14 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
 - height : number `(default 40)`
 - href : string `(default "http://replaceme.com/")`
 - borderColor : string
+- borderSize : number `(default 1)`
+- borderRadius : number `(default 0)`
 - textColor : string `(default "#ffffff")`
 - fontFamily : string `(default "sans-serif")`
 - fontSize : number `(default 13)`
 - fontWeight : number `(default "bold")`
 - bgColor : string `(default "#000000")`
 - className : string
-- borderRadius : number `(default 0)`
 
 
 
