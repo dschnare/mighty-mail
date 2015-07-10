@@ -17,14 +17,14 @@ var Button = React.createClass({
 		height: React.PropTypes.number,
 		href: React.PropTypes.string,
 		borderColor: React.PropTypes.string,
+		borderRadius: React.PropTypes.number,
 		borderSize: React.PropTypes.number,
 		textColor: React.PropTypes.string,
 		fontFamily: React.PropTypes.string,
 		fontSize: React.PropTypes.number,
 		fontWeight: React.PropTypes.string,
 		bgColor: React.PropTypes.string,
-		className: React.PropTypes.string,
-		borderRadius: React.PropTypes.number
+		className: React.PropTypes.string
 	},
 	getDefaultProps: function () {
 		return {
@@ -37,7 +37,7 @@ var Button = React.createClass({
 			width: 200,
 			height: 40,
 			borderRadius: 0,
-			borderSize: 0
+			borderSize: 1
 		};
 	},
 	render: function () {
@@ -84,7 +84,17 @@ var Button = React.createClass({
 		return vml.replace(/%([^%]+)%/g, function (token, id) {
 			switch (id) {
 				case "text":
-					return props.children;
+					return (function () {
+						var html = "";
+						React.Children.forEach(props.children, function (child) {
+							if (typeof child === "string") {
+								html += child;
+							} else {
+								html += React.renderToStaticMarkup(child);
+							}
+						});
+						return html;
+					}());
 				case "rect":
 					return rect;
 				case "borderRadius":
@@ -106,13 +116,7 @@ var Button = React.createClass({
 				"	</center>",
 				"</v:%rect%>",
 				"<![endif]-->"
-			].join("\n").replace(/%([^%]+)%/g, function (token, id) {
-				switch (id) {
-					case "rect":
-						return rect;
-				}
-				return props[id];
-			});
+			].join("\n").replace("%rect%", rect);
 		}
 	},
 	getAnchorProps: function () {
@@ -128,14 +132,15 @@ var Button = React.createClass({
 			textAlign: "center",
 			textDecoration: "none",
 			width: px(props.width),
-			WebkitTextSizeAdjust: "none"
+			WebkitTextSizeAdjust: "none",
+			borderRadius: props.borderRadius
 		};
 
-		if (props.borderSize) {
-			styles.borderRadius = props.borderRadius;
+		if (props.borderColor) {
 			styles.borderColor = props.borderColor;
 			styles.borderWidth = props.borderSize;
 			styles.borderStyle = "solid";
+			styles.msoHide = "all";
 		}
 
 		return {

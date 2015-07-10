@@ -21,7 +21,8 @@ module.exports.render = function () {
 	var markup = React.renderToStaticMarkup(
 			<Frame width={500} border="1" borderColor="#d7d7d7">
 				<Hero background={imgSrc} width={308} height={220}>
-					Yep I am a hero. &amp; {mighty.AMP} {"\u003C"}
+					Yep I am a hero. {'&amp;'} <span>&amp;</span> <span>&</span>
+					<Button><strong>Hello World!</strong></Button>
 				</Hero>
 
 				<Row width={500} gutter={10} wrapper={{valign: "middle"}}>

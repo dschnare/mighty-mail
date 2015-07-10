@@ -1,8 +1,18 @@
 # Changelog
 
+## 2.0.8
+
+*July 10, 2015*
+
+- Update docs to better describe how to insert HTML entities.
+- Change HTML entities provided by Mighty Mail to use HTML entity strings instead of unicode escape sequences.
+- Add the `msoHide` style to Buttons that use a border color.
+- Add logic to render children of Buttons if they contain markup with components such as `<strong>`.
+
+
 ## 2.0.7
 
-*June 17, 2015*
+*July 9, 2015*
 
 - Add support for borderSize to Button component.
 - Correctly apply border styles to nested `<a>` element in the Button component.

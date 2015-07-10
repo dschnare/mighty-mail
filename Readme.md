@@ -17,48 +17,46 @@ Because we're using React there are a few gotchas that you'll have to be aware o
 
 - HTML or JavaScript comments are not permitted in JSX code.
 
-To get around this the Mighty Mail components render HTML in a fashion that permitts HTML comments
-using the React binding syntax:
+This also makes conditional `<if mso>` blocks impossible to add to your markup between elements.
+To get around this the Mighty Mail components render HTML as raw HTML. This means comments
+can be inserted as the following.
 
 	{"<!-- my comment -->"}
 
-- Normally HTML entities are a big problem with React, but the Mighty Mail components are rendered in a way that permits HTML entities.
+- Normally HTML entities are handled intelligently by React, but due to Mighty Mail components
+being rendered as raw HTML, HTML entities must be inserted as the following.
 
-For example, Mighty Mail will render this as you would expect.
+	{"&amp;"}
 
-	<Row>
-		<Col>Procter &amp; Gamble</Col>
-	</Row>
+If you use normal HTML components such as `<span>` then normal React HTML entity rendering occurs.
 
-However, there may be certain cases where you get escaped output. For those cases you can use any of the built in HTML entities provided by Mighty Mail
-or you can use your own. You'll simply have to use the unicode sequence for your entity in a React binding.
+	<span>&amp;</span>
+	<span>&</span>
 
-	// Renders the same as above.
-	<Row>
-		<Col>Procter {"\u0026"} Gamble</Col>
-	</Row>
+Both statements above yield:
 
-Or using the Mighty Mail entity for ampersand:
+	&amp;
 
-	<Row>
-		<Col>Procter {mighty.AMP} Gamble</Col>
-	</Row>
+The following entites are conveniently exported on the module.
 
-The following entites are exported on the module.
+	AMP = "&amp;";
+	NBSP = "&nbsp;";
+	RSQUO = "&rsquo;";
+	LSQUO = "&lsquo;";
+	RDQUO = "&rdquo;";
+	LDQUO = "&ldquo;";
+	EMDASH = "&emdash;";
+	ENDASH = "&endash;";
+	REG = "&reg;";
+	TM = "™";
+	BULL = "&bull;";
+	GT = "&gt;";
+	LT = "&lt;";
 
-	AMP = "\u0026";
-	NBSP = "\u00A0";
-	RSQUO = "\u2019";
-	LSQUO = "\u2018";
-	RDQUO = "\u201D";
-	LDQUO = "\u201C";
-	EMDASH = "\u2014";
-	ENDASH = "\u2013";
-	REG = "\u00AE";
-	TM = "\u2122";
-	BULL = "\u2022";
-	GT = "\u003E";
-	LT = "\u003C";
+Example usage:
+
+	Big {mighty.AMP} Small
+	Nike{mighty.TM}
 
 
 
@@ -503,7 +501,7 @@ The `Divider` component renders a horizontal divider.
       <tbody>
         <tr>
           <td bgcolor="#000000" class="divider__wrapper" style="font-size:1px;line-height:1;mso-line-height-rule:exactly;"
-          width="100%" height="2" align="center"> </td>
+          width="100%" height="2" align="center">&nbsp;</td>
         </tr>
       </tbody>
     </table>
@@ -746,7 +744,7 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
           <w:anchorlock/>
           <center style="color:#ffffff;font-family:sans-serif;font-weight:bold;font-size:13px;font-weight:bold;">Learn more</center>
         </v:rect>
-      <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;border-radius:0;border-color:#ff0000;border-width:1px;border-style:solid;">Learn more</a>
+      <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;border-radius:0;border-color:#ff0000;border-width:1px;border-style:solid;mso-hide:all;">Learn more</a>
     </div>
 
 **Example**
@@ -769,7 +767,7 @@ The `Button` component renders a bulletproof button from Campaign Monitor.
         stroke="f" fillcolor="#ff00ff">
           <w:anchorlock/>
           <center>
-          <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;">Learn more</a>
+          <![endif]--><a href="http://google.com/" style="background-color:#ff00ff;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:250px;-webkit-text-size-adjust:none;border-radius:0;">Learn more</a>
           <!--[if mso]>
           </center>
         </v:rect>
@@ -839,11 +837,11 @@ These components can only be used within `List` or `BulletList` components.
     <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
       <tbody>
         <tr class="list__item first-child">
-          <td align="left" class="list__bullet-wrapper">•</td>
+          <td align="left" class="list__bullet-wrapper">&bull;</td>
           <td class="list__item-wrapper text-large" align="left">Item <strong>one</strong>.</td>
         </tr>
         <tr class="list__item last-child">
-          <td align="left" class="list__bullet-wrapper">•</td>
+          <td align="left" class="list__bullet-wrapper">&bull;</td>
           <td align="left" class="list__item-wrapper">Item two.</td>
         </tr>
       </tbody>

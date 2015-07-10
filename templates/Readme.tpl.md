@@ -17,48 +17,46 @@ Because we're using React there are a few gotchas that you'll have to be aware o
 
 - HTML or JavaScript comments are not permitted in JSX code.
 
-To get around this the Mighty Mail components render HTML in a fashion that permitts HTML comments
-using the React binding syntax:
+This also makes conditional `<if mso>` blocks impossible to add to your markup between elements.
+To get around this the Mighty Mail components render HTML as raw HTML. This means comments
+can be inserted as the following.
 
 	{"<!-- my comment -->"}
 
-- Normally HTML entities are a big problem with React, but the Mighty Mail components are rendered in a way that permits HTML entities.
+- Normally HTML entities are handled intelligently by React, but due to Mighty Mail components
+being rendered as raw HTML, HTML entities must be inserted as the following.
 
-For example, Mighty Mail will render this as you would expect.
+	{"&amp;"}
 
-	<Row>
-		<Col>Procter &amp; Gamble</Col>
-	</Row>
+If you use normal HTML components such as `<span>` then normal React HTML entity rendering occurs.
 
-However, there may be certain cases where you get escaped output. For those cases you can use any of the built in HTML entities provided by Mighty Mail
-or you can use your own. You'll simply have to use the unicode sequence for your entity in a React binding.
+	<span>&amp;</span>
+	<span>&</span>
 
-	// Renders the same as above.
-	<Row>
-		<Col>Procter {"\u0026"} Gamble</Col>
-	</Row>
+Both statements above yield:
 
-Or using the Mighty Mail entity for ampersand:
+	&amp;
 
-	<Row>
-		<Col>Procter {mighty.AMP} Gamble</Col>
-	</Row>
+The following entites are conveniently exported on the module.
 
-The following entites are exported on the module.
+	AMP = "&amp;";
+	NBSP = "&nbsp;";
+	RSQUO = "&rsquo;";
+	LSQUO = "&lsquo;";
+	RDQUO = "&rdquo;";
+	LDQUO = "&ldquo;";
+	EMDASH = "&emdash;";
+	ENDASH = "&endash;";
+	REG = "&reg;";
+	TM = "™";
+	BULL = "&bull;";
+	GT = "&gt;";
+	LT = "&lt;";
 
-	AMP = "\u0026";
-	NBSP = "\u00A0";
-	RSQUO = "\u2019";
-	LSQUO = "\u2018";
-	RDQUO = "\u201D";
-	LDQUO = "\u201C";
-	EMDASH = "\u2014";
-	ENDASH = "\u2013";
-	REG = "\u00AE";
-	TM = "\u2122";
-	BULL = "\u2022";
-	GT = "\u003E";
-	LT = "\u003C";
+Example usage:
+
+	Big {mighty.AMP} Small
+	Nike{mighty.TM}
 
 
 
