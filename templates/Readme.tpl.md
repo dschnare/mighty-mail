@@ -82,7 +82,7 @@ The `Table` component is an alias for creating a `<table>` with `cellspacing`, `
 - className : string
 - style : object
 - width : string or number
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 
 
 ### Container
@@ -101,7 +101,7 @@ The `Container` component is general purpose, composable component that can be u
 - className : .string
 - style : .object
 - width : number or string
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 - wrapper : shape
 	- className : string
 	- style : object
@@ -427,7 +427,7 @@ The `List` component renders a list of items when more control over spacing is n
 - className : string
 - style : object
 - width : string or number
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 - bullet : string ***[required]*** `(default "\u2022" -- the bullet character)`
 
 The `bullet` property is passed down to each `ListItem` child so that the entire list has the same bullet value.

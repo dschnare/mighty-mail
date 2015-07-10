@@ -17,8 +17,7 @@ var Table = React.createClass({
 		return {
 			cellSpacing: 0,
 			cellPadding: 0,
-			border: 0,
-			align: "left"
+			border: 0
 		};
 	},
 	render: function () {

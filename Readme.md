@@ -91,7 +91,7 @@ The `Table` component is an alias for creating a `<table>` with `cellspacing`, `
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" align="left">
+    <table cellspacing="0" cellpadding="0" border="0">
       <tbody>
         <tr>
           <td>Col 1</td>
@@ -109,7 +109,7 @@ The `Table` component is an alias for creating a `<table>` with `cellspacing`, `
 - className : string
 - style : object
 - width : string or number
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 
 
 ### Container
@@ -131,7 +131,7 @@ The `Container` component is general purpose, composable component that can be u
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" align="left" class="container">
+    <table cellspacing="0" cellpadding="0" border="0" class="container">
       <tbody>
         <tr>
           <td align="left" valign="top" class="container__wrapper">My Content</td>
@@ -149,7 +149,7 @@ The `Container` component is general purpose, composable component that can be u
 - className : .string
 - style : .object
 - width : number or string
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 - wrapper : shape
 	- className : string
 	- style : object
@@ -650,7 +650,7 @@ The `ParaBlock` is a container for `Paragraph` components.
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
+    <table cellspacing="0" cellpadding="0" border="0" class="para-block">
       <tbody>
         <tr class="para first-child">
           <td align="left" valign="top" class="para__wrapper">Paragraph <strong>one</strong>.</td>
@@ -695,7 +695,7 @@ These components can only be used within `ParaBlock` components.
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="para-block" align="left">
+    <table cellspacing="0" cellpadding="0" border="0" class="para-block">
       <tbody>
         <tr class="para first-child">
           <td align="left" valign="top" class="para__wrapper">Paragraph <strong>one</strong>.</td>
@@ -806,7 +806,7 @@ The `List` component renders a list of items when more control over spacing is n
 - className : string
 - style : object
 - width : string or number
-- align : one of "left", "center", "right" `(default "left")`
+- align : one of "left", "center", "right"
 - bullet : string ***[required]*** `(default "\u2022" -- the bullet character)`
 
 The `bullet` property is passed down to each `ListItem` child so that the entire list has the same bullet value.
@@ -834,7 +834,7 @@ These components can only be used within `List` or `BulletList` components.
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="list" align="left">
+    <table cellspacing="0" cellpadding="0" border="0" class="list">
       <tbody>
         <tr class="list__item first-child">
           <td align="left" class="list__bullet-wrapper">&bull;</td>
@@ -894,8 +894,7 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
 
 **Result**
 
-    <table cellspacing="0" cellpadding="0" border="0" class="list list--ordered"
-    align="left">
+    <table cellspacing="0" cellpadding="0" border="0" class="list list--ordered">
       <tbody>
         <tr class="list__item first-child">
           <td align="left" class="list__bullet-wrapper">1</td>

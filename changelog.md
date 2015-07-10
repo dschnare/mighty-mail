@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.9
+
+*July 10, 2015*
+
+- Remove default align property value for Table, List and Container. This was causing vertical align issues when attempting to align content in a column.
+
+
 ## 2.0.8
 
 *July 10, 2015*

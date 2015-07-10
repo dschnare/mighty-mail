@@ -27,7 +27,6 @@ var Container = React.createClass({
 			cellSpacing: 0,
 			cellPadding: 0,
 			border: 0,
-			align: "left",
 			wrapper: {
 				align: "left",
 				valign: "top"

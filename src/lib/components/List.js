@@ -23,8 +23,7 @@ var List = React.createClass({
 	}, defineTableProps()),
 	getDefaultProps: function () {
 		return {
-			bullet: entities.BULL,
-			align: "left"
+			bullet: entities.BULL
 		};
 	},
 	render: function () {
