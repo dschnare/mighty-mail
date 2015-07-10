@@ -23,7 +23,7 @@ can be inserted as the following.
 
 	{"<!-- my comment -->"}
 
-- Normally HTML entities are handled intelligently by React, but due to Mighty Mail components
+Normally HTML entities are handled intelligently by React, but due to Mighty Mail components
 being rendered as raw HTML, HTML entities must be inserted as the following.
 
 	{"&amp;"}
