@@ -35,7 +35,7 @@ If you use normal HTML components such as `<span>` then normal React HTML entity
 
 Both statements above yield:
 
-	&amp;
+	<span>&amp;</span>
 
 The following entites are conveniently exported on the module.
 
