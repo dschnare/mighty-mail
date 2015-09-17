@@ -55,7 +55,7 @@ var Divider = React.createClass({
 				className: classNames(this.props.wrapper.className),
 				style: mixin({}, this.props.wrapper.style || {}, {
 					fontSize: 1,
-					lineHeight: '1px',
+					lineHeight: "1px",
 					msoLineHeightRule: "exactly"
 				})
 			}
