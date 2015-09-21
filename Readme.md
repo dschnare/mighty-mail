@@ -264,7 +264,10 @@ The `Row` component will layout `Col` components in a single horizontal row with
               </tr>
             </tbody>
           </table>
+          <!--[if mso]>
           </td>
+        <![endif]-->
+        </td>
         </tr>
       </tbody>
     </table>
@@ -400,10 +403,13 @@ respect the deimensions of the email body.
                       </tr>
                     </tbody>
                   </table>
+                  <!--[if mso]>
                   </td>
-                </tr>
-              </tbody>
-            </table>
+                <![endif]-->
+          </td>
+          </tr>
+          </tbody>
+          </table>
           </td>
         </tr>
       </tbody>
@@ -500,7 +506,7 @@ The `Divider` component renders a horizontal divider.
     align="center">
       <tbody>
         <tr>
-          <td bgcolor="#000000" class="divider__wrapper" style="font-size:1px;line-height:1;mso-line-height-rule:exactly;"
+          <td bgcolor="#000000" class="divider__wrapper" style="font-size:1px;line-height:1px;mso-line-height-rule:exactly;"
           width="100%" height="2" align="center">&nbsp;</td>
         </tr>
       </tbody>
