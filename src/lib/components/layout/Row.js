@@ -81,7 +81,10 @@ var Row = React.createClass({
 
 			children.push(col);
 		});
-		children.push('<!--[if mso]></td><![endif]-->');
+
+		if (cols.length > 1) {
+			children.push('<!--[if mso]></td><![endif]-->');
+		}
 
 		return children;
 	},

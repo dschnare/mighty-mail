@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.14
+
+*September 28, 2015*
+
+- Add a closing <td> in the Row component for Outlook ONLY when there are more than one columns.
+
+## 2.0.13
+
+*September 28, 2015*
+
+- Add a closing <td> in the Row component for Outlook.
+
+
 ## 2.0.9
 
 *July 10, 2015*
