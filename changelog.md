@@ -2,6 +2,13 @@
 
 ## 2.0.14
 
+*October 1, 2015*
+
+- Add bulletSuffix property to List and OrderedList components.
+
+
+## 2.0.14
+
 *September 30, 2015*
 
 - Add a closing <td> in the Row component for Outlook ONLY when there are more than one columns.

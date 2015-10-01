@@ -429,6 +429,7 @@ The `List` component renders a list of items when more control over spacing is n
 - width : string or number
 - align : one of "left", "center", "right"
 - bullet : string ***[required]*** `(default "\u2022" -- the bullet character)`
+- bulletSuffix : string `(default "")`
 
 The `bullet` property is passed down to each `ListItem` child so that the entire list has the same bullet value.
 
@@ -482,6 +483,7 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
 - style : object
 - width : string or number
 - align : one of "left", "center", "right"
+- bulletSuffix : string `(default "")`
 
 
 

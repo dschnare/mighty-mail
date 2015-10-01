@@ -814,6 +814,7 @@ The `List` component renders a list of items when more control over spacing is n
 - width : string or number
 - align : one of "left", "center", "right"
 - bullet : string ***[required]*** `(default "\u2022" -- the bullet character)`
+- bulletSuffix : string `(default "")`
 
 The `bullet` property is passed down to each `ListItem` child so that the entire list has the same bullet value.
 
@@ -892,7 +893,7 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
     /*eslint no-unused-vars: 0*/
     
     module.exports = (
-      <OrderedList>
+      <OrderedList bulletSuffix=".">
         <ListItem>Item <strong>one</strong>.</ListItem>
         <ListItem>Item two.</ListItem>
       </OrderedList>
@@ -903,11 +904,11 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
     <table cellspacing="0" cellpadding="0" border="0" class="list list--ordered">
       <tbody>
         <tr class="list__item first-child">
-          <td align="left" class="list__bullet-wrapper">1</td>
+          <td align="left" class="list__bullet-wrapper">1.</td>
           <td align="left" class="list__item-wrapper">Item <strong>one</strong>.</td>
         </tr>
         <tr class="list__item last-child">
-          <td align="left" class="list__bullet-wrapper">2</td>
+          <td align="left" class="list__bullet-wrapper">2.</td>
           <td align="left" class="list__item-wrapper">Item two.</td>
         </tr>
       </tbody>
@@ -923,6 +924,7 @@ The `OrderedList` component represents an ordered list of `ListeItem` components
 - style : object
 - width : string or number
 - align : one of "left", "center", "right"
+- bulletSuffix : string `(default "")`
 
 
 
